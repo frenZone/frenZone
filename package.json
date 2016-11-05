@@ -4,8 +4,9 @@
   "description": "This is an application to check out popular hot spots around you using your friends data from instagram's api",
   "main": "server.js",
   "scripts": {
+    "server": "webpack-dev-server --history-api-fallback --inline --progress",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "npm run server"
   },
   "repository": {
     "type": "git",
