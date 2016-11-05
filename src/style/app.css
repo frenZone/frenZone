@@ -1,5 +1,5 @@
 /* styles in src/style directory are applied to the whole page */
-body {
+/*body {
   background: #0147A7;
   color: #fff;
 }
@@ -19,4 +19,9 @@ main {
 footer {
   text-align: center;
   font-size: 0.8em;
+}*/
+
+#map{
+  height: 400px;
+  width: 100%;
 }
