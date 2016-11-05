@@ -1,0 +1,20 @@
+{
+  "name": "frenzone",
+  "version": "1.0.0",
+  "description": "This is an application to check out popular hot spots around you using your friends data from instagram's api",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frenZone/frenZone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frenZone/frenZone/issues"
+  },
+  "homepage": "https://github.com/frenZone/frenZone#readme"
+}
