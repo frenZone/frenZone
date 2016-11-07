@@ -1,5 +1,8 @@
 import angular from 'angular';
 import * as uiRouter from 'angular-ui-router';
+import { DefaultCtrlState, DefaultCtrl, DefaultCtrlName } from './default';
+import { FriendsCtrlState, FriendsCtrl, FriendsCtrlName } from './friends';
+
 // import MAP_API from './config.js';
 
 import '../style/app.css';
@@ -7,36 +10,31 @@ import '../style/app.css';
 let app = () => {
   return {
     template: require('./app.html'),
-    controller: 'myController',
+    controller: 'AppCtrl',
     controllerAs: 'app'
   };
 };
 
-// class AppCtrl {
-//   constructor() {
-//     this.url = 'https://github.com/preboot/angular-webpack';
-//   }
-// }
+class AppCtrl {
+  constructor() {
+    this.url = 'https://github.com/preboot/angular-webpack';
+  }
+}
 
 const MODULE_NAME = 'app';
 
 angular.module(MODULE_NAME, ['ui.router'])
+  .config(($stateProvider) => {
+    $stateProvider
+      .state('default', DefaultCtrlState)
+      .state('friends', FriendsCtrlState)
+      ;
+  })
+  .run(($state) => {
+    $state.go('default');
+  })
   .directive('app', app)
-  // .controller('AppCtrl', AppCtrl)
-  .constant('MAP_API', "AIzaSyAOXRNnjoPo_6goiZIxCN0-rR7l1be4pYg")
-  .controller( 'myController', ['$scope',
-      'MAP_API',
-    ($scope, MAP_API)=>{
-
-    $scope.mapApi = MAP_API;
-
-  }])
-  .controller('myController',['$scope', function($scope){
-        $scope.custom = true;
-        $scope.toggleCustom = function() {
-            $scope.custom = $scope.custom === false ? true: false;
-        };
-}]);
-
+  .controller(DefaultCtrlName, DefaultCtrl)
+  .controller('AppCtrl', AppCtrl);
 
 export default MODULE_NAME;
