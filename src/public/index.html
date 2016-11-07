@@ -8,10 +8,120 @@
 
   <base href="/">
 </head>
-<body>
-<h3>My Google Maps Demo</h3>
-  <div id="map"></div>
-  <app></app>
+<!-- <body> -->
+<body ng-app="myApp">
+
+  <div class="frenZone" >
+
+    <div class="bar">
+
+      <!-- frenZone logo -->
+      <div class="logo">
+        <h2>frenZone</h2>
+      </div>
+
+      <!-- search bar -->
+      <input class="searchBar" />
+
+      <!-- user icon -->
+      <div class="userIcon">
+
+      </div>
+
+    </div>
+
+    <div class="mainBody">
+
+      <div id="map"></div>
+
+  <!--     <div class="friendsCol">
+
+        <div class="friends">
+          <div class="friendIcon"></div>
+        </div>
+        <div class="friends">
+          <div class="friendIcon"></div>
+        </div>
+        <div class="friends">
+          <div class="friendIcon"></div>
+        </div>
+        <div class="friends">
+          <div class="friendIcon"></div>
+        </div>
+        <div class="friends">
+          <div class="friendIcon"></div>
+        </div>
+        <div class="friends">
+          <div class="friendIcon"></div>
+        </div>
+        <div class="friends">
+          <div class="friendIcon"></div>
+        </div>
+        <div class="friends">
+          <div class="friendIcon"></div>
+        </div>
+        <div class="friends">
+          <div class="friendIcon"></div>
+        </div>
+        <div class="friends">
+          <div class="friendIcon"></div>
+        </div>
+
+      </div> -->
+    <div ng-controller="myController"> <!-- myController start -->
+
+      <div class="pictureContainer" ng-repeat="picture in pictures.data |     filter:searchCaption">
+          <img ng-src="{{ picture.images.standard_resolution.url }}"></img>
+          <div class="caption">{{ picture.caption.text }}</div>
+        </div>
+        <div>FRIENDS and usernames</div>
+         <div class="friendsContainer" ng-repeat="friend in friends |     filter:searchCaption">
+          <img ng-src="{{ friend.profile_picture }}"></img>
+          <h1>{{friend.full_name}}</br>
+          {{friend.username}}
+          </h1>
+        </div>
+         <div>locations</div>
+         <div class="locationContainer" ng-repeat="location in locations |     filter:searchCaption">
+          <img ng-src="{{ location.images.standard_resolution.url }}"></img>
+          <h1> {{location.location.name}}</br>
+               <div class="tag&Face">{{location.tags}}<img ng-src="{{ location.user.profile_picture }}"></img>
+               {{ location.user.username }}
+               </div>
+          </h1>
+        </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+ <!-- <div class="pictureContainer" ng-repeat="picture in pictures.data |     filter:searchCaption">
+        <img ng-src="{{ picture.images.standard_resolution.url }}"></img>
+        <div class="caption">{{ picture.caption.text }}</div>
+      </div>
+      <div>FRIENDS and usernames</div>
+       <div class="friendsContainer" ng-repeat="friend in friends |     filter:searchCaption">
+        <img ng-src="{{ friend.profile_picture }}"></img>
+        <h1>{{friend.full_name}}</br>
+        {{friend.username}}
+        </h1>
+      </div>
+       <div>locations</div>
+       <div class="locationContainer" ng-repeat="location in locations |     filter:searchCaption">
+        <img ng-src="{{ location.images.standard_resolution.url }}"></img>
+        <h1> {{location.location.name}}</br>
+             <div class="tag&Face">{{location.tags}}<img ng-src="{{ location.user.profile_picture }}"></img>
+             {{ location.user.username }}
+             </div>
+        </h1>
+      </div> -->
+
+
+
+<!--   <app></app> -->
+
   <script>
       function initMap() {
         // Styles a map in night mode.
@@ -128,7 +238,15 @@
                               'Error: Your browser doesn\'t support geolocation.');
       }
     </script>
+
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOXRNnjoPo_6goiZIxCN0-rR7l1be4pYg&callback=initMap"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js">
+  </script>
+  <script src="/myApp.js"></script>
+  <script src="/service.js"></script>
+  <script src="/controller.js"></script>
+
 </body>
 </html>
