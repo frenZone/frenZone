@@ -30,6 +30,13 @@ angular.module(MODULE_NAME, ['ui.router'])
 
     $scope.mapApi = MAP_API;
 
-  }]);
+  }])
+  .controller('myController',['$scope', function($scope){
+        $scope.custom = true;
+        $scope.toggleCustom = function() {
+            $scope.custom = $scope.custom === false ? true: false;
+        };
+}]);
+
 
 export default MODULE_NAME;
