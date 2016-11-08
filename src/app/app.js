@@ -1,18 +1,17 @@
 import angular from 'angular';
 import * as uiRouter from 'angular-ui-router';
 import { DefaultCtrlState, DefaultCtrl, DefaultCtrlName } from './default';
-import { FriendsCtrlState, FriendsCtrl, FriendsCtrlName } from './friends';
-
-// import MAP_API from './config.js';
+import { GridCtrlState, GridCtrl, GridCtrlName } from './grid';
+import { ListCtrlState, ListCtrl, ListCtrlName } from './list';
+import { PhotosServiceName, PhotosService } from './services/photos';
 
 import '../style/app.css';
 
 let app = () => {
   return {
     template: require('./app.html'),
-    controller: 'AppCtrl',
-    controllerAs: 'app'
-  };
+
+  }
 };
 
 class AppCtrl {
@@ -24,18 +23,23 @@ class AppCtrl {
 const MODULE_NAME = 'app';
 
 angular.module(MODULE_NAME, ['ui.router'])
-  .config(($stateProvider) => {
+  .config(($urlRouterProvider,$stateProvider) => {
+    $urlRouterProvider.otherwise('/');
     $stateProvider
       .state('default', DefaultCtrlState)
-      .state('friends', FriendsCtrlState)
+      .state('grid', GridCtrlState)
+      .state('list', ListCtrlState)
       ;
   })
   .run(($state) => {
     $state.go('default');
   })
   .directive('app', app)
+  .service(PhotosServiceName, PhotosService)
+  .controller('AppCtrl', AppCtrl)
   .controller(DefaultCtrlName, DefaultCtrl)
-  .controller(FriendsCtrlName, FriendsCtrl)
-  .controller('AppCtrl', AppCtrl);
+  .controller(GridCtrlName, GridCtrl)
+  .controller(ListCtrlName, ListCtrl);
+
 
 export default MODULE_NAME;
