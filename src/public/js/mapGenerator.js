@@ -87,6 +87,31 @@
   });
   var infoWindow = new google.maps.InfoWindow({map: map});
 
+  var script = document.createElement('script');
+    // This example uses a local copy of the GeoJSON stored at
+    // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
+    script.src = 'https://api.instagram.com/v1/users/55870965/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=55870965.2c4aaae.e0dd1784350a44838eda4573296a5750';
+    document.getElementsByTagName('head')[0].appendChild(script);
+
+    function JSON_CALLBACK(response) {
+      map.data.addGeoJson(response);
+    }
+
+    this.JSON_CALLBACK = function(results) {
+      for (var i = 0; i < results.data.length; i++) {
+        if(results.data[i].location !== null){
+          var coords = results.data[i].location;
+          var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
+          var marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            animation: google.maps.Animation.DROP,
+            title: coords.name
+          });
+        }
+      }
+    };
+
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -113,3 +138,4 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                         'Error: The Geolocation service failed.' :
                         'Error: Your browser doesn\'t support geolocation.');
 }
+
