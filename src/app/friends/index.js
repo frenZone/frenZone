@@ -1,43 +1,47 @@
+import { PhotosServiceName } from '../services/photos';
+
 const template = require('./friends.html');
 
 export const FriendsCtrlName = 'FriendsCtrl';
 
-import { InstagramAPIName } from '../services/instagramApi.js';
-
 export const FriendsCtrlState = {
+
   url: '/friends',
   template,
   controller: FriendsCtrlName,
   controllerAs: 'friends'
 };
+
 export const FriendsCtrl = [
   '$scope',
-  InstagramAPIName,
+  PhotosServiceName,
+  '$sce',
   class FriendsCtrl {
-    constructor($scope, instagramAPI) {
-      instagramAPI.fetchInstagramFeed()
-      .success((pictures) => {
-        $scope.pictures = pictures;
-          console.log('pictures', pictures);
-        $scope.layout = "list";
-        $scope.setLayout = (layout) => {
-          $scope.layout= layout;
-        };
+    constructor($scope, PhotosService,$sce) {
+
+      $scope.photos = [];
+      $scope.friends =[];
+      $scope.locations=[];
+
+      PhotosService.getPhotos().success((photos)=>{
+        for (var i = 0; i < photos.data.length; i++){
+          if(photos.data[i].type === 'video'){
+            photos.data[i].videos.standard_resolution.url = $sce.trustAsResourceUrl(photos.data[i].videos.standard_resolution.url);
+          }
+        }
+      $scope.photos = photos;
       });
 
-      instagramAPI.getFriends()
+      PhotosService.getFriends()
       .success((friends) => {
-        console.log("friends",friends);
-       $scope.friends = friends.data;
+        $scope.friends = friends.data;
       });
 
-      instagramAPI.getLocation()
+      PhotosService.getLocation()
       .success((locations) => {
-        console.log("location",locations);
-       $scope.locations = locations.data;
+        $scope.locations = locations.data;
       });
 
     }
   }
-
 ];

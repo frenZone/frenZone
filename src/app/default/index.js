@@ -1,3 +1,5 @@
+import { PhotosServiceName } from '../services/photos';
+
 const template = require('./default.html');
 
 export const DefaultCtrlName = 'DefaultCtrl';
@@ -9,10 +11,19 @@ export const DefaultCtrlState = {
   controllerAs: 'default'
 };
 
-export class DefaultCtrl {
-  constructor() {
-    this.initMap();
-  }
+export const DefaultCtrl = [
+  '$scope',
+  PhotosServiceName,
+  '$sce',
+  class DefaultCtrl {
+    constructor($scope, PhotosService,$sce) {
+      $scope.friends =[];
+      PhotosService.getFriends()
+      .success((friends) => {
+        $scope.friends = friends.data;
+      });
+      this.initMap();
+    }
 
   initMap() {
   // Styles a map in night mode.
@@ -171,3 +182,5 @@ export class DefaultCtrl {
 
 
 }
+
+];

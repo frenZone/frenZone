@@ -1,19 +1,17 @@
 import angular from 'angular';
 import * as uiRouter from 'angular-ui-router';
 import { DefaultCtrlState, DefaultCtrl, DefaultCtrlName } from './default';
+import { GridCtrlState, GridCtrl, GridCtrlName } from './grid';
+import { ListCtrlState, ListCtrl, ListCtrlName } from './list';
+import { PhotosServiceName, PhotosService } from './services/photos';
 import { FriendsCtrlState, FriendsCtrl, FriendsCtrlName } from './friends';
-import { InstagramAPIName, InstagramAPI } from './services/instagramApi.js';
-
-// import MAP_API from './config.js';
-
 import '../style/app.css';
 
 let app = () => {
   return {
     template: require('./app.html'),
-    controller: 'AppCtrl',
-    controllerAs: 'app'
-  };
+
+  }
 };
 
 class AppCtrl {
@@ -25,9 +23,12 @@ class AppCtrl {
 const MODULE_NAME = 'app';
 
 angular.module(MODULE_NAME, ['ui.router'])
-  .config(($stateProvider) => {
+  .config(($urlRouterProvider,$stateProvider) => {
+    $urlRouterProvider.otherwise('/');
     $stateProvider
       .state('default', DefaultCtrlState)
+      .state('grid', GridCtrlState)
+      .state('list', ListCtrlState)
       .state('friends', FriendsCtrlState)
       ;
   })
@@ -35,10 +36,14 @@ angular.module(MODULE_NAME, ['ui.router'])
     $state.go('default');
   })
   .directive('app', app)
-  .service(InstagramAPIName, InstagramAPI)
+  .service(PhotosServiceName, PhotosService)
+  .controller('AppCtrl', AppCtrl)
   .controller(DefaultCtrlName, DefaultCtrl)
+  .controller(GridCtrlName, GridCtrl)
   .controller(FriendsCtrlName, FriendsCtrl)
-  .controller('AppCtrl', AppCtrl);
+  .controller(ListCtrlName, ListCtrl);
+
+
 
 
 export default MODULE_NAME;

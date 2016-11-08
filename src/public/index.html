@@ -2,45 +2,18 @@
 <html ng-app="app" lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>frenZone</title>
-  <!-- <link rel="icon" type="image/x-icon" href="/img/favicon.ico"> -->
+  <title>Angular App</title>
+  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <base href="/">
 </head>
-<!-- <body> -->
-<body ng-app="myApp" >
 
-  <div class="frenZone" >
-
-    <div class="bar">
-
-      <!-- frenZone logo -->
-      <div class="logo">
-        <h2>frenZone</h2>
-      </div>
-
-      <!-- search bar -->
-      <input class="searchBar" />
-
-      <!-- user icon -->
-      <div class="userIcon"></div>
-
-    </div>
-
-    <div class="mainBody">
-
-      <div id="map">
-      </div>
-
-      <app></app>
-
-    </div>
-
-  </div>
-
+<body>
+  <app></app>
   <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOXRNnjoPo_6goiZIxCN0-rR7l1be4pYg"></script>
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOXRNnjoPo_6goiZIxCN0-rR7l1be4pYg&callback=initMap">
+  </script>
 
 </body>
 </html>
