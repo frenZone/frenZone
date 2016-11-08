@@ -38,4 +38,5 @@ angular.module(MODULE_NAME, ['ui.router'])
   .controller(FriendsCtrlName, FriendsCtrl)
   .controller('AppCtrl', AppCtrl);
 
+
 export default MODULE_NAME;

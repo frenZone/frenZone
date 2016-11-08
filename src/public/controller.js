@@ -2,9 +2,10 @@ angular.module('myApp') // attach a controller to the module
 
 .controller( 'myController', ['$scope', 'instagramAPI', ($scope, instagramAPI) => {
 
-  $scope.custom = true;
-        $scope.toggleCustom = function() {
-            $scope.custom = $scope.custom === false ? true: false
+ $scope.showMe = false;
+    $scope.myFunc = function() {
+        $scope.showMe = !$scope.showMe;
+    };
 
   instagramAPI.fetchInstagramFeed()
     .success((pictures) => {
@@ -13,22 +14,19 @@ angular.module('myApp') // attach a controller to the module
       $scope.layout = "list";
       $scope.setLayout = (layout)=>{
         $scope.layout= layout;
-    }
-    // console.log(pictures);
-  })
+    };
+  });
 
   instagramAPI.fetchFriendsInstagramFeed()
     .success((friends) => {
-      console.log("friends",friends)
+      console.log("friends",friends);
      $scope.friends = friends.data;
     });
 
-    instagramAPI.fetchLocation()
-    .success((locations) => {
-      console.log("location",locations.data)
-     $scope.locations = locations.data;
-    });
-
-
+  instagramAPI.fetchLocation()
+  .success((locations) => {
+    console.log("location",locations.data);
+   $scope.locations = locations.data;
+  });
 
 }]);
