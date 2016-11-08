@@ -2,14 +2,14 @@
 <html ng-app="app" lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Angular App</title>
+  <title>frenZone</title>
   <!-- <link rel="icon" type="image/x-icon" href="/img/favicon.ico"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <base href="/">
 </head>
 <!-- <body> -->
-<body ng-app="myApp">
+<body ng-app="myApp" >
 
   <div class="frenZone" >
 
@@ -24,9 +24,7 @@
       <input class="searchBar" />
 
       <!-- user icon -->
-      <div class="userIcon">
-
-      </div>
+      <div class="userIcon"></div>
 
     </div>
 
@@ -34,93 +32,14 @@
 
       <div id="map"></div>
 
-  <!--     <div class="friendsCol">
+      <div class="friendsCol">
 
-        <div class="friends">
-          <div class="friendIcon"></div>
-        </div>
-        <div class="friends">
-          <div class="friendIcon"></div>
-        </div>
-        <div class="friends">
-          <div class="friendIcon"></div>
-        </div>
-        <div class="friends">
-          <div class="friendIcon"></div>
-        </div>
-        <div class="friends">
-          <div class="friendIcon"></div>
-        </div>
-        <div class="friends">
-          <div class="friendIcon"></div>
-        </div>
-        <div class="friends">
-          <div class="friendIcon"></div>
-        </div>
-        <div class="friends">
-          <div class="friendIcon"></div>
-        </div>
-        <div class="friends">
-          <div class="friendIcon"></div>
-        </div>
-        <div class="friends">
-          <div class="friendIcon"></div>
-        </div>
+      <app></app>
 
-      </div> -->
-    <div> <!-- myController start -->
-
-      <div class="pictureContainer" ng-repeat="picture in pictures.data |     filter:searchCaption">
-          <img ng-src="{{ picture.images.standard_resolution.url }}"></img>
-          <div class="caption">{{ picture.caption.text }}</div>
-        </div>
-        <div>FRIENDS and usernames</div>
-         <div class="friendsContainer" ng-repeat="friend in friends |     filter:searchCaption">
-          <img ng-src="{{ friend.profile_picture }}"></img>
-          <h1>{{friend.full_name}}</br>
-          {{friend.username}}
-          </h1>
-        </div>
-         <div>locations</div>
-         <div class="locationContainer" ng-repeat="location in locations |     filter:searchCaption">
-          <img ng-src="{{ location.images.standard_resolution.url }}"></img>
-          <h1> {{location.location.name}}</br>
-               <div class="tag&Face">{{location.tags}}<img ng-src="{{ location.user.profile_picture }}"></img>
-               {{ location.user.username }}
-               </div>
-          </h1>
-        </div>
+      </div>
 
     </div>
-
   </div>
-
-</div>
-
- <!-- <div class="pictureContainer" ng-repeat="picture in pictures.data |     filter:searchCaption">
-        <img ng-src="{{ picture.images.standard_resolution.url }}"></img>
-        <div class="caption">{{ picture.caption.text }}</div>
-      </div>
-      <div>FRIENDS and usernames</div>
-       <div class="friendsContainer" ng-repeat="friend in friends |     filter:searchCaption">
-        <img ng-src="{{ friend.profile_picture }}"></img>
-        <h1>{{friend.full_name}}</br>
-        {{friend.username}}
-        </h1>
-      </div>
-       <div>locations</div>
-       <div class="locationContainer" ng-repeat="location in locations |     filter:searchCaption">
-        <img ng-src="{{ location.images.standard_resolution.url }}"></img>
-        <h1> {{location.location.name}}</br>
-             <div class="tag&Face">{{location.tags}}<img ng-src="{{ location.user.profile_picture }}"></img>
-             {{ location.user.username }}
-             </div>
-        </h1>
-      </div> -->
-
-
-
-  <app></app>
 
   <script src='./js/mapGenerator.js'></script>
   <script async defer
