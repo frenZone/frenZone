@@ -85,6 +85,7 @@
       }
     ]
   });
+
   var infoWindow = new google.maps.InfoWindow({map: map});
 
   var script = document.createElement('script');
@@ -96,7 +97,7 @@
     function JSON_CALLBACK(response) {
       map.data.addGeoJson(response);
     }
-
+    var markers = [];
     this.JSON_CALLBACK = function(results) {
       for (var i = 0; i < results.data.length; i++) {
         if(results.data[i].location !== null){
@@ -108,6 +109,17 @@
             animation: google.maps.Animation.DROP,
             title: coords.name
           });
+          var infowindow = new google.maps.InfoWindow();
+          var content = '<div id="locationPicture">'+
+            `<img src="${results.data[i].images.thumbnail.url}"></img>`+
+            '</div>';
+
+          google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){
+            return function() {
+                infowindow.setContent(content);
+                infowindow.open(map,marker);
+            };
+          })(marker,content,infowindow));
         }
       }
     };
