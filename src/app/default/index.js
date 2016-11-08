@@ -110,8 +110,10 @@ export class DefaultCtrl {
     script.src = 'https://api.instagram.com/v1/users/55870965/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=55870965.2c4aaae.e0dd1784350a44838eda4573296a5750';
     document.getElementsByTagName('head')[0].appendChild(script);
 
+
   function JSON_CALLBACK(response) {
     map.data.addGeoJson(response);
+
   }
   var markers = [];
     window.JSON_CALLBACK = function(results) {

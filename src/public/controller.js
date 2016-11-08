@@ -10,7 +10,7 @@ angular.module('myApp') // attach a controller to the module
       $scope.setLayout = (layout)=>{
         $scope.layout= layout;
     }
-    // console.log(pictures);
+
   })
 
   instagramAPI.fetchFriendsInstagramFeed()
