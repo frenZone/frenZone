@@ -4,7 +4,7 @@ import { DefaultCtrlState, DefaultCtrl, DefaultCtrlName } from './default';
 import { GridCtrlState, GridCtrl, GridCtrlName } from './grid';
 import { ListCtrlState, ListCtrl, ListCtrlName } from './list';
 import { PhotosServiceName, PhotosService } from './services/photos';
-
+import { FriendsCtrlState, FriendsCtrl, FriendsCtrlName } from './friends';
 import '../style/app.css';
 
 let app = () => {
@@ -40,6 +40,7 @@ angular.module(MODULE_NAME, ['ui.router'])
   .controller(DefaultCtrlName, DefaultCtrl)
   .controller(GridCtrlName, GridCtrl)
   .controller(ListCtrlName, ListCtrl);
+
 
 
 export default MODULE_NAME;
