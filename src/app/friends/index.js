@@ -18,26 +18,26 @@ export const FriendsCtrl = [
       instagramAPI.fetchInstagramFeed()
       .success((pictures) => {
         $scope.pictures = pictures;
-          console.log('pictures', pictures)
+          console.log('pictures', pictures);
         $scope.layout = "list";
-        $scope.setLayout = (layout)=>{
+        $scope.setLayout = (layout) => {
           $scope.layout= layout;
-        }
-      })
+        };
+      });
 
       instagramAPI.getFriends()
       .success((friends) => {
-        console.log("friends",friends)
+        console.log("friends",friends);
        $scope.friends = friends.data;
       });
 
       instagramAPI.getLocation()
       .success((locations) => {
-        console.log("location",locations)
+        console.log("location",locations);
        $scope.locations = locations.data;
       });
 
     }
   }
 
-]
+];
