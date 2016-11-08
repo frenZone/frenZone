@@ -2,6 +2,7 @@ import angular from 'angular';
 import * as uiRouter from 'angular-ui-router';
 import { DefaultCtrlState, DefaultCtrl, DefaultCtrlName } from './default';
 import { FriendsCtrlState, FriendsCtrl, FriendsCtrlName } from './friends';
+import { InstagramAPIName, InstagramAPI } from './services/instagramApi.js';
 
 // import MAP_API from './config.js';
 
@@ -34,8 +35,10 @@ angular.module(MODULE_NAME, ['ui.router'])
     $state.go('default');
   })
   .directive('app', app)
+  .service(InstagramAPIName, InstagramAPI)
   .controller(DefaultCtrlName, DefaultCtrl)
   .controller(FriendsCtrlName, FriendsCtrl)
   .controller('AppCtrl', AppCtrl);
+
 
 export default MODULE_NAME;
