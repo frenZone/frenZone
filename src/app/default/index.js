@@ -119,11 +119,14 @@ export class DefaultCtrl {
       if(results.data[i].location !== null){
         var coords = results.data[i].location;
         var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
+        // var image = results.data[i].user.profile_picture;
+        var image = 'https://scontent.cdninstagram.com/t51.2885-19/s30x30/14582392_1153156614795077_1774168565260222464_a.jpg';
         var marker = new google.maps.Marker({
           position: latLng,
           map: map,
           animation: google.maps.Animation.DROP,
-          title: coords.name
+          title: coords.name,
+          icon: image
         });
         var infowindow = new google.maps.InfoWindow();
         var content = '<div id="locationPicture">'+
