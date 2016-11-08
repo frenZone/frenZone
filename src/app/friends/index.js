@@ -1,43 +1,47 @@
-// const template = require('./friends.html');
+import { PhotosServiceName } from '../services/photos';
 
-// export const FriendsCtrlName = 'FriendsCtrl';
+const template = require('./friends.html');
 
-// import { InstagramAPIName } from '../services/instagramApi.js';
+export const FriendsCtrlName = 'FriendsCtrl';
 
-// export const FriendsCtrlState = {
-//   url: '/friends',
-//   template,
-//   controller: FriendsCtrlName,
-//   controllerAs: 'friends'
-// };
-// export const FriendsCtrl = [
-//   '$scope',
-//   InstagramAPIName,
-//   class FriendsCtrl {
-//     constructor($scope, instagramAPI) {
-//       instagramAPI.fetchInstagramFeed()
-//       .success((pictures) => {
-//         $scope.pictures = pictures;
-//           console.log('pictures', pictures);
-//         $scope.layout = "list";
-//         $scope.setLayout = (layout) => {
-//           $scope.layout= layout;
-//         };
-//       });
+export const FriendsCtrlState = {
 
-//       instagramAPI.getFriends()
-//       .success((friends) => {
-//         console.log("friends",friends);
-//        $scope.friends = friends.data;
-//       });
+  url: '/friends',
+  template,
+  controller: FriendsCtrlName,
+  controllerAs: 'friends'
+};
 
-//       instagramAPI.getLocation()
-//       .success((locations) => {
-//         console.log("location",locations);
-//        $scope.locations = locations.data;
-//       });
+export const FriendsCtrl = [
+  '$scope',
+  PhotosServiceName,
+  '$sce',
+  class FriendsCtrl {
+    constructor($scope, PhotosService,$sce) {
 
-//     }
-//   }
+      $scope.photos = [];
+      $scope.friends =[];
+      $scope.locations=[];
 
-// ];
+      PhotosService.getPhotos().success((photos)=>{
+        for (var i = 0; i < photos.data.length; i++){
+          if(photos.data[i].type === 'video'){
+            photos.data[i].videos.standard_resolution.url = $sce.trustAsResourceUrl(photos.data[i].videos.standard_resolution.url);
+          }
+        }
+      $scope.photos = photos;
+      });
+
+      PhotosService.getFriends()
+      .success((friends) => {
+        $scope.friends = friends.data;
+      });
+
+      PhotosService.getLocation()
+      .success((locations) => {
+        $scope.locations = locations.data;
+      });
+
+    }
+  }
+];

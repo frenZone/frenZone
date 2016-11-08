@@ -29,6 +29,7 @@ angular.module(MODULE_NAME, ['ui.router'])
       .state('default', DefaultCtrlState)
       .state('grid', GridCtrlState)
       .state('list', ListCtrlState)
+      .state('friends', FriendsCtrlState)
       ;
   })
   .run(($state) => {
@@ -39,6 +40,7 @@ angular.module(MODULE_NAME, ['ui.router'])
   .controller('AppCtrl', AppCtrl)
   .controller(DefaultCtrlName, DefaultCtrl)
   .controller(GridCtrlName, GridCtrl)
+  .controller(FriendsCtrlName, FriendsCtrl)
   .controller(ListCtrlName, ListCtrl);
 
 
