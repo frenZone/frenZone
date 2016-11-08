@@ -2,6 +2,10 @@ angular.module('myApp') // attach a controller to the module
 
 .controller( 'myController', ['$scope', 'instagramAPI', ($scope, instagramAPI) => {
 
+  $scope.custom = true;
+        $scope.toggleCustom = function() {
+            $scope.custom = $scope.custom === false ? true: false
+
   instagramAPI.fetchInstagramFeed()
     .success((pictures) => {
       $scope.pictures = pictures;
@@ -24,5 +28,7 @@ angular.module('myApp') // attach a controller to the module
       console.log("location",locations.data)
      $scope.locations = locations.data;
     });
+
+
 
 }]);
