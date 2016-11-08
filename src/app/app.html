@@ -1,3 +1,16 @@
+
+<div class="bar">
+    <div class="instafeed">frenZone</div>
+    <div class="search_photo_container">
+      <input placeholder="Photo Search" type="text" id="search_photo_input" ng-model="searchPhoto">
+    </div>
+    <div>
+      <a class="list-icon" ng-class="{active: layout == 'list'}" ng-click="layout = 'list'" ui-sref="list">list</a>
+      <a class="grid-icon" ng-class="{active: layout == 'grid'}" ng-click="layout = 'grid'" ui-sref="grid">Grid</a>
+    </div>
+  </div>
+
 <section ui-view>
   <!-- all the states will be rendered in here -->
+
 </section>

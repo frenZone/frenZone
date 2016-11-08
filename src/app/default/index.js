@@ -1,3 +1,5 @@
+import { PhotosServiceName } from '../services/photos';
+
 const template = require('./default.html');
 
 export const DefaultCtrlName = 'DefaultCtrl';
@@ -9,10 +11,19 @@ export const DefaultCtrlState = {
   controllerAs: 'default'
 };
 
-export class DefaultCtrl {
-  constructor() {
-    this.initMap();
-  }
+export const DefaultCtrl = [
+  '$scope',
+  PhotosServiceName,
+  '$sce',
+  class DefaultCtrl {
+    constructor($scope, PhotosService,$sce) {
+      $scope.friends =[];
+      PhotosService.getFriends()
+      .success((friends) => {
+        $scope.friends = friends.data;
+      });
+      this.initMap();
+    }
 
   initMap() {
   // Styles a map in night mode.
@@ -110,8 +121,10 @@ export class DefaultCtrl {
     script.src = 'https://api.instagram.com/v1/users/55870965/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=55870965.2c4aaae.e0dd1784350a44838eda4573296a5750';
     document.getElementsByTagName('head')[0].appendChild(script);
 
+
   function JSON_CALLBACK(response) {
     map.data.addGeoJson(response);
+
   }
   var markers = [];
     window.JSON_CALLBACK = function(results) {
@@ -172,3 +185,5 @@ export class DefaultCtrl {
 
 
 }
+
+];
