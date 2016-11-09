@@ -7,12 +7,15 @@ import { PhotosServiceName, PhotosService } from './services/photos';
 import { FriendsCtrlState, FriendsCtrl, FriendsCtrlName } from './friends';
 import '../style/app.css';
 
+
+
 let app = () => {
   return {
     template: require('./app.html'),
 
   }
 };
+
 
 class AppCtrl {
   constructor() {
@@ -42,8 +45,6 @@ angular.module(MODULE_NAME, ['ui.router'])
   .controller(GridCtrlName, GridCtrl)
   .controller(FriendsCtrlName, FriendsCtrl)
   .controller(ListCtrlName, ListCtrl);
-
-
 
 
 export default MODULE_NAME;

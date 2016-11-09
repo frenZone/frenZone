@@ -45,4 +45,24 @@
       <video width="150px" controls ng-src={{photo.videos.standard_resolution.url}}></video>
     </div>
   </div>
+<<<<<<< HEAD
 </div> -->
+=======
+</div>
+
+<div class="friendsContainer" ng-repeat="friend in friends | filter:searchCaption">
+  <img ng-click="getUserPhotos(friend.id)" ng-src="{{ friend.profile_picture }}"></img>
+  <h1 >{{friend.full_name}}</br>
+      {{friend.username}}
+      {{friend.id}}
+  </h1>
+</div>
+
+<div class="locationContainer" ng-repeat="location in locations | filter:searchCaption">
+  <img ng-src="{{ location.images.standard_resolution.url }}"></img>
+  <h1> {{location.location.name}}</br>
+    <div class="tag&Face">{{location.tags}}<img ng-src="{{ location.user.profile_picture }}"></img>{{ location.user.username }}
+    </div>
+  </h1>
+</div>
+>>>>>>> 0c0de2c9bd66a5fb5dbececca3f9f7db49d77993

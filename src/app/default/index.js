@@ -10,6 +10,8 @@ export const DefaultCtrlState = {
   controller: DefaultCtrlName,
   controllerAs: 'default'
 };
+
+
 var honolulu = {lat: 21.306900, lng: -157.858300};
 export const DefaultCtrl = [
   '$scope',
@@ -18,12 +20,17 @@ export const DefaultCtrl = [
   class DefaultCtrl {
     constructor($scope, PhotosService,$sce) {
       $scope.friends =[];
+      $scope.getUserPhotos = this.getUserPhotos;
       PhotosService.getFriends()
       .success((friends) => {
         $scope.friends = friends.data;
       });
       this.initMap();
 
+    }
+
+    getUserPhotos(id){
+      console.log("####",id)
     }
 
   initMap() {
@@ -117,11 +124,19 @@ export const DefaultCtrl = [
 
   var infoWindow = new google.maps.InfoWindow({map: map});
 
+
     //casey
     var script = document.createElement('script');
     // This example uses a local copy of the GeoJSON stored at
     // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
     script.src = 'https://api.instagram.com/v1/users/55870965/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=55870965.2c4aaae.e0dd1784350a44838eda4573296a5750';
+    document.getElementsByTagName('head')[0].appendChild(script);
+
+    //casey
+    var script = document.createElement('script');
+    // This example uses a local copy of the GeoJSON stored at
+    // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
+    script.src = 'https://api.instagram.com/v1/users/175690487/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=175690487.02eff85.fd0b74d4431044a9b82fc9a925d036ad';
     document.getElementsByTagName('head')[0].appendChild(script);
 
     //frenzone
@@ -138,7 +153,18 @@ export const DefaultCtrl = [
     script.src = 'https://api.instagram.com/v1/users/1639523138/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=1639523138.14ebd44.ce64b66e004a4bd380c6ea8731527d4f';
     document.getElementsByTagName('head')[0].appendChild(script);
 
+    //JP
+    var script = document.createElement('script');
+    // This example uses a local copy of the GeoJSON stored at
+    // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
+    script.src = 'https://api.instagram.com/v1/users/196312792/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=196312792.0f4f10a.e1911280307a478fb82448f6d6282be8';
+    document.getElementsByTagName('head')[0].appendChild(script);
+
+
   var oms = new OverlappingMarkerSpiderfier(map);
+
+
+
 
   var iw = new google.maps.InfoWindow();
   oms.addListener('click', function(marker, event) {
@@ -154,7 +180,6 @@ export const DefaultCtrl = [
     map.data.addGeoJson(response);
 
   }
-  var markers = [];
   window.JSON_CALLBACK = function(results) {
     for (var i = 0; i < results.data.length; i++) {
       if(results.data[i].location !== null){
@@ -181,7 +206,9 @@ export const DefaultCtrl = [
         google.maps.event.trigger(map, 'resize');
       }
     }
+
     map.setCenter(honolulu);
+
   };
 
   // Try HTML5 geolocation.
@@ -202,7 +229,7 @@ export const DefaultCtrl = [
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
   }
-}
+   }
 
   handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);
