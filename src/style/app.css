@@ -2,7 +2,7 @@
   display:flex;
   flex-flow: row wrap;
 }
-/*main top bar*/
+
 .bar {
   font-size: 30px;
   display: flex;
@@ -16,10 +16,10 @@
   display: flex;
   flex-flow: row wrap;
   flex: 0 0 100%;
-  max-height: 100%;
+  max-height: 70%;
 }
 
-#map{
+#map {
   flex: 0 0 80%;
 }
 
@@ -29,7 +29,7 @@
   background-color: lightblue;
 }
 
-.friendsContainer img{
+.friendsContainer img {
   border-radius: 50%;
   width:70px;
   height: 70px;
@@ -44,3 +44,28 @@
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
+.friendsCont {
+  display: flex;
+  flex-flow: row wrap;
+  flex: 0 0 100%;
+  max-height: 30%;
+  background-color: red;
+}
+
+.locationContainer {
+  display: flex;
+}
+
+/*.locationContainer {
+  display: flex;
+  flex-flow: row wrap;
+  flex: 0 0 100%;
+  max-height: 30%;
+}*/
+
+/*.friendsPic {
+  flex: 0 0 10%;
+  border-radius: 50%;
+  flex-direction: row;
+}*/

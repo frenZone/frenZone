@@ -28,7 +28,7 @@ export const DefaultCtrl = [
   initMap() {
   // Styles a map in night mode.
   var map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 21.3069, lng: -157.8583},
+    center: {lat: 21.3169, lng: -157.8583},
     zoom: 14,
     disableDefaultUI: true,
     styles: [

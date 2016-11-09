@@ -1,31 +1,3 @@
-<!-- <h1>Friends State</h1>
-
-<div ng-repeat="photo in photos.data">
-  <div ng-switch="photo.type">
-    <div ng-switch-when="image">
-      <img ng-src="{{photo.images.low_resolution.url}}" />
-    </div>
-    <div ng-switch-when="video">
-      <video width="150px" controls ng-src={{photo.videos.standard_resolution.url}}></video>
-    </div>
-  </div>
-</div>
-
-<div class="friendsContainer" ng-repeat="friend in friends | filter:searchCaption">
-  <img ng-src="{{ friend.profile_picture }}"></img>
-  <h1>{{friend.full_name}}</br>
-      {{friend.username}}
-  </h1>
-</div>
-
-<div class="locationContainer" ng-repeat="location in locations | filter:searchCaption">
-  <img ng-src="{{ location.images.standard_resolution.url }}"></img>
-  <h1> {{location.location.name}}</br>
-    <div class="tag&Face">{{location.tags}}<img ng-src="{{ location.user.profile_picture }}"></img>{{ location.user.username }}
-    </div>
-  </h1>
-</div> -->
-
 <div class="frenZone" >
 
   <div class="mainBody">
@@ -35,14 +7,50 @@
     <div class="friendsCol">
 
       <div class="friendsContainer" ng-repeat="friend in friends | filter:searchCaption">
-      <img ng-src="{{ friend.profile_picture }}"></img>
-        <p>{{friend.full_name}}</br>
-        {{friend.username}}
-        </p>
+        <img ng-src="{{ friend.profile_picture }}"></img>
+          <p>{{friend.full_name}}</br>
+          {{friend.username}}
+          </p>
       </div>
 
     </div>
 
   </div>
 
+    <div class="friendsCont">
+      <div class="locationContainer" ng-repeat="location in locations | filter:searchCaption">
+        <img class="friendsPic" ng-src="{{ location.images.low_resolution.url }}" />
+      </div>
+    </div>
+
+  </div>
+
 <div>
+
+
+<!-- <div class="friendsContainer" ng-repeat="friend in friends | filter:searchCaption">
+  <img ng-src="{{ friend.profile_picture }}"></img>
+  <h1>{{friend.full_name}}</br>
+      {{friend.username}}
+  </h1>
+</div>
+ -->
+
+<!--  <div class="locationContainer" ng-repeat="location in locations | filter:searchCaption">
+      <img ng-src="{{ location.images.low_resolution.url }}"></img>
+      <h1> {{location.location.name}}</br>
+        <div class="tag&Face">{{location.tags}}<img ng-src="{{ location.user.profile_picture }}"></img>{{ location.user.username }}
+        </div>
+      </h1>
+  </div> -->
+
+<!-- <div ng-repeat="photo in photos.data">
+  <div ng-switch="photo.type">
+    <div ng-switch-when="image">
+      <img ng-src="{{photo.images.low_resolution.url}}" />
+    </div>
+    <div ng-switch-when="video">
+      <video width="150px" controls ng-src={{photo.videos.standard_resolution.url}}></video>
+    </div>
+  </div>
+</div> -->
