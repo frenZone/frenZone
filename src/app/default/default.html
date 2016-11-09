@@ -5,9 +5,9 @@
 
     <div id="map"></div>
 
-    <div class="friendsCol">
-
-
+    <div id="mySidenav" class="sidenav">
+      <div class="friendsCol">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       <div class="friendsContainer" ng-repeat="friend in friends | filter:searchCaption">
 
       <img ng-src="{{ friend.profile_picture }}"></img>
@@ -15,12 +15,9 @@
         {{friend.username}}
         </div>
       </div>
-
-
-
     </div>
+  </div>
+</div>
 
-   </div>
 
-  <div>
 
