@@ -7,26 +7,18 @@
     <div class="friendsCol">
 
       <div class="friendsContainer" ng-repeat="friend in friends | filter:searchCaption">
-        <img ng-src="{{ friend.profile_picture }}"></img>
-          <p>{{friend.full_name}}</br>
-          {{friend.username}}
-          </p>
+
+      <img ng-src="{{ friend.profile_picture }}"></img>
+        <div>{{friend.full_name}}</br>
+        {{friend.username}}
+        </div>
       </div>
 
-    </div>
-
-  </div>
-
-    <div class="friendsCont">
-      <div class="locationContainer" ng-repeat="location in locations | filter:searchCaption">
-        <img class="friendsPic" ng-src="{{ location.images.low_resolution.url }}" />
-      </div>
     </div>
 
   </div>
 
 <div>
-
 
 <!-- <div class="friendsContainer" ng-repeat="friend in friends | filter:searchCaption">
   <img ng-src="{{ friend.profile_picture }}"></img>
