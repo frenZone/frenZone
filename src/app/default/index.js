@@ -143,6 +143,8 @@ export const DefaultCtrl = [
           `<img src="${results.data[i].images.thumbnail.url}"></img>`+
           '</div>';
 
+        google.maps.event.trigger(map,'resize');
+
         google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){
           return function() {
               infowindow.setContent(content);
@@ -182,5 +184,6 @@ export const DefaultCtrl = [
 
 
 }
+
 
 ];
