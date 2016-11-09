@@ -11,9 +11,9 @@
       <div class="friendsContainer" ng-repeat="friend in friends | filter:searchCaption">
 
       <img ng-src="{{ friend.profile_picture }}"></img>
-        <p>{{friend.full_name}}</br>
+        <div>{{friend.full_name}}</br>
         {{friend.username}}
-        </p>
+        </div>
       </div>
 
 
@@ -21,4 +21,6 @@
     </div>
 
    </div>
+
   <div>
+
