@@ -15,7 +15,7 @@
 </div>
 
 <div class="friendsContainer" ng-repeat="friend in friends | filter:searchCaption">
-  <img ng-src="{{ friend.profile_picture }}"></img>
+  <img ng-click="getUserPhotos(friend.id)" ng-src="{{ friend.profile_picture }}"></img>
   <h1>{{friend.full_name}}</br>
       {{friend.username}}
   </h1>

@@ -18,11 +18,16 @@ export const DefaultCtrl = [
   class DefaultCtrl {
     constructor($scope, PhotosService,$sce) {
       $scope.friends =[];
+      $scope.getUserPhotos = this.getUserPhotos;
       PhotosService.getFriends()
       .success((friends) => {
         $scope.friends = friends.data;
       });
       this.initMap();
+    }
+
+    getUserPhotos(id){
+      console.log("####",id)
     }
 
   initMap() {
@@ -115,15 +120,14 @@ export const DefaultCtrl = [
 
   var infoWindow = new google.maps.InfoWindow({map: map});
 
-  function setCoords(lat,lng){
+  function setCoords(coordObj){
     var script = document.createElement('script');
     // This example uses a local copy of the GeoJSON stored at
     // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
-    script.src = `https://api.instagram.com/v1/media/search?lat=${lat}&lng=${lng}&distance=5000&callback=JSON_CALLBACK&access_token=175690487.02eff85.fd0b74d4431044a9b82fc9a925d036ad`;
+    script.src = `https://api.instagram.com/v1/media/search?lat=${coordObj.lat}&lng=${coordObj.lng}&distance=5000&callback=JSON_CALLBACK&access_token=175690487.02eff85.fd0b74d4431044a9b82fc9a925d036ad`;
     document.getElementsByTagName('head')[0].appendChild(script);
-    console.log("lat",lat);
-    console.log("lng",lng);
-
+    console.log("lat" ,coordObj.lat);
+    // console.log("lng",lng);
   }
 
 
@@ -157,6 +161,9 @@ export const DefaultCtrl = [
         })(marker,content,infowindow));
       }
     }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+
   };
 
   // Try HTML5 geolocation.
@@ -166,7 +173,7 @@ export const DefaultCtrl = [
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      setCoords(pos.lat,pos.lng)
+      setCoords(pos)
       infoWindow.setPosition(pos);
       infoWindow.setContent('Location found.');
       map.setCenter(pos);
