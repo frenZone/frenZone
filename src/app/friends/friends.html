@@ -4,21 +4,40 @@
 
     <div id="map"></div>
 
-    <div class="friendsCol">
+<!-- top -->
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <!-- large div -->
+        <div class="friendsCol">
 
-      <div class="friendsContainer" ng-repeat="friend in friends | filter:searchCaption">
-
-      <img ng-src="{{ friend.profile_picture }}"></img>
-        <div>{{friend.full_name}}</br>
-        {{friend.username}}
+        <div class="search_photo_container">
+          <input placeholder="Photo Search" type="text" id="search_user_input" ng-model="searchCaption">
         </div>
+
+          <div  class="friendsContainer" ng-repeat="friend in friends | filter:searchCaption">
+
+            <img ng-click="getUserPhotos(friend.id)" ng-src="{{ friend.profile_picture }}"></img>
+            <p >{{friend.full_name}}</br>
+            {{friend.username}}
+            </p>
+
+          </div>
+
+        </div>
+
       </div>
 
+    <div id="main">
+      <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
     </div>
+
+<!-- bottom -->
 
   </div>
 
 <div>
+
+
 
 <!-- <div class="friendsContainer" ng-repeat="friend in friends | filter:searchCaption">
   <img ng-src="{{ friend.profile_picture }}"></img>
@@ -45,10 +64,10 @@
       <video width="150px" controls ng-src={{photo.videos.standard_resolution.url}}></video>
     </div>
   </div>
-<<<<<<< HEAD
+
 </div> -->
-=======
-</div>
+
+<!-- </div>
 
 <div class="friendsContainer" ng-repeat="friend in friends | filter:searchCaption">
   <img ng-click="getUserPhotos(friend.id)" ng-src="{{ friend.profile_picture }}"></img>
@@ -64,5 +83,5 @@
     <div class="tag&Face">{{location.tags}}<img ng-src="{{ location.user.profile_picture }}"></img>{{ location.user.username }}
     </div>
   </h1>
-</div>
->>>>>>> 0c0de2c9bd66a5fb5dbececca3f9f7db49d77993
+</div> -->
+
