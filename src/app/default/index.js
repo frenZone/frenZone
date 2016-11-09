@@ -10,6 +10,8 @@ export const DefaultCtrlState = {
   controller: DefaultCtrlName,
   controllerAs: 'default'
 };
+
+
 var honolulu = {lat: 21.306900, lng: -157.858300};
 export const DefaultCtrl = [
   '$scope',
@@ -18,12 +20,17 @@ export const DefaultCtrl = [
   class DefaultCtrl {
     constructor($scope, PhotosService,$sce) {
       $scope.friends =[];
+      $scope.getUserPhotos = this.getUserPhotos;
       PhotosService.getFriends()
       .success((friends) => {
         $scope.friends = friends.data;
       });
       this.initMap();
 
+    }
+
+    getUserPhotos(id){
+      console.log("####",id)
     }
 
   initMap() {
@@ -115,6 +122,7 @@ export const DefaultCtrl = [
 
   var infoWindow = new google.maps.InfoWindow({map: map});
 
+
     //casey
     var script = document.createElement('script');
     // This example uses a local copy of the GeoJSON stored at
@@ -152,6 +160,9 @@ export const DefaultCtrl = [
 
 
   var oms = new OverlappingMarkerSpiderfier(map);
+
+
+
 
   var iw = new google.maps.InfoWindow();
   oms.addListener('click', function(marker, event) {
@@ -193,7 +204,9 @@ export const DefaultCtrl = [
         google.maps.event.trigger(map, 'resize');
       }
     }
+
     map.setCenter(honolulu);
+
   };
 
   // Try HTML5 geolocation.

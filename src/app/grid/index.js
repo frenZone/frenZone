@@ -18,18 +18,19 @@ export const GridCtrl = [
   '$sce',
   class GridCtrl {
     constructor($scope, PhotosService,$sce) {
-
       $scope.photos = [];
       $scope.friends =[];
       $scope.locations=[];
-
+      $scope.getUserPhotos = this.getUserPhotos.bind(this);
+      this.PhotosService = PhotosService;
+      this.$scope = $scope;
       PhotosService.getPhotos().success((photos)=>{
         for (var i = 0; i < photos.data.length; i++){
           if(photos.data[i].type === 'video'){
             photos.data[i].videos.standard_resolution.url = $sce.trustAsResourceUrl(photos.data[i].videos.standard_resolution.url);
           }
         }
-      $scope.photos = photos;
+        $scope.photos = photos;
       });
 
       PhotosService.getFriends()
@@ -43,5 +44,18 @@ export const GridCtrl = [
       });
 
     }
+      getUserPhotos(id){
+        this.PhotosService.getPhotos(id)
+        .success((photos)=>{
+          for (var i = 0; i < photos.data.length; i++){
+            if(photos.data[i].type === 'video'){
+              photos.data[i].videos.standard_resolution.url = $sce.trustAsResourceUrl(photos.data[i].videos.standard_resolution.url);
+            }
+          }
+          this.$scope.photos = photos;
+        });
+      }
   }
+
+
 ];

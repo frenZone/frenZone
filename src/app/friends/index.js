@@ -18,10 +18,10 @@ export const FriendsCtrl = [
   '$sce',
   class FriendsCtrl {
     constructor($scope, PhotosService,$sce) {
-
       $scope.photos = [];
       $scope.friends =[];
       $scope.locations=[];
+      $scope.getUserPhotos = this.getUserPhotos;
 
       PhotosService.getPhotos().success((photos)=>{
         for (var i = 0; i < photos.data.length; i++){
@@ -43,5 +43,6 @@ export const FriendsCtrl = [
       });
 
     }
+
   }
 ];

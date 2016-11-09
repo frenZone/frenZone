@@ -7,8 +7,10 @@ export const PhotosService = [
       this.$http = $http;
     }
 
-    getPhotos(){
-      return this.$http.jsonp('https://api.instagram.com/v1/users/196312792/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=196312792.0f4f10a.e1911280307a478fb82448f6d6282be8');
+    getPhotos(id){
+      console.log("hit getphotos")
+      console.log("id",id)
+      return this.$http.jsonp(`https://api.instagram.com/v1/users/${id}/media/recent/?&callback=JSON_CALLBACK&access_token=175690487.02eff85.fd0b74d4431044a9b82fc9a925d036ad`);
     }
 
     getFriends(){
@@ -20,3 +22,5 @@ export const PhotosService = [
     }
   }
 ];
+
+// https://api.instagram.com/v1/users/196312792/media/recent/?&callback=JSON_CALLBACK&access_token=175690487.02eff85.fd0b74d4431044a9b82fc9a925d036ad
