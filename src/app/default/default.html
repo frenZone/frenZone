@@ -2,45 +2,19 @@
 <div class="frenZone" >
   <div class="mainBody">
 
-<div id="map"></div>
+    <div id="map"></div>
+    <div id="mySidenav" class="sidenav">
+      <div class="friendsCol">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <div class="friendsContainer" ng-repeat="friend in friends | filter:searchCaption">
 
-<!-- top -->
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-<div class="friendsCol">
-
-<div class="search_photo_container">
-  <input placeholder="Photo Search" type="text" id="search_user_input" ng-model="searchCaption">
-</div>
-  <div  class="friendsContainer" ng-repeat="friend in friends | filter:searchCaption">
-
-
-  <img ng-click="getUserPhotos(friend.id)" ng-src="{{ friend.profile_picture }}"></img>
-    <p >{{friend.full_name}}</br>
-    {{friend.username}}
-    <!-- {{friend.id}} -->
-    </p>
-
-  <!-- img ng-src="{{ friend.profile_picture }}"></img>
-    <div>{{friend.full_name}}</br>
-    {{friend.username}}
-    </div> -->
-
+      <img ng-src="{{ friend.profile_picture }}"></img>
+        <div>{{friend.full_name}}</br>
+        {{friend.username}}
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-</div>
-
-    <div id="main">
-      <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
-    </div>
-
-<!-- bottom -->
-
-
-
-   </div>
-
-
-  <div>
 
