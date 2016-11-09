@@ -29,6 +29,7 @@ export const FriendsCtrl = [
             photos.data[i].videos.standard_resolution.url = $sce.trustAsResourceUrl(photos.data[i].videos.standard_resolution.url);
           }
         }
+        console.log('photos',photos);
       $scope.photos = photos;
       });
 

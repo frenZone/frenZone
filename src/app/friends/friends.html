@@ -11,17 +11,20 @@
         <div class="friendsCol">
 
         <div class="search_photo_container">
-          <input placeholder="Photo Search" type="text" id="search_user_input" ng-model="searchCaption">
+          <input placeholder="Photo Search" tßype="text" id="search_user_input" ng-model="searchCaption">
         </div>
 
-          <div  class="friendsContainer" ng-repeat="friend in friends | filter:searchCaption">
+            <!-- images go here -->
+
+
+<!--           <div class="friendsContainer" ng-repeat="friend in friends | filter:searchCaption">
 
             <img ng-click="getUserPhotos(friend.id)" ng-src="{{ friend.profile_picture }}"></img>
             <p >{{friend.full_name}}</br>
             {{friend.username}}
             </p>
 
-          </div>
+          </div> -->
 
         </div>
 
@@ -67,21 +70,12 @@
 
 </div> -->
 
-<!-- </div>
 
-<div class="friendsContainer" ng-repeat="friend in friends | filter:searchCaption">
-  <img ng-click="getUserPhotos(friend.id)" ng-src="{{ friend.profile_picture }}"></img>
-  <h1 >{{friend.full_name}}</br>
-      {{friend.username}}
-      {{friend.id}}
-  </h1>
-</div>
 
-<div class="locationContainer" ng-repeat="location in locations | filter:searchCaption">
-  <img ng-src="{{ location.images.standard_resolution.url }}"></img>
-  <h1> {{location.location.name}}</br>
-    <div class="tag&Face">{{location.tags}}<img ng-src="{{ location.user.profile_picture }}"></img>{{ location.user.username }}
+<!-- <div ng-repeat="photo in photos.data">
+  <div ng-switch="photo.type">
+    <div ng-switch-when="image">
+      <img ng-src="{{photo.images.low_resolution.url}}" />
     </div>
-  </h1>
+  </div>
 </div> -->
-
