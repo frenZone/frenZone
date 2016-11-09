@@ -1,6 +1,7 @@
 .frenZone {
   display:flex;
   flex-flow: row wrap;
+  height: 100%
 }
 .instafeed{
   display: inline-block;
