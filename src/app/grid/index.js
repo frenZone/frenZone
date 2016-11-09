@@ -23,7 +23,7 @@ export const GridCtrl = [
       $scope.locations=[];
       $scope.getUserPhotos = this.getUserPhotos.bind(this);
       this.PhotosService = PhotosService;
-
+      this.$scope = $scope;
       PhotosService.getPhotos().success((photos)=>{
         for (var i = 0; i < photos.data.length; i++){
           if(photos.data[i].type === 'video'){
@@ -42,7 +42,6 @@ export const GridCtrl = [
       .success((locations) => {
         $scope.locations = locations.data;
       });
-      this.getUserPhotos();
 
     }
       getUserPhotos(id){
@@ -53,8 +52,10 @@ export const GridCtrl = [
               photos.data[i].videos.standard_resolution.url = $sce.trustAsResourceUrl(photos.data[i].videos.standard_resolution.url);
             }
           }
-          $scope.photos = photos;
+          this.$scope.photos = photos;
         });
       }
   }
+
+
 ];

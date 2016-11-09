@@ -11,6 +11,8 @@ export const DefaultCtrlState = {
   controllerAs: 'default'
 };
 
+
+var honolulu = {lat: 21.306900, lng: -157.858300};
 export const DefaultCtrl = [
   '$scope',
   PhotosServiceName,
@@ -24,6 +26,7 @@ export const DefaultCtrl = [
         $scope.friends = friends.data;
       });
       this.initMap();
+
     }
 
     getUserPhotos(id){
@@ -31,9 +34,7 @@ export const DefaultCtrl = [
     }
 
   initMap() {
-  // Styles a map in night mode.
   var map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 21.3069, lng: -157.8583},
     zoom: 14,
     disableDefaultUI: true,
     styles: [
@@ -118,51 +119,79 @@ export const DefaultCtrl = [
     ]
   });
 
+
   var infoWindow = new google.maps.InfoWindow({map: map});
 
-  function setCoords(coordObj){
+
+    //casey
     var script = document.createElement('script');
     // This example uses a local copy of the GeoJSON stored at
     // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
-    script.src = `https://api.instagram.com/v1/media/search?lat=${coordObj.lat}&lng=${coordObj.lng}&distance=5000&callback=JSON_CALLBACK&access_token=175690487.02eff85.fd0b74d4431044a9b82fc9a925d036ad`;
+    script.src = 'https://api.instagram.com/v1/users/55870965/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=55870965.2c4aaae.e0dd1784350a44838eda4573296a5750';
     document.getElementsByTagName('head')[0].appendChild(script);
-    console.log("lat" ,coordObj.lat);
-    // console.log("lng",lng);
-  }
+
+    //frenzone
+    var script = document.createElement('script');
+    // This example uses a local copy of the GeoJSON stored at
+    // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
+    script.src = 'https://api.instagram.com/v1/media/search?lat=21.2922381&lng=-157.8237538&distance=5000&callback=JSON_CALLBACK&access_token=4120053413.02eff85.2d5b2829f52046549e0f2a92ac0655c6';
+    document.getElementsByTagName('head')[0].appendChild(script);
+
+    //renee
+    var script = document.createElement('script');
+    // This example uses a local copy of the GeoJSON stored at
+    // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
+    script.src = 'https://api.instagram.com/v1/users/1639523138/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=1639523138.14ebd44.ce64b66e004a4bd380c6ea8731527d4f';
+    document.getElementsByTagName('head')[0].appendChild(script);
+
+  var oms = new OverlappingMarkerSpiderfier(map);
 
 
+
+
+  var iw = new google.maps.InfoWindow();
+  oms.addListener('click', function(marker, event) {
+    iw.setContent(marker.desc);
+    iw.open(map, marker);
+  });
+
+  oms.addListener('spiderfy', function(markers) {
+    iw.close();
+  });
 
   function JSON_CALLBACK(response) {
     map.data.addGeoJson(response);
 
   }
   var markers = [];
-    window.JSON_CALLBACK = function(results) {
+  window.JSON_CALLBACK = function(results) {
     for (var i = 0; i < results.data.length; i++) {
       if(results.data[i].location !== null){
         var coords = results.data[i].location;
         var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
+        var image = results.data[i].user.profile_picture;
+        // var image = 'https://scontent.cdninstagram.com/t51.2885-19/150x150/14582392_1153156614795077_1774168565260222464_a.jpg';
         var marker = new google.maps.Marker({
           position: latLng,
           map: map,
           animation: google.maps.Animation.DROP,
-          title: coords.name
+          title: coords.name,
+          icon: {
+            url: image,
+            scaledSize: new google.maps.Size(40, 40),
+          }
         });
         var infowindow = new google.maps.InfoWindow();
-        var content = '<div id="locationPicture">'+
+        marker.desc = '<div id="locationPicture">'+
           `<img src="${results.data[i].images.thumbnail.url}"></img>`+
           '</div>';
 
-        google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){
-          return function() {
-              infowindow.setContent(content);
-              infowindow.open(map,marker);
-          };
-        })(marker,content,infowindow));
+        oms.addMarker(marker);
+        google.maps.event.trigger(map, 'resize');
       }
     }
 
-    google.maps.event.addDomListener(window, 'load', initialize);
+    map.setCenter(honolulu);
 
   };
 
@@ -173,7 +202,7 @@ export const DefaultCtrl = [
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      setCoords(pos)
+
       infoWindow.setPosition(pos);
       infoWindow.setContent('Location found.');
       map.setCenter(pos);
@@ -195,5 +224,6 @@ export const DefaultCtrl = [
 
 
 }
+
 
 ];
