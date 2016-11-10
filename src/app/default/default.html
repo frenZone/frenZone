@@ -1,19 +1,15 @@
-<button id='addMarker' ng-click='loadMarkers()'>markers</button>
-<div class="frenZone" >
   <div class="mainBody">
-
     <div id="map"></div>
     <div id="mySidenav" class="sidenav">
       <a class="friends-icon" ng-class="{active: layout == 'friens'}" ng-click="layout = 'friends'" ui-sref="friends">Friends</a>
       <div class="friendsCol">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       <div class="friendsContainer" ng-repeat="friend in friends | filter:searchCaption">
-
-      <img ng-src="{{ friend.profile_picture }}"></img>
+      <img ng-click="getUserPhotos(friend.id)" ng-src="{{ friend.profile_picture }}"></img>
         <div>{{friend.full_name}}</br>
         {{friend.username}}
         </div>
       </div>
     </div>
-  </div>
+
 </div>
