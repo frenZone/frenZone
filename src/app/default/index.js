@@ -36,21 +36,11 @@ function deleteMarkers() {
   oms.a = [];
 }
 
-const loadMarkers = function (instaData){
+const getUserPhotos = function (username){
   deleteMarkers();
-  var iw = new google.maps.InfoWindow();
-
-  oms.addListener('click', function(marker, event) {
-    iw.setContent(marker.desc);
-    iw.open(map, marker);
-  });
-
-  oms.addListener('spiderfy', function(markers) {
-    iw.close();
-  });
 
     for (var i = 0; i < instaData.length; i++) {
-      if(instaData[i].location !== null){
+      if(instaData[i].location !== null && instaData[i].user.id === username){
         var coords = instaData[i].location;
         var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
         var image = instaData[i].user.profile_picture;
@@ -74,6 +64,7 @@ const loadMarkers = function (instaData){
         oms.addMarker(marker);
       }
     }
+    map.setCenter({lat: 21.308743338531, lng: -157.80870209358});
   };
 
 var honolulu = {lat: 21.306900, lng: -157.858300};
@@ -86,7 +77,7 @@ export const DefaultCtrl = [
     constructor($scope, PhotosService,$sce, instaData) {
       $scope.friends =[];
       $scope.getUserPhotos = this.getUserPhotos;
-      $scope.loadMarkers = loadMarkers.bind(this, instaData);
+      $scope.getUserPhotos = getUserPhotos.bind(this);
       $scope.instaData = instaData;
       PhotosService.getFriends()
       .success((friends) => {
@@ -97,14 +88,8 @@ export const DefaultCtrl = [
 
     }
 
-    getUserPhotos(id){
-      console.log("####",id)
-    }
-
-  initMap() {
+initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
-
-
     zoom: 14,
     disableDefaultUI: true,
     styles: [
@@ -308,8 +293,6 @@ export const DefaultCtrl = [
                           'Error: The Geolocation service failed.' :
                           'Error: Your browser doesn\'t support geolocation.');
   }
-
-
 }
 
 
