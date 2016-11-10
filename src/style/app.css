@@ -5,6 +5,14 @@ html, body {
  padding: 0;
 }
 
+.friendsIcon{
+background-image: url('/friendIcon.png');
+}
+
+.friendsIcon2{
+background-image: url('/threemen.jpg');
+}
+
 .frenZone {
   display:flex;
   flex-flow: row wrap;

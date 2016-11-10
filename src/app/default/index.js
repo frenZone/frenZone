@@ -233,31 +233,7 @@ export const DefaultCtrl = [
     console.log("JSON_CALLBACK")
     for (var i = 0; i < results.data.length; i++) {
       if(results.data[i].location !== null){
-<<<<<<< HEAD
-        console.log("id")
-          console.log(results)
-          var coords = results.data[i].location;
-          var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
-          var image = results.data[i].user.profile_picture;
-          // var image = 'https://scontent.cdninstagram.com/t51.2885-19/150x150/14582392_1153156614795077_1774168565260222464_a.jpg';
-          var marker = new google.maps.Marker({
-            position: latLng,
-            map: map,
-            animation: google.maps.Animation.DROP,
-            title: coords.name,
-            icon: {
-              url: image,
-              scaledSize: new google.maps.Size(40, 40),
-            }
-          });
-          var infowindow = new google.maps.InfoWindow();
-          marker.desc = '<div id="locationPicture">'+
-            `<img src="${results.data[i].images.thumbnail.url}"></img>`+
-            '</div>';
 
-          oms.addMarker(marker);
-          google.maps.event.trigger(map, 'resize');
-=======
         instaData.push(results.data[i]);
       }
     }
@@ -285,7 +261,6 @@ export const DefaultCtrl = [
           '</div>';
 
         oms.addMarker(marker);
->>>>>>> 1c7072ecc80a8383f36515aaf16d761a84e0d37c
       }
     }
   };

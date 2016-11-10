@@ -8,8 +8,8 @@
       <a class="friends-icon" ng-class="{active: layout == 'friens'}" ng-click="layout = 'friends'" ui-sref="friends">Friends</a>
       <div class="friendsCol">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">close
-          <a href="http://localhost:8080/#/friends">friends</a>
-          <a href="http://localhost:8080/#/grid">grid</a>
+          <a class="friendsIcon" background="/friendIcon.png" href="http://localhost:8080/#/friends">friends</a>
+          <a class="friendsIcon2" href="http://localhost:8080/#/grid">grid</a>
         </a>
       <div class="friendsContainer" ng-repeat="friend in friends | filter:searchCaption">
 
@@ -20,5 +20,9 @@
       </div>
     </div>
   </div>
+
+
+
+
 </div>
 
