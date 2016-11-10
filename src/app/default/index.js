@@ -35,6 +35,8 @@ export const DefaultCtrl = [
 
   initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
+
+
     zoom: 14,
     disableDefaultUI: true,
     styles: [
