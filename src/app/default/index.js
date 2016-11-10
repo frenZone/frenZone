@@ -185,6 +185,7 @@ export const DefaultCtrl = [
         var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
         var image = results.data[i].user.profile_picture;
         // var image = 'https://scontent.cdninstagram.com/t51.2885-19/150x150/14582392_1153156614795077_1774168565260222464_a.jpg';
+
         var marker = new google.maps.Marker({
           position: latLng,
           map: map,

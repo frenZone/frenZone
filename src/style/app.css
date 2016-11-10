@@ -10,6 +10,7 @@ html, body {
   flex-flow: row wrap;
   height: 100%
 }
+
 .instafeed{
   display: inline-block;
   background-image: url('http://www.scarboroughstudenthouse.co.uk/images/feature-image-1.png');
@@ -17,17 +18,15 @@ html, body {
   background-position:50% 30%;
 
   background-repeat: no-repeat;
-
-
 }
 
 .barIcon{
     width:30%;
 }
+
 .holder{
   width: 20%;
 }
-
 
 .instafeed{
  display: inline-block;
@@ -106,16 +105,17 @@ html, body {
 }
 
 .sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    right: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
+  margin-top: 10px;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
 
 }
 
