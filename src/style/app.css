@@ -20,7 +20,7 @@ html, body {
 }
 
 .barIcon {
-    width:30%;
+  width:30%;
 }
 
 .holder {
@@ -128,7 +128,6 @@ html, body {
   width: 83px;
   height: auto;
 }
-
 
 body {
     font-family: "Lato", sans-serif;
