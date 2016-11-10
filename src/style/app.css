@@ -77,6 +77,12 @@ html, body {
   position: static !important;
 }
 
+#map #marker{
+  border: 3px solid #FFF;
+  border-radius: 100px;
+  box-shadow: 0 0 3px 0 rgba(0,0,0, 0.25);
+}
+
 .friendsCol {
   font-family: 'Monda', sans-serif;
   text-align: center;
