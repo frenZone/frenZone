@@ -76,9 +76,11 @@ export const DefaultCtrl = [
   class DefaultCtrl {
     constructor($scope, PhotosService,$sce, instaData) {
       $scope.friends =[];
+
       $scope.getUserPhotos = this.getUserPhotos;
       $scope.getUserPhotos = getUserPhotos.bind(this);
       $scope.instaData = instaData;
+
       PhotosService.getFriends()
       .success((friends) => {
         $scope.friends = friends.data;
@@ -87,6 +89,7 @@ export const DefaultCtrl = [
 
 
     }
+
 
 initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
@@ -130,11 +133,15 @@ initMap() {
         featureType: 'road',
         elementType: 'labels.text.fill',
         stylers: [{color: '#9ca5b3'}]
+
+
       },
       {
         featureType: 'road.highway',
         elementType: 'geometry',
         stylers: [{color: '#746855'}]
+
+
       },
       {
         featureType: 'road.highway',
@@ -230,8 +237,10 @@ initMap() {
   }
 
   window.JSON_CALLBACK = function(results) {
+    console.log("JSON_CALLBACK")
     for (var i = 0; i < results.data.length; i++) {
       if(results.data[i].location !== null){
+
         instaData.push(results.data[i]);
       }
     }
