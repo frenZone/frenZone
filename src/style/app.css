@@ -22,6 +22,11 @@ app > section{
   background-repeat: no-repeat;
 }
 
+.instafeed a{
+  text-decoration: none;
+  color:white;
+}
+
 .barIcon {
     width:30%;
 }
