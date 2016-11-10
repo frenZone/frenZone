@@ -12,46 +12,59 @@ export const DefaultCtrlState = {
 };
 
 export const instaData = [];
+var map;
+var oms;
+function setMapOnAll(map) {
+  for (var i = 0; i < oms.a.length; i++) {
+    oms.a[i].setMap(map);
+  }
+}
 
-const loadMarkers = function (instaData){
-  // var oms = new OverlappingMarkerSpiderfier(map);
+// Removes the markers from the map, but keeps them in the array.
+function clearMarkers() {
+  setMapOnAll(null);
+}
 
-  // var iw = new google.maps.InfoWindow();
-  // oms.addListener('click', function(marker, event) {
-  //   iw.setContent(marker.desc);
-  //   iw.open(map, marker);
-  // });
+// Shows any markers currently in the array.
+function showMarkers() {
+  setMapOnAll(map);
+}
 
-  // oms.addListener('spiderfy', function(markers) {
-  //   iw.close();
-  // });
+// Deletes all markers in the array by removing references to them.
+function deleteMarkers() {
+  clearMarkers();
+  oms.a = [];
+}
 
-  //   for (var i = 0; i < instaData.length; i++) {
-  //     if(instaData[i].location !== null){
-  //       var coords = instaData[i].location;
-  //       var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
-  //       var image = instaData[i].user.profile_picture;
-  //       // var image = 'https://scontent.cdninstagram.com/t51.2885-19/150x150/14582392_1153156614795077_1774168565260222464_a.jpg';
-  //       var marker = new google.maps.Marker({
-  //         position: latLng,
-  //         map: map,
-  //         animation: google.maps.Animation.DROP,
-  //         title: coords.name,
-  //         id: 'marker',
-  //         icon: {
-  //           url: image,
-  //           scaledSize: new google.maps.Size(40, 40),
-  //         }
-  //       });
-  //       var infowindow = new google.maps.InfoWindow();
-  //       marker.desc = '<div id="locationPicture">'+
-  //         `<img src="${instaData[i].images.thumbnail.url}"></img>`+
-  //         '</div>';
+const getUserPhotos = function (username){
+  deleteMarkers();
 
-  //       oms.addMarker(marker);
-  //     }
-  //   }
-  initMap();
+    for (var i = 0; i < instaData.length; i++) {
+      if(instaData[i].location !== null && instaData[i].user.id === username){
+        var coords = instaData[i].location;
+        var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
+        var image = instaData[i].user.profile_picture;
+        // var image = 'https://scontent.cdninstagram.com/t51.2885-19/150x150/14582392_1153156614795077_1774168565260222464_a.jpg';
+        var marker = new google.maps.Marker({
+          position: latLng,
+          map: map,
+          animation: google.maps.Animation.DROP,
+          title: coords.name,
+          id: 'marker',
+          icon: {
+            url: image,
+            scaledSize: new google.maps.Size(40, 40),
+          }
+        });
+        var infowindow = new google.maps.InfoWindow();
+        marker.desc = '<div id="locationPicture">'+
+          `<img src="${instaData[i].images.thumbnail.url}"></img>`+
+          '</div>';
+
+        oms.addMarker(marker);
+      }
+    }
+    map.setCenter({lat: 21.308743338531, lng: -157.80870209358});
   };
 
 var honolulu = {lat: 21.306900, lng: -157.858300};
@@ -65,7 +78,7 @@ export const DefaultCtrl = [
       $scope.friends =[];
 
       $scope.getUserPhotos = this.getUserPhotos;
-      $scope.loadMarkers = loadMarkers.bind(this, instaData);
+      $scope.getUserPhotos = getUserPhotos.bind(this);
       $scope.instaData = instaData;
 
       PhotosService.getFriends()
@@ -77,15 +90,9 @@ export const DefaultCtrl = [
 
     }
 
-    getUserPhotos(id){
-      console.log("userId: ",id);
-      window.selectedUserId = id;
-    }
 
-  initMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-
-
+initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
     zoom: 14,
     disableDefaultUI: true,
     styles: [
@@ -212,9 +219,9 @@ export const DefaultCtrl = [
     script.src = 'https://api.instagram.com/v1/users/196312792/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=196312792.0f4f10a.e1911280307a478fb82448f6d6282be8';
     document.getElementsByTagName('head')[0].appendChild(script);
 
-  var oms = new OverlappingMarkerSpiderfier(map);
-
   var iw = new google.maps.InfoWindow();
+  oms= new OverlappingMarkerSpiderfier(map);
+
   oms.addListener('click', function(marker, event) {
     iw.setContent(marker.desc);
     iw.open(map, marker);
@@ -268,6 +275,7 @@ export const DefaultCtrl = [
   google.maps.event.trigger(map, 'resize');
   map.setCenter(honolulu);
 
+
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -294,8 +302,6 @@ export const DefaultCtrl = [
                           'Error: The Geolocation service failed.' :
                           'Error: Your browser doesn\'t support geolocation.');
   }
-
-
 }
 
 
