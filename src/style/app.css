@@ -10,24 +10,22 @@ html, body {
   flex-flow: row wrap;
   height: 100%
 }
+
 .instafeed{
   display: inline-block;
   background-image: url('http://www.scarboroughstudenthouse.co.uk/images/feature-image-1.png');
   background-size: 70%;
   background-position:50% 30%;
-
   background-repeat: no-repeat;
-
-
 }
 
-.barIcon{
+.barIcon {
     width:30%;
 }
-.holder{
+
+.holder {
   width: 20%;
 }
-
 
 .instafeed{
  display: inline-block;
@@ -36,8 +34,9 @@ html, body {
  background-position:50% 30%;
  background-repeat: no-repeat;
 }
+
 /*main top bar*/
-.bar .search_photo_container{
+.bar .search_photo_container {
   display: flex;
   flex-flow: row wrap;
   flex: 0 0 50%;
@@ -64,7 +63,6 @@ html, body {
   width: auto;
   padding: 10px;
   border: 1px solid white;
-
 }
 
 .mainBody {
@@ -74,26 +72,37 @@ html, body {
   max-height: 100%;
 }
 
-#map{
+#map {
   flex: 0 0 80%;
   position: static !important;
 }
+
+#map #marker{
+  border: 3px solid #FFF;
+  border-radius: 100px;
+  box-shadow: 0 0 3px 0 rgba(0,0,0, 0.25);
+}
+
 .friendsCol {
   font-family: 'Monda', sans-serif;
   text-align: center;
   flex: 0 0 20%;
   background-color:#055370;
+  margin-top: 10px;
 }
-.friendsContainer{
- border: 1px solid white;
- margin-bottom: 5px;
+
+.friendsContainer {
+  border: 1px solid white;
+  margin-bottom: 5px;
 }
-.friendsContainer img{
+
+.friendsContainer img {
   border-radius: 50%;
   width:70px;
   height: 70px;
   border: 1px solid white;
 }
+
 
 .friends {
   display:flex;
@@ -104,6 +113,29 @@ html, body {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
+.imgCont {
+  display: flex;
+  /*flex-flow: row-wrap;*/
+  flex-wrap: wrap;
+  flex: 0 0 100%;
+  max-height: 100%;
+}
+
+.locationContainer img {
+  display: flex;
+  flex-direction: row;
+  width: 83px;
+  height: auto;
+}
+
+
+body {
+    font-family: "Lato", sans-serif;
+}
+
+/*top*/
+
 
 .sidenav {
     height: 100%;
@@ -152,3 +184,4 @@ html, body {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+

@@ -11,21 +11,69 @@ export const DefaultCtrlState = {
   controllerAs: 'default'
 };
 
+export const instaData = [];
+
+const loadMarkers = function (instaData){
+  // var oms = new OverlappingMarkerSpiderfier(map);
+
+  // var iw = new google.maps.InfoWindow();
+  // oms.addListener('click', function(marker, event) {
+  //   iw.setContent(marker.desc);
+  //   iw.open(map, marker);
+  // });
+
+  // oms.addListener('spiderfy', function(markers) {
+  //   iw.close();
+  // });
+
+  //   for (var i = 0; i < instaData.length; i++) {
+  //     if(instaData[i].location !== null){
+  //       var coords = instaData[i].location;
+  //       var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
+  //       var image = instaData[i].user.profile_picture;
+  //       // var image = 'https://scontent.cdninstagram.com/t51.2885-19/150x150/14582392_1153156614795077_1774168565260222464_a.jpg';
+  //       var marker = new google.maps.Marker({
+  //         position: latLng,
+  //         map: map,
+  //         animation: google.maps.Animation.DROP,
+  //         title: coords.name,
+  //         id: 'marker',
+  //         icon: {
+  //           url: image,
+  //           scaledSize: new google.maps.Size(40, 40),
+  //         }
+  //       });
+  //       var infowindow = new google.maps.InfoWindow();
+  //       marker.desc = '<div id="locationPicture">'+
+  //         `<img src="${instaData[i].images.thumbnail.url}"></img>`+
+  //         '</div>';
+
+  //       oms.addMarker(marker);
+  //     }
+  //   }
+  initMap();
+  };
 
 var honolulu = {lat: 21.306900, lng: -157.858300};
 export const DefaultCtrl = [
   '$scope',
   PhotosServiceName,
   '$sce',
+  'instaData',
   class DefaultCtrl {
-    constructor($scope, PhotosService,$sce) {
+    constructor($scope, PhotosService,$sce, instaData) {
       $scope.friends =[];
-      $scope.getUserPhotos = this.getUserPhotos.bind(this);
+
+      $scope.getUserPhotos = this.getUserPhotos;
+      $scope.loadMarkers = loadMarkers.bind(this, instaData);
+      $scope.instaData = instaData;
+
       PhotosService.getFriends()
       .success((friends) => {
         $scope.friends = friends.data;
       });
       this.initMap();
+
 
     }
 
@@ -36,6 +84,8 @@ export const DefaultCtrl = [
 
   initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
+
+
     zoom: 14,
     disableDefaultUI: true,
     styles: [
@@ -127,15 +177,14 @@ export const DefaultCtrl = [
 
   var infoWindow = new google.maps.InfoWindow({map: map});
 
-
-    //casey
+  //casey
     var script = document.createElement('script');
     // This example uses a local copy of the GeoJSON stored at
     // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
     script.src = 'https://api.instagram.com/v1/users/55870965/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=55870965.2c4aaae.e0dd1784350a44838eda4573296a5750';
     document.getElementsByTagName('head')[0].appendChild(script);
 
-    //casey
+    //aaron
     var script = document.createElement('script');
     // This example uses a local copy of the GeoJSON stored at
     // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
@@ -163,11 +212,7 @@ export const DefaultCtrl = [
     script.src = 'https://api.instagram.com/v1/users/196312792/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=196312792.0f4f10a.e1911280307a478fb82448f6d6282be8';
     document.getElementsByTagName('head')[0].appendChild(script);
 
-
   var oms = new OverlappingMarkerSpiderfier(map);
-
-
-
 
   var iw = new google.maps.InfoWindow();
   oms.addListener('click', function(marker, event) {
@@ -179,13 +224,16 @@ export const DefaultCtrl = [
     iw.close();
   });
 
+
   function JSON_CALLBACK(response) {
     map.data.addGeoJson(response);
   }
+
   window.JSON_CALLBACK = function(results) {
     console.log("JSON_CALLBACK")
     for (var i = 0; i < results.data.length; i++) {
       if(results.data[i].location !== null){
+<<<<<<< HEAD
         console.log("id")
           console.log(results)
           var coords = results.data[i].location;
@@ -209,12 +257,41 @@ export const DefaultCtrl = [
 
           oms.addMarker(marker);
           google.maps.event.trigger(map, 'resize');
+=======
+        instaData.push(results.data[i]);
       }
     }
 
-    map.setCenter(honolulu);
+    for (var i = 0; i < results.data.length; i++) {
+      if(results.data[i].location !== null){
+        var coords = results.data[i].location;
+        var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
+        var image = results.data[i].user.profile_picture;
+        // var image = 'https://scontent.cdninstagram.com/t51.2885-19/150x150/14582392_1153156614795077_1774168565260222464_a.jpg';
+        var marker = new google.maps.Marker({
+          position: latLng,
+          map: map,
+          animation: google.maps.Animation.DROP,
+          title: coords.name,
+          id: 'marker',
+          icon: {
+            url: image,
+            scaledSize: new google.maps.Size(40, 40),
+          }
+        });
+        var infowindow = new google.maps.InfoWindow();
+        marker.desc = '<div id="locationPicture">'+
+          `<img src="${results.data[i].images.thumbnail.url}"></img>`+
+          '</div>';
 
+        oms.addMarker(marker);
+>>>>>>> 1c7072ecc80a8383f36515aaf16d761a84e0d37c
+      }
+    }
   };
+
+  google.maps.event.trigger(map, 'resize');
+  map.setCenter(honolulu);
 
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
