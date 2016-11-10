@@ -46,6 +46,7 @@ export const GridCtrl = [
     }
       getUserPhotos(id){
         this.PhotosService.getPhotos(id)
+        console.log(id)
         .success((photos)=>{
           for (var i = 0; i < photos.data.length; i++){
             if(photos.data[i].type === 'video'){
