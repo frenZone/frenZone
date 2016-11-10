@@ -132,15 +132,15 @@ initMap() {
       {
         featureType: 'road',
         elementType: 'labels.text.fill',
-        // stylers: [{color: '#9ca5b3'}]
-        stylers: [{color: '#FF4500'}]
+        stylers: [{color: '#9ca5b3'}]
+
 
       },
       {
         featureType: 'road.highway',
         elementType: 'geometry',
-        // stylers: [{color: '#746855'}]
-        stylers: [{color: '#FF69B4'}]
+        stylers: [{color: '#746855'}]
+
 
       },
       {
