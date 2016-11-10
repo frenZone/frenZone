@@ -1,19 +1,15 @@
-<div class="frenZone" >
-  <div class="mainBody">
+<div class="mainBody">
+  <div id="map"></div>
+  <div id="mySidenav" class="sidenav">
+    <a class="home-icon" ng-class="{active: layout == 'default'}" ng-click="layout = 'default'" ui-sref="default">Home</a>
+    <div class="friendsCol">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-    <div id="map"></div>
-    <div id="mySidenav" class="sidenav">
-      <a class="home-icon" ng-class="{active: layout == 'default'}" ng-click="layout = 'default'" ui-sref="default">Home</a>
-      <div class="friendsCol">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
-        <div class="imgCont">
-          <div class="locationContainer" ng-repeat="location in locations | filter:searchCaption">
-            <img ng-src="{{ location.images.low_resolution.url }}"></img>
-          </div>
+      <div class="imgCont">
+        <div class="locationContainer" ng-repeat="location in locations | filter:searchCaption">
+          <img ng-src="{{ location.images.low_resolution.url }}"></img>
         </div>
       </div>
-
     </div>
   </div>
 </div>
