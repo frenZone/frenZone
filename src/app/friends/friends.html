@@ -1,36 +1,54 @@
-<!-- <h1>Friend State</h1>
+<div class="frenZone" >
+  <div class="mainBody">
 
-  <div>FRIENDS and usernames</div>
+    <div id="map"></div>
+    <div id="mySidenav" class="sidenav">
+      <a class="home-icon" ng-class="{active: layout == 'default'}" ng-click="layout = 'default'" ui-sref="default">Home</a>
+      <div class="friendsCol">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-  <div class="friendsContainer" ng-repeat="friend in friends | filter:searchCaption">
-      <img ng-src="{{ friend.profile_picture }}"></img>
-      <h1>{{friend.full_name}}</br>
+        <div class="imgCont">
+          <div class="locationContainer" ng-repeat="location in locations | filter:searchCaption">
+            <img ng-src="{{ location.images.thumbnail.url }}"></img>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="locationContainer" ng-repeat="location in locations | filter:searchCaption">
+  <img ng-src="{{ location.images.thumbnail.url }}"></img>
+</div> -->
+
+
+<!-- <div ng-repeat="photo in photos.data">
+  <div ng-switch="photo.type">
+    <div ng-switch-when="image">
+      <img ng-src="{{photo.images.thumbnail.url}}" />
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="friendsContainer" ng-repeat="friend in friends | filter:searchCaption">
+  <img ng-src="{{ friend.profile_picture }}"></img>
+  <h1>{{friend.full_name}}</br>
       {{friend.username}}
-      </h1>
-  </div>
-
-  <div>locations</div>
-
-  <div class="locationContainer" ng-repeat="location inlocations | filter:searchCaption">
-    <img ng-src="{{ location.images.standard_resolution.url }}"></img>
-    <h1> {{location.location.name}}</br>
-      <div class="tag&Face">{{location.tags}}<img ng-src="{{ location.user.profile_picture }}"></img>{{ location.user.username }}</div>
-    </h1>
-  </div>
-
-  <div class="pictureContainer" ng-repeat="picture in pictures.data | filter:searchCaption">
-    <img ng-src="{{ picture.images.standard_resolution.url }}"></img>
-      <div class="caption">{{ picture.caption.text }}</div>
-  </div>
+  </h1>
+</div>
  -->
 
- <h1>Grid State</h1>
+<!--  <div class="locationContainer" ng-repeat="location in locations | filter:searchCaption">
+      <img ng-src="{{ location.images.low_resolution.url }}"></img>
+      <h1> {{location.location.name}}</br>
+        <div class="tag&Face">{{location.tags}}<img ng-src="{{ location.user.profile_picture }}"></img>{{ location.user.username }}
+        </div>
+      </h1>
+  </div> -->
 
-<!-- <ul>
-  <li ng-repeat="item in grid.items">{{item}}</li>
-</ul> -->
-
-<div ng-repeat="photo in photos.data">
+<!-- <div ng-repeat="photo in photos.data">
   <div ng-switch="photo.type">
     <div ng-switch-when="image">
       <img ng-src="{{photo.images.low_resolution.url}}" />
@@ -39,20 +57,4 @@
       <video width="150px" controls ng-src={{photo.videos.standard_resolution.url}}></video>
     </div>
   </div>
-</div>
-
-<div class="friendsContainer" ng-repeat="friend in friends | filter:searchCaption">
-  <img ng-click="getUserPhotos(friend.id)" ng-src="{{ friend.profile_picture }}"></img>
-  <h1 >{{friend.full_name}}</br>
-      {{friend.username}}
-      {{friend.id}}
-  </h1>
-</div>
-
-<div class="locationContainer" ng-repeat="location in locations | filter:searchCaption">
-  <img ng-src="{{ location.images.standard_resolution.url }}"></img>
-  <h1> {{location.location.name}}</br>
-    <div class="tag&Face">{{location.tags}}<img ng-src="{{ location.user.profile_picture }}"></img>{{ location.user.username }}
-    </div>
-  </h1>
-</div>
+</div> -->
