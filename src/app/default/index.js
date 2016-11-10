@@ -20,7 +20,7 @@ export const DefaultCtrl = [
   class DefaultCtrl {
     constructor($scope, PhotosService,$sce) {
       $scope.friends =[];
-      $scope.getUserPhotos = this.getUserPhotos;
+      $scope.getUserPhotos = this.getUserPhotos.bind(this);
       PhotosService.getFriends()
       .success((friends) => {
         $scope.friends = friends.data;
@@ -30,7 +30,8 @@ export const DefaultCtrl = [
     }
 
     getUserPhotos(id){
-      console.log("####",id)
+      console.log("userId: ",id);
+      window.selectedUserId = id;
     }
 
   initMap() {
@@ -74,12 +75,16 @@ export const DefaultCtrl = [
       {
         featureType: 'road',
         elementType: 'labels.text.fill',
-        stylers: [{color: '#9ca5b3'}]
+        // stylers: [{color: '#9ca5b3'}]
+        stylers: [{color: '#FF4500'}]
+
       },
       {
         featureType: 'road.highway',
         elementType: 'geometry',
-        stylers: [{color: '#746855'}]
+        // stylers: [{color: '#746855'}]
+        stylers: [{color: '#FF69B4'}]
+
       },
       {
         featureType: 'road.highway',
@@ -176,32 +181,34 @@ export const DefaultCtrl = [
 
   function JSON_CALLBACK(response) {
     map.data.addGeoJson(response);
-
   }
   window.JSON_CALLBACK = function(results) {
+    console.log("JSON_CALLBACK")
     for (var i = 0; i < results.data.length; i++) {
       if(results.data[i].location !== null){
-        var coords = results.data[i].location;
-        var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
-        var image = results.data[i].user.profile_picture;
-        // var image = 'https://scontent.cdninstagram.com/t51.2885-19/150x150/14582392_1153156614795077_1774168565260222464_a.jpg';
-        var marker = new google.maps.Marker({
-          position: latLng,
-          map: map,
-          animation: google.maps.Animation.DROP,
-          title: coords.name,
-          icon: {
-            url: image,
-            scaledSize: new google.maps.Size(40, 40),
-          }
-        });
-        var infowindow = new google.maps.InfoWindow();
-        marker.desc = '<div id="locationPicture">'+
-          `<img src="${results.data[i].images.thumbnail.url}"></img>`+
-          '</div>';
+        console.log("id")
+          console.log(results)
+          var coords = results.data[i].location;
+          var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
+          var image = results.data[i].user.profile_picture;
+          // var image = 'https://scontent.cdninstagram.com/t51.2885-19/150x150/14582392_1153156614795077_1774168565260222464_a.jpg';
+          var marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            animation: google.maps.Animation.DROP,
+            title: coords.name,
+            icon: {
+              url: image,
+              scaledSize: new google.maps.Size(40, 40),
+            }
+          });
+          var infowindow = new google.maps.InfoWindow();
+          marker.desc = '<div id="locationPicture">'+
+            `<img src="${results.data[i].images.thumbnail.url}"></img>`+
+            '</div>';
 
-        oms.addMarker(marker);
-        google.maps.event.trigger(map, 'resize');
+          oms.addMarker(marker);
+          google.maps.event.trigger(map, 'resize');
       }
     }
 
