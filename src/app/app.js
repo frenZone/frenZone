@@ -1,6 +1,6 @@
 import angular from 'angular';
 import * as uiRouter from 'angular-ui-router';
-import { DefaultCtrlState, DefaultCtrl, DefaultCtrlName } from './default';
+import { DefaultCtrlState, DefaultCtrl, DefaultCtrlName, instaData, loadMarkers } from './default';
 import { GridCtrlState, GridCtrl, GridCtrlName } from './grid';
 import { ListCtrlState, ListCtrl, ListCtrlName } from './list';
 import { PhotosServiceName, PhotosService } from './services/photos';
@@ -40,6 +40,7 @@ angular.module(MODULE_NAME, ['ui.router'])
   })
   .directive('app', app)
   .service(PhotosServiceName, PhotosService)
+  .constant('instaData', instaData)
   .controller('AppCtrl', AppCtrl)
   .controller(DefaultCtrlName, DefaultCtrl)
   .controller(GridCtrlName, GridCtrl)
