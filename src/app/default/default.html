@@ -2,6 +2,15 @@
   <div id="map">
   </div>
   <div id="mySidenav" class="sidenav">
+
+
+  <input id="inputTime" type="range" min="3600" max="864000">
+  </input>
+
+  <div id="inputDisplay">
+  </div>
+
+
   <input type="text" id="searchUser" ng-model="searchUser" />
     <div class="iconContainer">
       <a class="friendsIcon" ng-class="{active: layout == 'friens'}" ng-click="layout = 'friends'" ui-sref="friends">

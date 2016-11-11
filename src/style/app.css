@@ -142,6 +142,19 @@ body {
 
 /*top*/
 
+#outPut{
+  color: white;
+}
+
+#inputTime{
+  width: 80%;
+  margin-left: 10%;
+}
+#inputDisplay{
+  color: #818181;
+  margin-left: 37%;
+  padding-bottom: 10px;
+}
 #searchUser{
 width: 40%;
 margin-left: 35%;
@@ -216,4 +229,5 @@ border-radius: 15px;
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
 
