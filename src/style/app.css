@@ -241,7 +241,7 @@ border-radius: 15px;
 
 .sidenav .closebtn {
     position: absolute;
-    top: -10px;
+    top: 35px;
     right: 0;
     font-size: 36px;
     margin-right: 85%;
