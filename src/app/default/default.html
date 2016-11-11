@@ -6,7 +6,6 @@
 
     <div class="friendsCol">
 
-    <div id="inputDisplay"></div>
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
         close
       </a>
@@ -18,6 +17,7 @@
       <input type="text" id="searchUser" ng-model="searchUser" placeholder="search by name or username" />
     <input id="inputTime" type="range" min="3600" max="864000">
     </input>
+    <div id="inputDisplay"></div>
 
       <div class="friendsContainer" ng-repeat="friend in friends | filter:searchUser">
         <img ng-click="getUserPhotos(friend.id)" ng-src="{{ friend.profile_picture }}">
