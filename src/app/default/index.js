@@ -11,6 +11,7 @@ export const DefaultCtrlState = {
   controllerAs: 'default'
 };
 
+
 export const instaData = [];
 var map;
 var oms;
@@ -36,36 +37,52 @@ function deleteMarkers() {
   oms.a = [];
 }
 
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> 75bdaa865ad24ce86aab5a350dcede3f6955bd63
 const getUserPhotos = function (username){
   deleteMarkers();
+    var inputTime = document.getElementById('inputTime');
+    var inputDisplay = document.getElementById('inputDisplay');
+    var displayOutPut = document.getElementById('displayOutPut');
+    var numberHours =(Math.round((inputTime.value/3600)) + " hours");
+    if(inputTime.value >= 86400){
+      numberHours =(Math.round((inputTime.value/86400)) + " days");
+    }
+    inputDisplay.innerHTML = numberHours + " ago";
 
+    console.log("inputtime",inputTime.value)
     for (var i = 0; i < instaData.length; i++) {
       if(instaData[i].location !== null && instaData[i].user.id === username){
-        var coords = instaData[i].location;
-        var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
-        var image = instaData[i].user.profile_picture;
-        // var image = 'https://scontent.cdninstagram.com/t51.2885-19/150x150/14582392_1153156614795077_1774168565260222464_a.jpg';
-        var marker = new google.maps.Marker({
-          position: latLng,
-          map: map,
-          animation: google.maps.Animation.DROP,
-          title: coords.name,
-          id: 'marker',
-          icon: {
-            url: image,
-            scaledSize: new google.maps.Size(40, 40),
-          }
-        });
-        var infowindow = new google.maps.InfoWindow();
-        marker.desc = '<div id="locationPicture">'+
-          `<img src="${instaData[i].images.thumbnail.url}"></img>`+
-          '</div>';
+        if(instaData[i].created_time >= (Math.round(new Date()/1000)-inputTime.value)){
+          var coords = instaData[i].location;
+          var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
+          var image = instaData[i].user.profile_picture;
+          // var image = 'https://scontent.cdninstagram.com/t51.2885-19/150x150/14582392_1153156614795077_1774168565260222464_a.jpg';
+          var marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            animation: google.maps.Animation.DROP,
+            title: coords.name,
+            id: 'marker',
+            icon: {
+              url: image,
+              scaledSize: new google.maps.Size(40, 40),
+            }
+          });
+          var infowindow = new google.maps.InfoWindow();
+          marker.desc = '<div id="locationPicture">'+
+            `<img src="${instaData[i].images.thumbnail.url}"></img>`+
+            '</div>';
 
-        oms.addMarker(marker);
-      }
+          oms.addMarker(marker);
+        }
+      map.setCenter({lat: 21.308743338531, lng: -157.80870209358});
     }
-    map.setCenter({lat: 21.308743338531, lng: -157.80870209358});
-  };
+  }
+};
 
 var honolulu = {lat: 21.306900, lng: -157.858300};
 export const DefaultCtrl = [
@@ -181,6 +198,38 @@ initMap() {
     ]
   });
 
+  var input = document.getElementById('pac-input');
+  var searchBox = new google.maps.places.SearchBox(input);
+  //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+  // Bias the SearchBox results towards current map's viewport.
+  map.addListener('bounds_changed', function() {
+    searchBox.setBounds(map.getBounds());
+  });
+    searchBox.addListener('places_changed', function() {
+    var places = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+
+    // For each place, get the icon, name and location.
+    var bounds = new google.maps.LatLngBounds();
+    places.forEach(function(place) {
+      if (!place.geometry) {
+        console.log("Returned place contains no geometry");
+        return;
+      }
+
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    });
+    map.fitBounds(bounds);
+  });
 
   var infoWindow = new google.maps.InfoWindow({map: map});
 
