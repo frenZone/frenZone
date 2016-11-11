@@ -2,7 +2,7 @@ import angular from 'angular';
 import * as uiRouter from 'angular-ui-router';
 import { DefaultCtrlState, DefaultCtrl, DefaultCtrlName, instaData, loadMarkers } from './default';
 import { GridCtrlState, GridCtrl, GridCtrlName } from './grid';
-import { ListCtrlState, ListCtrl, ListCtrlName } from './list';
+import { LocationCtrlState, LocationCtrl, LocationCtrlName } from './location';
 import { PhotosServiceName, PhotosService } from './services/photos';
 import { FriendsCtrlState, FriendsCtrl, FriendsCtrlName } from './friends';
 import '../style/app.css';
@@ -31,7 +31,7 @@ angular.module(MODULE_NAME, ['ui.router'])
     $stateProvider
       .state('default', DefaultCtrlState)
       .state('grid', GridCtrlState)
-      .state('list', ListCtrlState)
+      .state('location', LocationCtrlState)
       .state('friends', FriendsCtrlState)
       ;
   })
@@ -45,7 +45,7 @@ angular.module(MODULE_NAME, ['ui.router'])
   .controller(DefaultCtrlName, DefaultCtrl)
   .controller(GridCtrlName, GridCtrl)
   .controller(FriendsCtrlName, FriendsCtrl)
-  .controller(ListCtrlName, ListCtrl);
+  .controller(LocationCtrlName, LocationCtrl);
 
 
 export default MODULE_NAME;
