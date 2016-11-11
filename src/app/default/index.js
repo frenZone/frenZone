@@ -37,11 +37,6 @@ function deleteMarkers() {
   oms.a = [];
 }
 
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 75bdaa865ad24ce86aab5a350dcede3f6955bd63
 const getUserPhotos = function (username){
   deleteMarkers();
     var inputTime = document.getElementById('inputTime');
