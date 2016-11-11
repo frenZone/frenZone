@@ -1,16 +1,15 @@
 import { PhotosServiceName } from '../services/photos';
 
-const template = require('./default.html');
+const template = require('./location.html');
 
-export const DefaultCtrlName = 'DefaultCtrl';
+export const LocationCtrlName = 'LocationCtrl';
 
-export const DefaultCtrlState = {
-  url: '/',
+export const LocationCtrlState = {
+  url: '/location',
   template,
-  controller: DefaultCtrlName,
-  controllerAs: 'default'
+  controller: LocationCtrlName,
+  controllerAs: 'location'
 };
-
 
 export const instaData = [];
 var map;
@@ -80,12 +79,12 @@ const getUserPhotos = function (username){
 };
 
 var honolulu = {lat: 21.306900, lng: -157.858300};
-export const DefaultCtrl = [
+export const LocationCtrl = [
   '$scope',
   PhotosServiceName,
   '$sce',
   'instaData',
-  class DefaultCtrl {
+  class LocationCtrl {
     constructor($scope, PhotosService,$sce, instaData) {
       $scope.friends =[];
 
