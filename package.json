@@ -4,7 +4,6 @@
   "description": "This is an application to check out popular hot spots around you using your friends data from instagram's api",
   "main": "server.js",
   "scripts": {
-
     "server": "webpack-dev-server --history-api-fallback --inline --progress",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run server"
@@ -21,7 +20,8 @@
   "homepage": "https://github.com/frenZone/frenZone#readme",
   "dependencies": {
     "angular": "^1.5.0",
-    "angular-ui-router": "^0.3.2"
+    "angular-ui-router": "^0.3.2",
+    "rangeslider.js": "^2.2.1"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.0",
