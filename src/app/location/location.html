@@ -1,17 +1,14 @@
-
 <div class="mainBody">
   <div id="map">
   </div>
   <div id="mySidenav" class="sidenav">
-
     <div class="friendsCol">
     <input id="inputTime" type="range" min="3600" max="864000">
     </input>
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
-        x
+        close
       </a>
       <input type="text" id="searchUser" ng-model="searchUser" />
-      <a class="location" ng-class="{active: layout == 'location'}" ng-click="layout = 'location'" ui-sref="location">Location</a>
       <div class="iconContainer">
         <a class="friendsIcon" ng-class="{active: layout == 'friens'}" ng-click="layout = 'friends'" ui-sref="friends"></a>
         <a class="friendsIcon2" href="http://localhost:8080/#/grid"></a>
