@@ -6,16 +6,31 @@ html, body {
 }
 
 app{
-  border: 10px solid blue;
   display: block;
   height: 100%;
 }
 app > section{
   display: block;
   height: 90%;
-  border: 10px solid green;
 
 }
+
+#pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 300px;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+
 .instafeed{
   display: inline-block;
   background-image: url('http://www.scarboroughstudenthouse.co.uk/images/feature-image-1.png');
@@ -24,9 +39,15 @@ app > section{
   background-repeat: no-repeat;
 }
 
+.instafeed a{
+  text-decoration: none;
+  color:white;
+}
+
 .barIcon {
     width:30%;
 }
+
 
 .holder {
   width: 20%;
@@ -66,7 +87,7 @@ app > section{
   justify-content: space-between;
   background-color: #A23342;
   width: auto;
-  padding: 10px;
+  padding: 10px 50px;
   border: 1px solid white;
 }
 
@@ -92,12 +113,12 @@ app > section{
 .friendsCol {
   font-family: 'Monda', sans-serif;
   text-align: center;
-  flex: 0 0 20%;
-  background-color:#055370;
+  flex: 0 0 100%;
   margin-top: 10px;
 }
 
 .friendsContainer {
+  background-color:#055370;
   border: 1px solid white;
   margin-bottom: 5px;
 }
@@ -143,23 +164,29 @@ body {
 /*top*/
 
 #searchUser{
-width: 40%;
-margin-left: 35%;
+flex: 0 0 90%;
+height:20px;
 border-radius: 15%;
 border-radius: 15px;
 }
 
 .iconContainer{
-  display:flex;
-  width: 100%;
+  padding: 20px;
   height: 50px;
+  flex: 0 0 100%;
+  display:flex;
+  flex-flow:row wrap;
+  justify-content: space-around;
+  margin:auto;
+
 }
 .friendsIcon{
   background-image: url('https://s6.postimg.org/42koxr01t/friendcircle_Gray.png');
   background-size: 60px;
   height: 40px;
+  width: 50px;
   background-repeat: no-repeat;
-  width: 100%;
+
 }
 .friendsIcon2{
   background-image: url('https://s6.postimg.org/o8o6wmvpd/3guys_Gray.png');
@@ -170,16 +197,20 @@ border-radius: 15px;
 
 
 .sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    right: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  margin-top: 10px;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
 
 }
 
@@ -201,7 +232,7 @@ border-radius: 15px;
     top: -10px;
     right: 0;
     font-size: 36px;
-    margin-right: 50px;
+    margin-right: 70px;
 }
 
 @media screen and (max-height: 450px) {

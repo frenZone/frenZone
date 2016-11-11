@@ -36,6 +36,7 @@ function deleteMarkers() {
   oms.a = [];
 }
 
+
 const getUserPhotos = function (username){
   deleteMarkers();
 
@@ -181,6 +182,38 @@ initMap() {
     ]
   });
 
+  var input = document.getElementById('pac-input');
+  var searchBox = new google.maps.places.SearchBox(input);
+  //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+  // Bias the SearchBox results towards current map's viewport.
+  map.addListener('bounds_changed', function() {
+    searchBox.setBounds(map.getBounds());
+  });
+    searchBox.addListener('places_changed', function() {
+    var places = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+
+    // For each place, get the icon, name and location.
+    var bounds = new google.maps.LatLngBounds();
+    places.forEach(function(place) {
+      if (!place.geometry) {
+        console.log("Returned place contains no geometry");
+        return;
+      }
+
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    });
+    map.fitBounds(bounds);
+  });
 
   var infoWindow = new google.maps.InfoWindow({map: map});
 
@@ -251,6 +284,7 @@ initMap() {
         var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
         var image = results.data[i].user.profile_picture;
         // var image = 'https://scontent.cdninstagram.com/t51.2885-19/150x150/14582392_1153156614795077_1774168565260222464_a.jpg';
+
         var marker = new google.maps.Marker({
           position: latLng,
           map: map,

@@ -1,9 +1,10 @@
 
 <div class="bar">
-    <div class="instafeed">fren Zone</div>
+    <div class="instafeed"><a class="home-icon" ng-class="{active: layout == 'default'}" ng-click="layout = 'default'" ui-sref="default">fren Zone</a></div>
     <div class="search_photo_container">
-      <input placeholder="Photo Search" type="text" id="search_photo_input" ng-model="searchPhoto">
+      <input id="pac-input" onClick="this.select();" class="controls" type="text" placeholder="Search Location">
     </div>
+
 
     <div>
 <!--       <a class="list-icon" ng-class="{active: layout == 'list'}" ng-click="layout = 'list'" ui-sref="list">list</a> -->
