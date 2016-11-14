@@ -14,12 +14,12 @@
         <a class="friendsIcon2" href="http://localhost:8080/#/grid"></a>
      </div>
 
-      <div class="friendsContainer" ng-repeat="friend in friends | filter:searchUser">
-        <img ng-click="getUserPhotos(friend.id)" ng-src="{{ friend.profile_picture }}">
+      <div class="friendsContainer" ng-repeat="location in locations | filter:searchUser">
+<!--         <img ng-click="getUserPhotos(friend.id)" ng-src="{{ friend.profile_picture }}"> -->
         </img>
         <div>
-          {{friend.full_name}}
-          {{friend.username}}
+          {{location.location.name}}
+          {{location.location.id}}
         </div>
       </div>
     </div>

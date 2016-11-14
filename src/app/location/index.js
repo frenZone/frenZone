@@ -92,11 +92,11 @@ export const LocationCtrl = [
       $scope.getUserPhotos = getUserPhotos.bind(this);
       $scope.instaData = instaData;
 
-      PhotosService.getFriends()
-      .success((friends) => {
-        $scope.friends = friends.data;
+      PhotosService.getLocation()
+      .success((location) => {
+        $scope.locations = location.data;
       });
-      this.initMap();
+      // this.initMap();
 
 
     }
