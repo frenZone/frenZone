@@ -100,7 +100,7 @@ export const DefaultCtrl = [
 
       PhotosService.getLocation()
       .success((location) => {
-       $scope.locations = location.data;
+        $scope.locations = location.data;
      });
       this.initMap();
 

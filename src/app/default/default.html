@@ -1,30 +1,44 @@
 <div class="mainBody">
-  <div id="map">
-  </div>
-
+  <div id="map"></div>
   <div id="mySidenav" class="sidenav">
-
     <div class="friendsCol">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
-        close
-      </a>
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">close</a>
+
       <div class="iconContainer">
         <a class="friendsIcon" ng-class="{active: layout == 'friens'}" ng-click="layout = 'friends'" ui-sref="friends"></a>
-        <a class="location" ng-class="{active: layout == 'location'}" ng-click="layout = 'location'" ui-sref="location"></a>
-        <a class="friendsIcon2" href="http://localhost:8080/#/grid"></a>
-     </div>
+        <a class="friendsIcon2" ng-class="{active: layout == 'grid'}" ui-sref="grid"></a>
+      </div>
+
+      <a class="location" ng-class="{active: layout == 'location'}" ng-click="layout = 'location'" ng-hide="layout == 'location'">Go to Locations</a>
+
+
+      <div ng-show="layout == 'location'">
+        <a class="back" ng-class="{active: layout == 'back'}" ng-click="layout = 'back'" ng-hide="layout == 'back'">Go to Friends</a>
+        <div class="friendsContainer" ng-repeat="location in locations | filter:searchUser">
+          <div>
+            {{location.location.name}}
+            {{location.location.id}}
+          </div>
+          </div>
+        <div>
+      </div>
+      </div>
+
+
       <input type="text" id="searchUser" ng-model="searchUser" placeholder="search by name or username" />
-    <input id="inputTime" type="range" min="3600" max="864000">
-    </input>
-    <div id="inputDisplay"></div>
-      <div class="friendsContainer" ng-repeat="friend in friends | filter:searchUser">
+      <input id="inputTime" type="range" min="3600" max="864000"></input>
+      <div id="inputDisplay"></div>
+
+      <div ng-hide="layout == 'location'" class="friendsContainer" ng-repeat="friend in friends | filter:searchUser">
         <img ng-click="getUserPhotos(friend.id)" ng-src="{{ friend.profile_picture }}">
         </img>
-        <div class="userName">
+        <div>
           {{friend.full_name}}
           {{friend.username}}
         </div>
       </div>
+
     </div>
   </div>
 </div>
+
