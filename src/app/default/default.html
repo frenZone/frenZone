@@ -16,27 +16,27 @@
         <a class="back" ng-class="{active: layout == 'back'}" ng-click="layout = 'back'" ng-hide="layout == 'back'">Go to Friends</a>
         <div class="friendsContainer" ng-repeat="location in locations | filter:searchUser">
           <div>
-            {{location.location.name}}
-            {{location.location.id}}
+            {{location}}
           </div>
           </div>
         <div>
       </div>
       </div>
 
-
-      <input type="text" id="searchUser" ng-model="searchUser" placeholder="search by name or username" />
-      <input id="inputTime" type="range" min="3600" max="864000"></input>
-      <div id="inputDisplay"></div>
-
-      <div ng-hide="layout == 'location'" class="friendsContainer" ng-repeat="friend in friends | filter:searchUser">
-        <img ng-click="getUserPhotos(friend.id)" ng-src="{{ friend.profile_picture }}">
-        </img>
-        <div>
-          {{friend.full_name}}
-          {{friend.username}}
+      <div ng-hide="layout == 'location'">
+        <input type="text" id="searchUser" ng-model="searchUser" placeholder="search by name or username" />
+        <input id="inputTime" type="range" min="3600" max="864000"></input>
+        <div id="inputDisplay"></div>
+        <div class="friendsContainer" ng-repeat="friend in friends | filter:searchUser">
+          <img ng-click="getUserPhotos(friend.id)" ng-src="{{ friend.profile_picture }}">
+          </img>
+          <div>
+            {{friend.full_name}}
+            {{friend.username}}
+          </div>
         </div>
       </div>
+
 
     </div>
   </div>
