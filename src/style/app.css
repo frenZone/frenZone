@@ -33,7 +33,6 @@ app > section{
 
 .instafeed{
   display: inline-block;
-  background-image: url('http://www.scarboroughstudenthouse.co.uk/images/feature-image-1.png');
   background-size: 70%;
   background-position:50% 30%;
   background-repeat: no-repeat;
