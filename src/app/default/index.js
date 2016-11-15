@@ -312,7 +312,7 @@ initMap() {
         });
         var infowindow = new google.maps.InfoWindow();
         marker.desc = '<div id="locationPicture">'+
-          '<h1>' + `${results.data[i].user.username}`+ '</h1>' +
+          '<h1>' + `${results.data[i].user.username}`+ `(${results.data[i].user.full_name})` + '</h1>' +
           `<img src="${results.data[i].images.low_resolution.url}"></img>`+
           '<p>' + `${results.data[i].caption.text}` + '</p>' +
           '</div>';
