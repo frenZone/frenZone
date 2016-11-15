@@ -98,6 +98,11 @@ export const DefaultCtrl = [
       .success((friends) => {
         $scope.friends = friends.data;
       });
+
+      PhotosService.getLocation()
+      .success((location) => {
+        $scope.locations = location.data;
+     });
       this.initMap();
 
 
