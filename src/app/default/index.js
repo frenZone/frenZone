@@ -47,8 +47,6 @@ const getUserPhotos = function (username){
       numberHours =(Math.round((inputTime.value/86400)) + " days");
     }
     inputDisplay.innerHTML = numberHours + " ago";
-
-    console.log("inputtime",inputTime.value)
     for (var i = 0; i < instaData.length; i++) {
       if(instaData[i].location !== null && instaData[i].user.id === username){
         if(instaData[i].created_time >= (Math.round(new Date()/1000)-inputTime.value)){
@@ -65,6 +63,7 @@ const getUserPhotos = function (username){
             icon: {
               url: image,
               scaledSize: new google.maps.Size(40, 40),
+              optimized:false
             }
           });
           var infowindow = new google.maps.InfoWindow();
@@ -88,6 +87,7 @@ export const DefaultCtrl = [
   class DefaultCtrl {
     constructor($scope, PhotosService,$sce, instaData) {
       $scope.friends =[];
+      $scope.locations=[];
 
       $scope.getUserPhotos = this.getUserPhotos;
       $scope.getUserPhotos = getUserPhotos.bind(this);
@@ -97,6 +97,18 @@ export const DefaultCtrl = [
       .success((friends) => {
         $scope.friends = friends.data;
       });
+
+      PhotosService.getLocation()
+      .success((location) => {
+      let locations =[];
+      for (var i=0; i < location.data.length; i++){
+        locations.push(location.data[i].location.name);
+      }
+      let uniqueArray = locations.filter(function(elem, pos) {
+        return locations.indexOf(elem) == pos;
+      });
+      $scope.locations = uniqueArray;
+     });
       this.initMap();
 
 
@@ -104,10 +116,8 @@ export const DefaultCtrl = [
 
 
 initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 14,
-    disableDefaultUI: true,
-    styles: [
+      var nightModeMap = new google.maps.StyledMapType(
+    [
       {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
       {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
       {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
@@ -190,14 +200,21 @@ initMap() {
         elementType: 'labels.text.stroke',
         stylers: [{color: '#17263c'}]
       }
-    ]
+    ],
+    {name: 'Night Mode'});
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 14,
+    mapTypeControlOptions: {
+      mapTypeIds: ['roadmap', 'night_map', 'satellite', 'hybrid']
+    }
   });
+
+  map.mapTypes.set('night_map', nightModeMap);
+
 
   var input = document.getElementById('pac-input');
   var searchBox = new google.maps.places.SearchBox(input);
-  //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-  // Bias the SearchBox results towards current map's viewport.
   map.addListener('bounds_changed', function() {
     searchBox.setBounds(map.getBounds());
   });
@@ -281,7 +298,6 @@ initMap() {
   }
 
   window.JSON_CALLBACK = function(results) {
-    console.log("JSON_CALLBACK")
     for (var i = 0; i < results.data.length; i++) {
       if(results.data[i].location !== null){
 
@@ -305,18 +321,27 @@ initMap() {
           icon: {
             url: image,
             scaledSize: new google.maps.Size(40, 40),
+            optimized:false
           }
         });
         var infowindow = new google.maps.InfoWindow();
         marker.desc = '<div id="locationPicture">'+
-          `<img src="${results.data[i].images.thumbnail.url}"></img>`+
+          '<h1>' + `${results.data[i].user.username}`+ `(${results.data[i].user.full_name})` + '</h1>' +
+          `<img src="${results.data[i].images.low_resolution.url}"></img>`+
+          '<p>' + `${results.data[i].caption.text}` + '</p>' +
           '</div>';
 
         oms.addMarker(marker);
       }
     }
   };
-
+  //overlay to css icons
+  var myoverlay = new google.maps.OverlayView();
+  myoverlay.draw = function () {
+    //this assigns an id to the markerlayer Pane, so it can be referenced by CSS
+    this.getPanes().markerLayer.id='markerLayer';
+  };
+  myoverlay.setMap(map);
   google.maps.event.trigger(map, 'resize');
   map.setCenter(honolulu);
 

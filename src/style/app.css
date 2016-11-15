@@ -11,6 +11,7 @@ app > section{
   display: block;
   height: 90%;
 }
+
 #pac-input {
   background-color: #fff;
   font-family: Roboto;
@@ -26,7 +27,6 @@ app > section{
 }
 .instafeed{
   display: inline-block;
-  background-image: url('http://www.scarboroughstudenthouse.co.uk/images/feature-image-1.png');
   background-size: 70%;
   background-position:50% 30%;
   background-repeat: no-repeat;
@@ -35,19 +35,24 @@ app > section{
   text-decoration: none;
   color:white;
 }
+
+.instafeed img{
+  height: 30px;
+}
+
 .barIcon {
     width:30%;
 }
+
+span {
+  color: #FA6900;
+}
+
 .holder {
   width: 20%;
 }
-.instafeed{
- display: inline-block;
- background-image: url('http://www.scarboroughstudenthouse.co.uk/images/feature-image-1.png');
- background-size: 70%;
- background-position:50% 30%;
- background-repeat: no-repeat;
-}
+
+
 /*main top bar*/
 .bar .search_photo_container {
   display: flex;
@@ -67,15 +72,11 @@ app > section{
   font-family: 'Monda', sans-serif;
   font-size: 30px;
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   justify-content: space-between;
-  background-color: #A23342;
-  /*background-image: url("http://cdn.lightgalleries.net/4bd5ec12b739d/images/Manhattan-Nightscape-Skyline-with-Full-Moon-12-013350-62_vv-1.jpg");*/
-  /*background-image: url("https://c1.staticflickr.com/9/8786/17790937755_e0c5e2f57f_b.jpg");*/
-  background-size: 20%;
-  width: auto;
+  margin: auto;
+  background-color: #171F25;
   padding: 10px 50px;
-  border: 1px solid white;
 }
 .mainBody {
   display: flex;
@@ -163,8 +164,20 @@ border-radius: 15%;
 border-radius: 15px;
 width: 80%;
 }
+
+#map div.gm-style div div div#markerLayer img{
+  border-radius: 100px !important;
+  border: 1px solid !important;
+}
+#map #locationPicture img{
+  border: 5px solid blue;
+}
+#map #locationPicture{
+  text-align: center;
+}
+
 .iconContainer{
-  padding: 4px;
+  padding: 10px;
   height: 50px;
   flex: 0 0 100%;
   display:flex;
@@ -173,7 +186,8 @@ width: 80%;
   margin:auto;
   width: 100%;
   margin-top: -10px;
-  background-color: #A23342;
+  background-color: #023756;
+  border-radius: 15px;
 }
 .friendsIcon{
   background-image: url('https://s6.postimg.org/i0cidwttt/friendcirclewhite.png');
@@ -204,7 +218,7 @@ width: 80%;
   right: 0;
   /*background-color:lightblue;*/
    /*background-color:rgba(255,0,0,0.1) ;*/
-  border-radius: 15px;
+ /* border-radius: 15px;*/
   overflow-x: hidden;
   transition: 0.5s;
  /* padding-top: 60px;*/
