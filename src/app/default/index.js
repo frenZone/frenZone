@@ -110,7 +110,6 @@ export const DefaultCtrl = [
         return locations.indexOf(elem) == pos;
       });
       $scope.locations = uniqueArray;
-      console.log('here', uniqueArray);
      });
       this.initMap();
 
