@@ -65,6 +65,7 @@ const getUserPhotos = function (username){
             icon: {
               url: image,
               scaledSize: new google.maps.Size(40, 40),
+              optimized:false
             }
           });
           var infowindow = new google.maps.InfoWindow();
@@ -195,9 +196,6 @@ initMap() {
 
   var input = document.getElementById('pac-input');
   var searchBox = new google.maps.places.SearchBox(input);
-  //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-  // Bias the SearchBox results towards current map's viewport.
   map.addListener('bounds_changed', function() {
     searchBox.setBounds(map.getBounds());
   });
@@ -281,7 +279,6 @@ initMap() {
   }
 
   window.JSON_CALLBACK = function(results) {
-    console.log("JSON_CALLBACK")
     for (var i = 0; i < results.data.length; i++) {
       if(results.data[i].location !== null){
 
@@ -305,18 +302,27 @@ initMap() {
           icon: {
             url: image,
             scaledSize: new google.maps.Size(40, 40),
+            optimized:false
           }
         });
         var infowindow = new google.maps.InfoWindow();
         marker.desc = '<div id="locationPicture">'+
-          `<img src="${results.data[i].images.thumbnail.url}"></img>`+
+          '<h1>' + `${results.data[i].user.username}`+ '</h1>' +
+          `<img src="${results.data[i].images.low_resolution.url}"></img>`+
+          '<p>' + `${results.data[i].caption.text}` + '</p>' +
           '</div>';
 
         oms.addMarker(marker);
       }
     }
   };
-
+  //overlay to css icons
+  var myoverlay = new google.maps.OverlayView();
+  myoverlay.draw = function () {
+    //this assigns an id to the markerlayer Pane, so it can be referenced by CSS
+    this.getPanes().markerLayer.id='markerLayer';
+  };
+  myoverlay.setMap(map);
   google.maps.event.trigger(map, 'resize');
   map.setCenter(honolulu);
 
