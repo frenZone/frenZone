@@ -149,7 +149,7 @@ body {
 }
 #inputTime{
   width: 80%;
-  margin-left: 5%;
+  margin-left: 1%;
 }
 #inputDisplay{
   color: #818181;
@@ -157,7 +157,6 @@ body {
   padding-bottom: 10px;
 }
 #searchUser{
-margin-top: 20px;
 flex: 0 0 90%;
 height:20px;
 border-radius: 15%;
@@ -177,7 +176,7 @@ width: 80%;
 }
 
 .iconContainer{
-  padding: 10px;
+  padding: 9px;
   height: 50px;
   flex: 0 0 100%;
   display:flex;
@@ -236,11 +235,11 @@ width: 80%;
 }
 .sidenav .closebtn {
   position: absolute;
-  top: -10px;
+  top: -5px;
   right: 0;
-  font-size: 71px;
-  margin-top: -10%;
-  margin-right: 36%;
+  font-size: 30px;
+  margin-top: 2%;
+  margin-right: 25%;
 }
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 40px;}
