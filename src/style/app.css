@@ -15,6 +15,7 @@ app > section{
 
 }
 
+
 #pac-input {
   background-color: #fff;
   font-family: Roboto;
@@ -33,7 +34,7 @@ app > section{
 
 .instafeed{
   display: inline-block;
-  background-image: url('http://www.scarboroughstudenthouse.co.uk/images/feature-image-1.png');
+  /*background-image: url('http://www.scarboroughstudenthouse.co.uk/images/feature-image-1.png');*/
   background-size: 70%;
   background-position:50% 30%;
   background-repeat: no-repeat;
@@ -53,13 +54,6 @@ app > section{
   width: 20%;
 }
 
-.instafeed{
- display: inline-block;
- background-image: url('http://www.scarboroughstudenthouse.co.uk/images/feature-image-1.png');
- background-size: 70%;
- background-position:50% 30%;
- background-repeat: no-repeat;
-}
 
 /*main top bar*/
 .bar .search_photo_container {
@@ -197,6 +191,17 @@ height:20px;
 border-radius: 15%;
 border-radius: 15px;
 width: 80%;
+}
+
+#map div.gm-style div div div#markerLayer img{
+  border-radius: 100px !important;
+  border: 1px solid !important;
+}
+#map #locationPicture img{
+  border: 5px solid blue;
+}
+#map #locationPicture{
+  text-align: center;
 }
 
 .iconContainer{

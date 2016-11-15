@@ -192,6 +192,7 @@ export const FriendsCtrl = [
           icon: {
             url: image,
             scaledSize: new google.maps.Size(40, 40),
+            optimized: false
           }
         });
         var infowindow = new google.maps.InfoWindow();
