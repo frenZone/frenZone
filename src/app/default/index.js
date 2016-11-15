@@ -47,8 +47,6 @@ const getUserPhotos = function (username){
       numberHours =(Math.round((inputTime.value/86400)) + " days");
     }
     inputDisplay.innerHTML = numberHours + " ago";
-
-    console.log("inputtime",inputTime.value)
     for (var i = 0; i < instaData.length; i++) {
       if(instaData[i].location !== null && instaData[i].user.id === username){
         if(instaData[i].created_time >= (Math.round(new Date()/1000)-inputTime.value)){
@@ -118,10 +116,8 @@ export const DefaultCtrl = [
 
 
 initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 14,
-    disableDefaultUI: true,
-    styles: [
+      var nightModeMap = new google.maps.StyledMapType(
+    [
       {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
       {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
       {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
@@ -204,8 +200,18 @@ initMap() {
         elementType: 'labels.text.stroke',
         stylers: [{color: '#17263c'}]
       }
-    ]
+    ],
+    {name: 'Night Mode'});
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 14,
+    mapTypeControlOptions: {
+      mapTypeIds: ['roadmap', 'night_map', 'satellite', 'hybrid']
+    }
   });
+
+  map.mapTypes.set('night_map', nightModeMap);
+
 
   var input = document.getElementById('pac-input');
   var searchBox = new google.maps.places.SearchBox(input);
