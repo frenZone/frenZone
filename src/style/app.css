@@ -114,6 +114,7 @@ span {
 }
 
 .friendsCol {
+  position: absolute;
   display: flex;
   flex-flow: row wrap;
   font-family: 'Monda', sans-serif;
@@ -185,6 +186,7 @@ body {
   padding-bottom: 10px;
 
 }
+
 #searchUser{
 margin-top: 20px;
 flex: 0 0 90%;
@@ -269,6 +271,7 @@ width: 80%;
 }
 
 .sidenav .closebtn {
+  text-align: center;
   padding-right: 40px;
   flex: 0 0 100%;
 }
