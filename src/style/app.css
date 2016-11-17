@@ -111,9 +111,6 @@ span {
 }
 
 .friendsCol {
-  position: absolute;
-  display: flex;
-  flex-flow: row wrap;
   font-family: 'Monda', sans-serif;
   text-align: center;
   flex: 0 0 100%;
@@ -136,6 +133,7 @@ span {
 
 .friendsContainer .places{
   height: 50px;
+  border: 20px yellow;
 }
 
 .friends {
