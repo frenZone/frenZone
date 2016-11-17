@@ -13,6 +13,9 @@ export const DefaultCtrlState = {
 
 
 export const instaData = [];
+export const locationData = [];
+export let locations = [];
+let locationSet = new Set();
 var map;
 var oms;
 function setMapOnAll(map) {
@@ -36,6 +39,42 @@ function deleteMarkers() {
   clearMarkers();
   oms.a = [];
 }
+
+const showLocationMarkers = function(){
+  deleteMarkers();
+
+};
+
+const showAllPhotos = function (){
+  deleteMarkers();
+   for (var i = 0; i < instaData.length; i++) {
+    if(instaData[i].location !== null){
+      var coords = instaData[i].location;
+      var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
+      var image = instaData[i].user.profile_picture;
+      // var image = 'https://scontent.cdninstagram.com/t51.2885-19/150x150/14582392_1153156614795077_1774168565260222464_a.jpg';
+      var marker = new google.maps.Marker({
+        position: latLng,
+        map: map,
+        animation: google.maps.Animation.DROP,
+        title: coords.name,
+        id: 'marker',
+        icon: {
+          url: image,
+          scaledSize: new google.maps.Size(40, 40),
+          optimized:false
+        }
+      });
+      var infowindow = new google.maps.InfoWindow();
+      marker.desc = '<div id="locationPicture">'+
+        `<img src="${instaData[i].images.thumbnail.url}"></img>`+
+        '</div>';
+
+      oms.addMarker(marker);
+    }
+    map.setCenter({lat: 21.308743338531, lng: -157.80870209358});
+  }
+};
 
 const getUserPhotos = function (username){
   deleteMarkers();
@@ -87,31 +126,19 @@ export const DefaultCtrl = [
   class DefaultCtrl {
     constructor($scope, PhotosService,$sce, instaData) {
       $scope.friends =[];
-      $scope.locations=[];
 
       $scope.getUserPhotos = this.getUserPhotos;
       $scope.getUserPhotos = getUserPhotos.bind(this);
+      $scope.showAllPhotos = this.showAllPhotos;
+      $scope.showAllPhotos = showAllPhotos.bind(this);
       $scope.instaData = instaData;
+      $scope.locations = locations;
 
       PhotosService.getFriends()
       .success((friends) => {
         $scope.friends = friends.data;
       });
-
-      PhotosService.getLocation()
-      .success((location) => {
-      let locations =[];
-      for (var i=0; i < location.data.length; i++){
-        locations.push(location.data[i].location.name);
-      }
-      let uniqueArray = locations.filter(function(elem, pos) {
-        return locations.indexOf(elem) == pos;
-      });
-      $scope.locations = uniqueArray;
-     });
       this.initMap();
-
-
     }
 
 
@@ -205,13 +232,20 @@ initMap() {
 
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 14,
+    scaleControl: false,
+    streetViewControl: false,
+    zoomControl: true,
+    zoomControlOptions: {
+        position: google.maps.ControlPosition.LEFT_CENTER
+    },
     mapTypeControlOptions: {
+      style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
       mapTypeIds: ['roadmap', 'night_map', 'satellite', 'hybrid']
     }
   });
 
   map.mapTypes.set('night_map', nightModeMap);
-
+  map.setMapTypeId('night_map');
 
   var input = document.getElementById('pac-input');
   var searchBox = new google.maps.places.SearchBox(input);
@@ -330,10 +364,22 @@ initMap() {
           `<img src="${results.data[i].images.low_resolution.url}"></img>`+
           '<p>' + `${results.data[i].caption.text}` + '</p>' +
           '</div>';
-
+        // locationData.add({name: results.data[i].location.name,
+        //   latitude: results.data[i].location.latitude,
+        //   longitude: results.data[i].location.longitude});
+        // locationData.add(results.data[i].location.name);
+        locationData.push(results.data[i].location);
         oms.addMarker(marker);
       }
     }
+    locations.length = 0;
+    locationData.forEach((lctn) => {
+      locationSet.add(lctn.name);
+    });
+    [...locationSet].forEach((location) => {
+      locations.push(location);
+    });
+    console.log(locations);
   };
   //overlay to css icons
   var myoverlay = new google.maps.OverlayView();
