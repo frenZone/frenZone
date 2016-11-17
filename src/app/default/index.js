@@ -126,11 +126,6 @@ export const DefaultCtrl = [
   class DefaultCtrl {
     constructor($scope, PhotosService,$sce, instaData) {
       $scope.friends =[];
-<<<<<<< HEAD
-      // $scope.locations=[];
-=======
->>>>>>> 1954ef9858d903dc8e3eb936e051e9c712f9ced0
-
       $scope.getUserPhotos = this.getUserPhotos;
       $scope.getUserPhotos = getUserPhotos.bind(this);
       $scope.showAllPhotos = this.showAllPhotos;
