@@ -87,7 +87,7 @@ export const DefaultCtrl = [
   class DefaultCtrl {
     constructor($scope, PhotosService,$sce, instaData) {
       $scope.friends =[];
-      $scope.locations=[];
+      // $scope.locations=[];
 
       $scope.getUserPhotos = this.getUserPhotos;
       $scope.getUserPhotos = getUserPhotos.bind(this);
@@ -98,17 +98,23 @@ export const DefaultCtrl = [
         $scope.friends = friends.data;
       });
 
-      PhotosService.getLocation()
-      .success((location) => {
-      let locations =[];
-      for (var i=0; i < location.data.length; i++){
-        locations.push(location.data[i].location.name);
-      }
-      let uniqueArray = locations.filter(function(elem, pos) {
-        return locations.indexOf(elem) == pos;
-      });
-      $scope.locations = uniqueArray;
-     });
+
+      // PhotosService.getLocation()
+      // .success((location) => {
+      //   let locations = [];
+
+      //   for (var i=0; i < location.data.length; i++){
+      //     locations.push(location.data[i].location.name);
+      //   }
+
+      //   let uniqueArray = locations.filter(function(elem, pos) {
+      //     return locations.indexOf(elem) === pos;
+      //   });
+
+      //   $scope.locations = uniqueArray;
+      //   console.log($scope.locations);
+      // });
+
       this.initMap();
 
 
