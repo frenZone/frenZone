@@ -13,7 +13,9 @@ export const DefaultCtrlState = {
 
 
 export const instaData = [];
-export const locationData = new Set();
+export const locationData = [];
+export let locations = [];
+let locationSet = new Set();
 var map;
 var oms;
 function setMapOnAll(map) {
@@ -124,14 +126,13 @@ export const DefaultCtrl = [
   class DefaultCtrl {
     constructor($scope, PhotosService,$sce, instaData) {
       $scope.friends =[];
-      $scope.locations=[];
 
       $scope.getUserPhotos = this.getUserPhotos;
       $scope.getUserPhotos = getUserPhotos.bind(this);
       $scope.showAllPhotos = this.showAllPhotos;
       $scope.showAllPhotos = showAllPhotos.bind(this);
       $scope.instaData = instaData;
-      $scope.locationData = locationData;
+      $scope.locations = locations;
 
       PhotosService.getFriends()
       .success((friends) => {
@@ -363,10 +364,22 @@ initMap() {
           `<img src="${results.data[i].images.low_resolution.url}"></img>`+
           '<p>' + `${results.data[i].caption.text}` + '</p>' +
           '</div>';
-        locationData.add(results.data[i].location);
+        // locationData.add({name: results.data[i].location.name,
+        //   latitude: results.data[i].location.latitude,
+        //   longitude: results.data[i].location.longitude});
+        // locationData.add(results.data[i].location.name);
+        locationData.push(results.data[i].location);
         oms.addMarker(marker);
       }
     }
+    locations.length = 0;
+    locationData.forEach((lctn) => {
+      locationSet.add(lctn.name);
+    });
+    [...locationSet].forEach((location) => {
+      locations.push(location);
+    });
+    console.log(locations);
   };
   //overlay to css icons
   var myoverlay = new google.maps.OverlayView();
