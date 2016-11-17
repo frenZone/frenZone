@@ -39,14 +39,6 @@ function deleteMarkers() {
 
 const getUserPhotos = function (username){
   deleteMarkers();
-    var inputTime = document.getElementById('inputTime');
-    var inputDisplay = document.getElementById('inputDisplay');
-    var displayOutPut = document.getElementById('displayOutPut');
-    var numberHours =(Math.round((inputTime.value/3600)) + " hours");
-    if(inputTime.value >= 86400){
-      numberHours =(Math.round((inputTime.value/86400)) + " days");
-    }
-    inputDisplay.innerHTML = numberHours + " ago";
     for (var i = 0; i < instaData.length; i++) {
       if(instaData[i].location !== null && instaData[i].user.id === username){
         if(instaData[i].created_time >= (Math.round(new Date()/1000)-inputTime.value)){
@@ -92,6 +84,14 @@ export const DefaultCtrl = [
       $scope.getUserPhotos = this.getUserPhotos;
       $scope.getUserPhotos = getUserPhotos.bind(this);
       $scope.instaData = instaData;
+
+      $scope.onChange = function (){
+        var numberHours =(Math.round(($scope.inputTime/3600)) + " hours");
+        if($scope.inputTime >= 86400){
+          numberHours =(Math.round(($scope.inputTime/86400)) + " days");
+        }
+        $scope.inputTimeDisplay = numberHours + " ago";
+      };
 
       PhotosService.getFriends()
       .success((friends) => {
