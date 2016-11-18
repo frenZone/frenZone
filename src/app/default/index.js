@@ -18,10 +18,23 @@ export let locations = [];
 let locationSet = new Set();
 var map;
 var oms;
+
 function setMapOnAll(map) {
   for (var i = 0; i < oms.a.length; i++) {
     oms.a[i].setMap(map);
   }
+}
+
+export function centerMap(center){
+   let centerCoord ={};
+  locationData.forEach((location) => {
+    if (location.name === center) {
+      centerCoord.lat = location.latitude;
+      centerCoord.long = location.longitude;
+    }
+  });
+  map.setCenter({lat:centerCoord.lat, lng:centerCoord.long});
+  map.setZoom(18);
 }
 
 // Removes the markers from the map, but keeps them in the array.
@@ -41,6 +54,7 @@ function deleteMarkers() {
 }
 
 const showLocationMarkers = function(){
+
   deleteMarkers();
 
 };
@@ -76,16 +90,45 @@ const showAllPhotos = function (){
   }
 };
 
+// const getUserPhotos = function (username){
+
+//   deleteMarkers();
+
+// };
+
+// const showAllPhotos = function (){
+//   deleteMarkers();
+//    for (var i = 0; i < instaData.length; i++) {
+//     if(instaData[i].location !== null){
+//       var coords = instaData[i].location;
+//       var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
+//       var image = instaData[i].user.profile_picture;
+//       // var image = 'https://scontent.cdninstagram.com/t51.2885-19/150x150/14582392_1153156614795077_1774168565260222464_a.jpg';
+//       var marker = new google.maps.Marker({
+//         position: latLng,
+//         map: map,
+//         animation: google.maps.Animation.DROP,
+//         title: coords.name,
+//         id: 'marker',
+//         icon: {
+//           url: image,
+//           scaledSize: new google.maps.Size(40, 40),
+//           optimized:false
+//         }
+//       });
+//       var infowindow = new google.maps.InfoWindow();
+//       marker.desc = '<div id="locationPicture">'+
+//         `<img src="${instaData[i].images.thumbnail.url}"></img>`+
+//         '</div>';
+
+//       oms.addMarker(marker);
+//     }
+//     map.setCenter({lat: 21.308743338531, lng: -157.80870209358});
+//   }
+// };
+
 const getUserPhotos = function (username){
   deleteMarkers();
-    var inputTime = document.getElementById('inputTime');
-    var inputDisplay = document.getElementById('inputDisplay');
-    var displayOutPut = document.getElementById('displayOutPut');
-    var numberHours =(Math.round((inputTime.value/3600)) + " hours");
-    if(inputTime.value >= 86400){
-      numberHours =(Math.round((inputTime.value/86400)) + " days");
-    }
-    inputDisplay.innerHTML = numberHours + " ago";
     for (var i = 0; i < instaData.length; i++) {
       if(instaData[i].location !== null && instaData[i].user.id === username){
         if(instaData[i].created_time >= (Math.round(new Date()/1000)-inputTime.value)){
@@ -130,8 +173,19 @@ export const DefaultCtrl = [
       $scope.getUserPhotos = getUserPhotos.bind(this);
       $scope.showAllPhotos = this.showAllPhotos;
       $scope.showAllPhotos = showAllPhotos.bind(this);
+      $scope.centerMap = this.centerMap;
+      $scope.centerMap = centerMap.bind(this);
       $scope.instaData = instaData;
+      $scope.locationData= locationData;
       $scope.locations = locations;
+
+      $scope.onChange = function (){
+        var numberHours =(Math.round(($scope.inputTime/3600)) + " hours");
+        if($scope.inputTime >= 86400){
+          numberHours =(Math.round(($scope.inputTime/86400)) + " days");
+        }
+        $scope.inputTimeDisplay = numberHours + " ago";
+      };
 
       PhotosService.getFriends()
       .success((friends) => {
@@ -143,7 +197,7 @@ export const DefaultCtrl = [
 
 
 initMap() {
-      var nightModeMap = new google.maps.StyledMapType(
+  var nightModeMap = new google.maps.StyledMapType(
     [
       {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
       {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
@@ -252,12 +306,12 @@ initMap() {
   map.addListener('bounds_changed', function() {
     searchBox.setBounds(map.getBounds());
   });
-    searchBox.addListener('places_changed', function() {
-    var places = searchBox.getPlaces();
+  searchBox.addListener('places_changed', function() {
+  var places = searchBox.getPlaces();
 
-    if (places.length == 0) {
-      return;
-    }
+  if (places.length == 0) {
+    return;
+  }
 
     // For each place, get the icon, name and location.
     var bounds = new google.maps.LatLngBounds();
@@ -334,7 +388,6 @@ initMap() {
   window.JSON_CALLBACK = function(results) {
     for (var i = 0; i < results.data.length; i++) {
       if(results.data[i].location !== null){
-
         instaData.push(results.data[i]);
       }
     }
@@ -343,9 +396,7 @@ initMap() {
       if(results.data[i].location !== null){
         var coords = results.data[i].location;
         var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
-        var image = results.data[i].user.profile_picture;
-        // var image = 'https://scontent.cdninstagram.com/t51.2885-19/150x150/14582392_1153156614795077_1774168565260222464_a.jpg';
-
+        var image = `https://circle-image-as-a-service-juuyhmkiiy.now.sh/?url=${results.data[i].user.profile_picture}`;
         var marker = new google.maps.Marker({
           position: latLng,
           map: map,
@@ -354,7 +405,7 @@ initMap() {
           id: 'marker',
           icon: {
             url: image,
-            scaledSize: new google.maps.Size(40, 40),
+            scaledSize: new google.maps.Size(50, 50),
             optimized:false
           }
         });
@@ -364,30 +415,19 @@ initMap() {
           `<img src="${results.data[i].images.low_resolution.url}"></img>`+
           '<p>' + `${results.data[i].caption.text}` + '</p>' +
           '</div>';
-        // locationData.add({name: results.data[i].location.name,
-        //   latitude: results.data[i].location.latitude,
-        //   longitude: results.data[i].location.longitude});
-        // locationData.add(results.data[i].location.name);
         locationData.push(results.data[i].location);
         oms.addMarker(marker);
       }
     }
     locations.length = 0;
-    locationData.forEach((lctn) => {
+    locationData.map((lctn) => {
       locationSet.add(lctn.name);
     });
     [...locationSet].forEach((location) => {
       locations.push(location);
     });
-    console.log(locations);
   };
-  //overlay to css icons
-  var myoverlay = new google.maps.OverlayView();
-  myoverlay.draw = function () {
-    //this assigns an id to the markerlayer Pane, so it can be referenced by CSS
-    this.getPanes().markerLayer.id='markerLayer';
-  };
-  myoverlay.setMap(map);
+
   google.maps.event.trigger(map, 'resize');
   map.setCenter(honolulu);
 
