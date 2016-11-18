@@ -17,7 +17,7 @@
         <a class="back" ng-class="{active: layout == 'back'}" ng-click="layout = 'back'" ng-hide="layout == 'back'">Go to Friends</a>
         <div class="friendsContainer">
           <div class="places" ng-repeat="place in locations track by $index">
-            {{place}}
+            <button ng-click="centerMap(place)">{{place}}</button>
           </div>
         </div>
       </div>
