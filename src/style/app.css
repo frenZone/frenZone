@@ -148,8 +148,9 @@ body {
 }
 #inputDisplay{
   color: #818181;
-  margin-left: 37%;
   padding-bottom: 10px;
+  width: 100%;
+
 }
 #searchUser{
 margin-top: 20px;

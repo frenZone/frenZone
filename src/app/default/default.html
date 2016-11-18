@@ -21,12 +21,13 @@
           </div>
         </div>
       </div>
-
       <div ng-hide="layout == 'location'">
         <a class="location" ng-class="{active: layout == 'location'}" ng-click="layout = 'location'" ng-hide="layout == 'location'">Go to Locations</a>
         <input type="text" id="searchUser" ng-model="searchUser" placeholder="search by name or username" />
-        <input id="inputTime" type="range" min="3600" max="864000"></input>
-        <div id="inputDisplay"></div>
+          <input id="inputTime" type="range" min="3600" max="994000" ng-model="inputTime" ng-change="onChange()"></input>
+          <div id="inputDisplay">{{inputTimeDisplay}}
+            <div ng-show="inputTimeDisplay === undefined">Scroll for length</div>
+          </div>
         <div class="friendsContainer" ng-repeat="friend in friends | filter:searchUser">
           <img ng-click="getUserPhotos(friend.id)" ng-src="{{ friend.profile_picture }}">
           </img>
