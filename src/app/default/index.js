@@ -41,6 +41,7 @@ function deleteMarkers() {
 }
 
 const showLocationMarkers = function(){
+
   deleteMarkers();
 
 };
@@ -76,16 +77,45 @@ const showAllPhotos = function (){
   }
 };
 
+// const getUserPhotos = function (username){
+
+//   deleteMarkers();
+
+// };
+
+// const showAllPhotos = function (){
+//   deleteMarkers();
+//    for (var i = 0; i < instaData.length; i++) {
+//     if(instaData[i].location !== null){
+//       var coords = instaData[i].location;
+//       var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
+//       var image = instaData[i].user.profile_picture;
+//       // var image = 'https://scontent.cdninstagram.com/t51.2885-19/150x150/14582392_1153156614795077_1774168565260222464_a.jpg';
+//       var marker = new google.maps.Marker({
+//         position: latLng,
+//         map: map,
+//         animation: google.maps.Animation.DROP,
+//         title: coords.name,
+//         id: 'marker',
+//         icon: {
+//           url: image,
+//           scaledSize: new google.maps.Size(40, 40),
+//           optimized:false
+//         }
+//       });
+//       var infowindow = new google.maps.InfoWindow();
+//       marker.desc = '<div id="locationPicture">'+
+//         `<img src="${instaData[i].images.thumbnail.url}"></img>`+
+//         '</div>';
+
+//       oms.addMarker(marker);
+//     }
+//     map.setCenter({lat: 21.308743338531, lng: -157.80870209358});
+//   }
+// };
+
 const getUserPhotos = function (username){
   deleteMarkers();
-    var inputTime = document.getElementById('inputTime');
-    var inputDisplay = document.getElementById('inputDisplay');
-    var displayOutPut = document.getElementById('displayOutPut');
-    var numberHours =(Math.round((inputTime.value/3600)) + " hours");
-    if(inputTime.value >= 86400){
-      numberHours =(Math.round((inputTime.value/86400)) + " days");
-    }
-    inputDisplay.innerHTML = numberHours + " ago";
     for (var i = 0; i < instaData.length; i++) {
       if(instaData[i].location !== null && instaData[i].user.id === username){
         if(instaData[i].created_time >= (Math.round(new Date()/1000)-inputTime.value)){
@@ -133,6 +163,17 @@ export const DefaultCtrl = [
       $scope.showAllPhotos = showAllPhotos.bind(this);
       $scope.instaData = instaData;
       $scope.locations = locations;
+<<<<<<< HEAD
+
+      $scope.onChange = function (){
+        var numberHours =(Math.round(($scope.inputTime/3600)) + " hours");
+        if($scope.inputTime >= 86400){
+          numberHours =(Math.round(($scope.inputTime/86400)) + " days");
+        }
+        $scope.inputTimeDisplay = numberHours + " ago";
+      };
+=======
+>>>>>>> 1954ef9858d903dc8e3eb936e051e9c712f9ced0
 
       PhotosService.getFriends()
       .success((friends) => {
