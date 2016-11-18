@@ -114,8 +114,6 @@ span {
 }
 
 .friendsCol {
-  display: flex;
-  flex-flow: row wrap;
   font-family: 'Monda', sans-serif;
   text-align: center;
   flex: 0 0 100%;
@@ -126,9 +124,7 @@ span {
   color:white;
 }
 .friendsContainer {
-  color: white;
-  /*background-color:#055370;*/
- /* border: 1px solid white;*/
+  color: #FA6900;
   margin-bottom: 5px;
 }
 
@@ -136,9 +132,12 @@ span {
   border-radius: 50%;
   width:70px;
   height: 70px;
- /* border: 1px solid white;*/
 }
 
+.friendsContainer .places{
+  height: 50px;
+  border: 20px yellow;
+}
 
 .friends {
   display:flex;
@@ -152,7 +151,6 @@ span {
 
 .imgCont {
   display: flex;
-  /*flex-flow: row-wrap;*/
   flex-wrap: wrap;
   flex: 0 0 100%;
   max-height: 100%;
@@ -208,12 +206,12 @@ width: 80%;
 
 .iconContainer{
   padding: 10px;
-  height: 100px;
+  height: 120px;
   flex: 0 0 100%;
   display:flex;
   flex-flow:row wrap;
   justify-content: center;
-  margin:auto;
+  /*margin:auto;*/
   width: 100%;
   margin-top: -10px;
   margin-left:-20px;
@@ -244,27 +242,21 @@ width: 80%;
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
-  /*margin-top: 10px;*/
   height: 100%;
   width: 0;
   position: fixed;
   z-index: 1;
   top: 0;
   right: 0;
-  /*background-color:lightblue;*/
-   /*background-color:rgba(255,0,0,0.1) ;*/
- /* border-radius: 15px;*/
   overflow-x: hidden;
   transition: 0.5s;
- /* padding-top: 60px;*/
-
 }
 
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: white;
+    color: grey;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -272,26 +264,22 @@ width: 80%;
 }
 
 .sidenav a:hover, .offcanvas a:focus{
-    color: #f1f1f1;
+    color: #FA6900;
 }
 
 .sidenav .closebtn {
-/*  position: absolute;
-  top: -10px;
-  right: 0;
-  font-size: 36px;
-  margin-top: 0%;
-  margin-right: 22%;*/
   padding-right: 40px;
+  flex: 0 0 100%;
 }
 
-.closeButton{
+/*.closeButton{
+  height: 60px;
   flex: 0 0 100%;
   font-size: 36px;
   background-color: #023756;
   border-radius: 15px;
 
-}
+}*/
 
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 40px;}

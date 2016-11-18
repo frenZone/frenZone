@@ -1,6 +1,6 @@
 import angular from 'angular';
 import * as uiRouter from 'angular-ui-router';
-import { DefaultCtrlState, DefaultCtrl, DefaultCtrlName, instaData, loadMarkers } from './default';
+import { DefaultCtrlState, DefaultCtrl, DefaultCtrlName, instaData } from './default';
 import { GridCtrlState, GridCtrl, GridCtrlName } from './grid';
 import { LocationCtrlState, LocationCtrl, LocationCtrlName } from './location';
 import { PhotosServiceName, PhotosService } from './services/photos';
