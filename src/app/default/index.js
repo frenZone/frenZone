@@ -163,7 +163,6 @@ export const DefaultCtrl = [
       $scope.showAllPhotos = showAllPhotos.bind(this);
       $scope.instaData = instaData;
       $scope.locations = locations;
-<<<<<<< HEAD
 
       $scope.onChange = function (){
         var numberHours =(Math.round(($scope.inputTime/3600)) + " hours");
@@ -172,8 +171,6 @@ export const DefaultCtrl = [
         }
         $scope.inputTimeDisplay = numberHours + " ago";
       };
-=======
->>>>>>> 1954ef9858d903dc8e3eb936e051e9c712f9ced0
 
       PhotosService.getFriends()
       .success((friends) => {
