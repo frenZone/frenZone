@@ -15,6 +15,44 @@ app > section{
   height: 90%;
 }
 
+
+.outsideTransparentContainer{
+  text-align: center;
+  width: 68%;
+  height: 68%;
+  background-color: rgba(105, 105, 105, 0.1);
+}
+
+.loginBackground{
+  display: flex;
+  justify-content: center;
+  background-color: #171525;
+ /* background-image: url('./img/IMG_2361.jpg');
+  background-size: cover;*/
+  width: 100%;
+  height: 100%;
+}
+
+.loginContainer{
+  height: 83%;
+  margin-top: 2%;
+  text-align: center;
+}
+.loginLogo{
+  text-align: center;
+  width: 80%;
+  margin-top: -27%;
+  margin-left: -4%;
+}
+
+.loginButtonContainer{
+  width: 100%;
+}
+
+.loginButton{
+  color: #FA6900;
+}
+
 #pac-input {
   background-color: #fff;
   font-family: Roboto;
@@ -314,3 +352,46 @@ a.back{
 
 
 
+/*animation*/
+.fallingIconPic{
+  width: 90%;
+}
+
+.fallingIcon{
+    width: 100px;
+    height: 100px;
+    padding-left: 52%;
+    position :relative;
+    top:100px;
+    -webkit-animation: mymove 4s 5; /* Safari 4.0 - 8.0 */
+    animation: mymove 4s 5;
+}
+
+@-webkit-keyframes mymove {
+    0%   {top: 0px;}
+    20%  {top: 100px;}
+    40%  {top: 20px}
+    50% {top: 100px;}
+    60%  {top: 40px}
+    70% {top: 100px;}
+    80%  {top: 80px}
+    100% {top: 100px;}
+}
+
+/* Standard syntax */
+/*@keyframes mymove {
+    0%   {top: 0px;}
+    25%  {top: 200px;}
+    75%  {top: 50px}
+    100% {top: 100px;}
+}*/
+@keyframes mymove {
+    5%   {top: 0px;}
+    10%  {top: 100px;}
+    15%  {top: 50px}
+    20% {top: 100px;}
+    25%  {top: 80px}
+    30% {top: 100px;}
+    35%  {top: 90px}
+    40% {top: 100px;}
+}
