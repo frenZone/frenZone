@@ -17,5 +17,3 @@ export const PhotosService = [
 
   }
 ];
-
-// https://api.instagram.com/v1/users/196312792/media/recent/?&callback=JSON_CALLBACK&access_token=175690487.02eff85.fd0b74d4431044a9b82fc9a925d036ad
