@@ -47,6 +47,7 @@ angular.module(MODULE_NAME, ['ui.router'])
       $state.go('default');
     }
 
+
   })
   .directive('app', app)
   .service(PhotosServiceName, PhotosService)
