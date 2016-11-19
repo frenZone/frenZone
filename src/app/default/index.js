@@ -169,7 +169,6 @@ export const DefaultCtrl = [
   class DefaultCtrl {
     constructor($scope, PhotosService,$sce, instaData) {
       $scope.friends =[];
-
       $scope.getUserPhotos = this.getUserPhotos;
       $scope.getUserPhotos = getUserPhotos.bind(this);
       $scope.showAllPhotos = this.showAllPhotos;
@@ -192,6 +191,7 @@ export const DefaultCtrl = [
       .success((friends) => {
         $scope.friends = friends.data;
       });
+
       this.initMap();
     }
 

@@ -1,4 +1,5 @@
 export const PhotosServiceName = 'photos';
+import {instaData} from '../default/index';
 export const PhotosService = [
   '$http',
   class PhotosService{
