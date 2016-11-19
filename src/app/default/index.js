@@ -169,7 +169,6 @@ export const DefaultCtrl = [
   class DefaultCtrl {
     constructor($scope, PhotosService,$sce, instaData) {
       $scope.friends =[];
-
       $scope.getUserPhotos = this.getUserPhotos;
       $scope.getUserPhotos = getUserPhotos.bind(this);
       $scope.showAllPhotos = this.showAllPhotos;
@@ -192,6 +191,7 @@ export const DefaultCtrl = [
       .success((friends) => {
         $scope.friends = friends.data;
       });
+
       this.initMap();
     }
 
@@ -425,6 +425,12 @@ initMap() {
     });
     [...locationSet].forEach((location) => {
       locations.push(location);
+    });
+
+    locations.sort((a,b) => {
+      if(a<b) return -1;
+      if(a>b) return 1;
+      return 0;
     });
   };
 

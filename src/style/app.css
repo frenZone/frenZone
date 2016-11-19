@@ -9,13 +9,15 @@ app{
   display: block;
   height: 100%;
 }
+
 app > section{
   display: block;
   height: 90%;
-
 }
 
-/*.outsideTransparentContainer{
+
+/*
+.outsideTransparentContainer{
   text-align: center;
   width: 68%;
   height: 68%;
@@ -56,6 +58,7 @@ app > section{
   border-radius: 25px;
   color: #FA6900;
 }
+
 #pac-input {
   background-color: #fff;
   font-family: Roboto;
@@ -99,14 +102,12 @@ span {
   width: 20%;
 }
 
-
 /*main top bar*/
 .bar .search_photo_container {
   display: flex;
   flex-flow: row wrap;
   flex: 0 0 50%;
 }
-
 
 #search_user_input{
   width: 80%;
@@ -120,7 +121,7 @@ span {
 
 .bar {
   color: white;
-  font-family: 'Monda', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 30px;
   display: flex;
   flex-flow: row wrap;
@@ -154,8 +155,8 @@ span {
 }
 
 .friendsCol {
-  font-family: 'Monda', sans-serif;
-  text-align: center;
+  background-color: #171F25;
+  font-family: 'Poppins', sans-serif;  text-align: center;
   flex: 0 0 100%;
   margin-top: 10px;
 }
@@ -164,7 +165,7 @@ span {
   color:white;
 }
 .friendsContainer {
-  color: #FA6900;
+  color: grey;
   margin-bottom: 5px;
 }
 
@@ -174,10 +175,14 @@ span {
   height: 70px;
 }
 
-.friendsContainer .places{
+.freindsContainer hover{
+ color: #FA6900;
+}
+
+/*.friendsContainer .places{
   height: 50px;
   border: 20px yellow;
-}
+}*/
 
 .friends {
   display:flex;
@@ -187,6 +192,10 @@ span {
   background-color: white;
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+.names:hover{
+  color: #FA6900;
 }
 
 .imgCont {
@@ -224,6 +233,7 @@ body {
   width: 100%;
 
 }
+
 #searchUser{
 margin-top: 20px;
 flex: 0 0 90%;
@@ -246,20 +256,21 @@ width: 80%;
 
 .iconContainer{
   padding: 10px;
-  height: 120px;
+  height: 50px;
   flex: 0 0 100%;
   display:flex;
   flex-flow:row wrap;
   justify-content: center;
   /*margin:auto;*/
-  width: 100%;
+ /* width: 100%;*/
   margin-top: -10px;
-  margin-left:-20px;
+  /*margin-left:-20px;*/
   background-color: #023756;
   /*background-color: ##171F25;*/
 
 }
-.friendsIcon{
+
+/*.friendsIcon{
   background-image: url('https://s6.postimg.org/i0cidwttt/friendcirclewhite.png');
   background-repeat: no-repeat;
   background-size: 67px;
@@ -275,10 +286,12 @@ width: 80%;
   background-repeat: no-repeat;
   height: 42px;
   width: 16px;
-}
+}*/
 
 
 .sidenav {
+  background-color: #171F25;
+  border: 1px solid grey;
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
@@ -308,18 +321,11 @@ width: 80%;
 }
 
 .sidenav .closebtn {
+  text-align: center;
   padding-right: 40px;
   flex: 0 0 100%;
 }
 
-/*.closeButton{
-  height: 60px;
-  flex: 0 0 100%;
-  font-size: 36px;
-  background-color: #023756;
-  border-radius: 15px;
-
-}*/
 
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 40px;}
@@ -333,6 +339,23 @@ width: 80%;
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
+.specificLocation{
+  padding: 10px;
+  border-bottom: 1px solid grey;
+}
+
+.specificLocation:hover{
+  color: #FA6900;
+  background-color: black;
+}
+
+a.back{
+  text-align: center;
+  padding-right: 30px;
+  flex: 0 0 100%;
+}
+
 
 
 /*animation*/
