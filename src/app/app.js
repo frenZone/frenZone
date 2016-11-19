@@ -4,6 +4,8 @@ import { DefaultCtrlState, DefaultCtrl, DefaultCtrlName, instaData } from './def
 import { GridCtrlState, GridCtrl, GridCtrlName } from './grid';
 import { LocationCtrlState, LocationCtrl, LocationCtrlName } from './location';
 import { PhotosServiceName, PhotosService } from './services/photos';
+import { MapServiceName, MapService } from './services/map';
+import { MarkerServiceName, MarkerService } from './services/markers';
 import { FriendsCtrlState, FriendsCtrl, FriendsCtrlName } from './friends';
 import '../style/app.css';
 
@@ -40,6 +42,8 @@ angular.module(MODULE_NAME, ['ui.router'])
   })
   .directive('app', app)
   .service(PhotosServiceName, PhotosService)
+  .service(MapServiceName, MapService)
+  .service(MarkerServiceName, MarkerService)
   .constant('instaData', instaData)
   .controller('AppCtrl', AppCtrl)
   .controller(DefaultCtrlName, DefaultCtrl)
