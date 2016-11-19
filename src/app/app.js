@@ -7,6 +7,8 @@ import { PhotosServiceName, PhotosService } from './services/photos';
 import { MapServiceName, MapService } from './services/map';
 import { MarkerServiceName, MarkerService } from './services/markers';
 import { FriendsCtrlState, FriendsCtrl, FriendsCtrlName } from './friends';
+// import { LoginCtrlState, LoginCtrl, LoginCtrlName} from './login';
+
 import '../style/app.css';
 
 
@@ -29,16 +31,24 @@ const MODULE_NAME = 'app';
 
 angular.module(MODULE_NAME, ['ui.router'])
   .config(($urlRouterProvider,$stateProvider) => {
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('default');
     $stateProvider
       .state('default', DefaultCtrlState)
       .state('grid', GridCtrlState)
       .state('location', LocationCtrlState)
       .state('friends', FriendsCtrlState)
+      // .state('login', LoginCtrlState)
+
+
       ;
   })
   .run(($state) => {
-    $state.go('default');
+    if(localStorage.token === undefined || localStorage.token === null ){
+      $state.go('login');
+    }else{
+      $state.go('default');
+    }
+
   })
   .directive('app', app)
   .service(PhotosServiceName, PhotosService)
@@ -49,6 +59,7 @@ angular.module(MODULE_NAME, ['ui.router'])
   .controller(DefaultCtrlName, DefaultCtrl)
   .controller(GridCtrlName, GridCtrl)
   .controller(FriendsCtrlName, FriendsCtrl)
+  // .controller(LoginCtrlName, LoginCtrl)
   .controller(LocationCtrlName, LocationCtrl);
 
 

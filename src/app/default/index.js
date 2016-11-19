@@ -48,6 +48,7 @@ function deleteMarkers() {
 }
 
 const showLocationMarkers = function(){
+
   deleteMarkers();
 };
 
@@ -81,6 +82,7 @@ const showLocationMarkers = function(){
 //     map.setCenter({lat: 21.308743338531, lng: -157.80870209358});
 //   }
 // };
+
 
 // const getUserPhotos = function (username){
 //   deleteMarkers();
@@ -123,6 +125,7 @@ const showLocationMarkers = function(){
 //   }
 // };
 
+
 export const DefaultCtrl = [
   '$scope',
   PhotosServiceName,
@@ -143,6 +146,13 @@ export const DefaultCtrl = [
         $scope.instaData = this.instaData;
         $scope.locationData = this.locationData;
         $scope.locations = this.locations;
+      };
+      $scope.onChange = function (){
+        var numberHours =(Math.round(($scope.inputTime/3600)) + " hours");
+        if($scope.inputTime >= 86400){
+          numberHours =(Math.round(($scope.inputTime/86400)) + " days");
+        }
+        $scope.inputTimeDisplay = numberHours + " ago";
       };
 
       PhotosService.getFriends()
