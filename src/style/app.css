@@ -212,20 +212,21 @@ width: 80%;
 
 .iconContainer{
   padding: 10px;
-  height: 120px;
+  height: 50px;
   flex: 0 0 100%;
   display:flex;
   flex-flow:row wrap;
   justify-content: center;
   /*margin:auto;*/
-  width: 100%;
+ /* width: 100%;*/
   margin-top: -10px;
-  margin-left:-20px;
+  /*margin-left:-20px;*/
   background-color: #023756;
   /*background-color: ##171F25;*/
 
 }
-.friendsIcon{
+
+/*.friendsIcon{
   background-image: url('https://s6.postimg.org/i0cidwttt/friendcirclewhite.png');
   background-repeat: no-repeat;
   background-size: 67px;
@@ -241,7 +242,7 @@ width: 80%;
   background-repeat: no-repeat;
   height: 42px;
   width: 16px;
-}
+}*/
 
 
 .sidenav {
@@ -305,6 +306,11 @@ width: 80%;
   background-color: black;
 }
 
+a.back{
+  text-align: center;
+  padding-right: 30px;
+  flex: 0 0 100%;
+}
 
 
 
