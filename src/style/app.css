@@ -14,17 +14,18 @@ app > section{
 }
 
 
+/*
 .outsideTransparentContainer{
   text-align: center;
   width: 68%;
   height: 68%;
-  background-color: rgba(105, 105, 105, 0.1);
-}
+  background-color: rgba(10, 10, 10, 0);
+}*/
 
 .loginBackground{
   display: flex;
   justify-content: center;
-  background-color: #171525;
+  background-color: black;
  /* background-image: url('./img/IMG_2361.jpg');
   background-size: cover;*/
   width: 100%;
@@ -37,17 +38,22 @@ app > section{
   text-align: center;
 }
 .loginLogo{
+  color: white;
+  font-size: 163px;
   text-align: center;
-  width: 80%;
-  margin-top: -27%;
-  margin-left: -4%;
+  width: 760px;
+  margin-top: 17%;
 }
 
 .loginButtonContainer{
   width: 100%;
+  height: 50px;
 }
 
 .loginButton{
+  width: 200px;
+  height: 50px;
+  border-radius: 25px;
   color: #FA6900;
 }
 
@@ -330,21 +336,22 @@ a.back{
 
 /*animation*/
 .fallingIconPic{
-  width: 90%;
+  width: 93px;
 }
 
 .fallingIcon{
     width: 100px;
     height: 100px;
-    padding-left: 52%;
+    padding-left: 57%;
     position :relative;
-    top:100px;
-    -webkit-animation: mymove 4s 5; /* Safari 4.0 - 8.0 */
-    animation: mymove 4s 5;
+    top:161px;
+    -webkit-animation: mymove 4s 1; /* Safari 4.0 - 8.0 */
+    animation: mymove 4s 1;
 }
 
 @-webkit-keyframes mymove {
-    0%   {top: 0px;}
+    0%    {top: 0px;}
+    10%  {top: 0px;}
     20%  {top: 100px;}
     40%  {top: 20px}
     50% {top: 100px;}
@@ -357,18 +364,19 @@ a.back{
 /* Standard syntax */
 /*@keyframes mymove {
     0%   {top: 0px;}
-    25%  {top: 200px;}
+    25%  {top: 161px;}
     75%  {top: 50px}
     100% {top: 100px;}
 }*/
 @keyframes mymove {
     5%   {top: 0px;}
-    10%  {top: 100px;}
-    15%  {top: 50px}
-    20% {top: 100px;}
-    25%  {top: 80px}
-    30% {top: 100px;}
-    35%  {top: 90px}
-    40% {top: 100px;}
+    10%  {top: 161px;}
+    15%  {top: 20px}
+    20% {top: 161px;}
+    25%  {top:120px}
+    30% {top: 161px;}
+    35%  {top: 150px}
+    40% {top: 161px;}
+    100% {top:161px;}
 
 }
