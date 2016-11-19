@@ -427,6 +427,12 @@ initMap() {
     [...locationSet].forEach((location) => {
       locations.push(location);
     });
+
+    locations.sort((a,b) => {
+      if(a<b) return -1;
+      if(a>b) return 1;
+      return 0;
+    });
   };
 
   google.maps.event.trigger(map, 'resize');
