@@ -77,7 +77,7 @@ span {
 
 .bar {
   color: white;
-  font-family: 'Monda', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 30px;
   display: flex;
   flex-flow: row wrap;
@@ -111,8 +111,8 @@ span {
 }
 
 .friendsCol {
-  font-family: 'Monda', sans-serif;
-  text-align: center;
+  background-color: #171F25;
+  font-family: 'Poppins', sans-serif;  text-align: center;
   flex: 0 0 100%;
   margin-top: 10px;
 }
@@ -121,7 +121,7 @@ span {
   color:white;
 }
 .friendsContainer {
-  color: #FA6900;
+  color: grey;
   margin-bottom: 5px;
 }
 
@@ -131,10 +131,14 @@ span {
   height: 70px;
 }
 
-.friendsContainer .places{
+.freindsContainer hover{
+ color: #FA6900;
+}
+
+/*.friendsContainer .places{
   height: 50px;
   border: 20px yellow;
-}
+}*/
 
 .friends {
   display:flex;
@@ -144,6 +148,10 @@ span {
   background-color: white;
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+.names:hover{
+  color: #FA6900;
 }
 
 .imgCont {
@@ -237,6 +245,8 @@ width: 80%;
 
 
 .sidenav {
+  background-color: #171F25;
+  border: 1px solid grey;
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
@@ -284,5 +294,17 @@ width: 80%;
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
+.specificLocation{
+  padding: 10px;
+  border-bottom: 1px solid grey;
+}
+
+.specificLocation:hover{
+  color: #FA6900;
+  background-color: black;
+}
+
+
 
 
