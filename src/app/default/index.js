@@ -138,9 +138,25 @@ export const DefaultCtrl = [
       $scope.instaData = MapService.getInstaData();
       $scope.locationData= MapService.getLocationData();
       $scope.locations = MapService.getLocations();
+
+      MapService.initMap();
+      //casey
+      MapService.getData('https://api.instagram.com/v1/users/55870965/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=55870965.2c4aaae.e0dd1784350a44838eda4573296a5750');
+
+      //aaron
+      MapService.getData('https://api.instagram.com/v1/users/175690487/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=175690487.02eff85.fd0b74d4431044a9b82fc9a925d036ad');
+
+      //frenzone
+      MapService.getData('https://api.instagram.com/v1/media/search?lat=21.2922381&lng=-157.8237538&distance=5000&callback=JSON_CALLBACK&access_token=4120053413.02eff85.2d5b2829f52046549e0f2a92ac0655c6');
+
+      //renee
+      MapService.getData('https://api.instagram.com/v1/users/1639523138/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=1639523138.14ebd44.ce64b66e004a4bd380c6ea8731527d4f');
+
+      //JP
+      MapService.getData('https://api.instagram.com/v1/users/196312792/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=196312792.0f4f10a.e1911280307a478fb82448f6d6282be8');
+
       $scope.map = MapService.getMap();
-      $scope.centerMap = MarkerService.centerMap;
-      $scope.centerMap = MarkerService.centerMap.bind(this);
+      $scope.centerMap = MarkerService.centerMap.bind(this, $scope.map, $scope.locationData);
 
       MapService.update = function () {
         $scope.instaData = this.instaData;
@@ -160,21 +176,6 @@ export const DefaultCtrl = [
         $scope.friends = friends.data;
       });
 
-      MapService.initMap();
-      //casey
-      MapService.getData('https://api.instagram.com/v1/users/55870965/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=55870965.2c4aaae.e0dd1784350a44838eda4573296a5750');
-
-      //aaron
-      MapService.getData('https://api.instagram.com/v1/users/175690487/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=175690487.02eff85.fd0b74d4431044a9b82fc9a925d036ad');
-
-      //frenzone
-      MapService.getData('https://api.instagram.com/v1/media/search?lat=21.2922381&lng=-157.8237538&distance=5000&callback=JSON_CALLBACK&access_token=4120053413.02eff85.2d5b2829f52046549e0f2a92ac0655c6');
-
-      //renee
-      MapService.getData('https://api.instagram.com/v1/users/1639523138/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=1639523138.14ebd44.ce64b66e004a4bd380c6ea8731527d4f');
-
-      //JP
-      MapService.getData('https://api.instagram.com/v1/users/196312792/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=196312792.0f4f10a.e1911280307a478fb82448f6d6282be8');
     }
   }
 
