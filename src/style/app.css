@@ -156,9 +156,15 @@ span {
 
 .friendsCol {
   background-color: #171F25;
-  font-family: 'Poppins', sans-serif;  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
   flex: 0 0 100%;
   margin-top: 10px;
+}
+
+.locationsContainer{
+  text-align:left;
+  color:grey;
 }
 
 .className{
@@ -247,9 +253,11 @@ width: 80%;
   border-radius: 100px !important;
   border: 1px solid !important;
 }
+
 #map #locationPicture img{
   border: 5px solid blue;
 }
+
 #map #locationPicture{
   text-align: center;
 }
@@ -305,6 +313,13 @@ width: 80%;
   transition: 0.5s;
 }
 
+.sidenav[style="width: 250px"] .friendsCol .iconContainer {
+  position:fixed;
+  top:0;
+  right:1;
+
+}
+
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -323,7 +338,8 @@ width: 80%;
 .sidenav .closebtn {
   text-align: center;
   padding-right: 40px;
-  flex: 0 0 100%;
+  /*flex: 0 0 100%;*/
+
 }
 
 

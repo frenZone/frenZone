@@ -7,7 +7,7 @@ import { PhotosServiceName, PhotosService } from './services/photos';
 import { MapServiceName, MapService } from './services/map';
 import { MarkerServiceName, MarkerService } from './services/markers';
 import { FriendsCtrlState, FriendsCtrl, FriendsCtrlName } from './friends';
-// import { LoginCtrlState, LoginCtrl, LoginCtrlName} from './login';
+import { LoginCtrlState, LoginCtrl, LoginCtrlName} from './login';
 
 import '../style/app.css';
 
@@ -37,7 +37,7 @@ angular.module(MODULE_NAME, ['ui.router'])
       .state('grid', GridCtrlState)
       .state('location', LocationCtrlState)
       .state('friends', FriendsCtrlState)
-      // .state('login', LoginCtrlState)
+      .state('login', LoginCtrlState)
 
 
       ;
@@ -48,8 +48,6 @@ angular.module(MODULE_NAME, ['ui.router'])
     }else{
       $state.go('default');
     }
-
-
   })
   .directive('app', app)
   .service(PhotosServiceName, PhotosService)
@@ -60,7 +58,7 @@ angular.module(MODULE_NAME, ['ui.router'])
   .controller(DefaultCtrlName, DefaultCtrl)
   .controller(GridCtrlName, GridCtrl)
   .controller(FriendsCtrlName, FriendsCtrl)
-  // .controller(LoginCtrlName, LoginCtrl)
+  .controller(LoginCtrlName, LoginCtrl)
   .controller(LocationCtrlName, LocationCtrl);
 
 

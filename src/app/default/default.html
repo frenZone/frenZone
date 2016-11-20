@@ -24,7 +24,7 @@
 
       <div ng-show="layout == 'location'">
         <a class="back" ng-class="{active: layout == 'back'}" ng-click="layout = 'back'" ng-hide="layout == 'back'">Go to Friends</a>
-        <div class="friendsContainer">
+        <div class="locationsContainer">
           <div class="places" ng-repeat="place in locations track by $index">
             <div class="specificLocation" ng-click="centerMap(place)">{{place}}</div>
           </div>
