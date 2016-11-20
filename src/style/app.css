@@ -298,6 +298,7 @@ width: 80%;
 
 
 .sidenav {
+  /*margin-top:70px;*/
   background-color: #171F25;
   border: 1px solid grey;
   display: flex;
@@ -323,6 +324,7 @@ width: 80%;
   position:fixed;
   top:0;
   right:0;
+  -webkit-transform: translateZ(0);
 }
 
 .sidenav a {
@@ -343,7 +345,7 @@ width: 80%;
 .sidenav .closebtn {
   text-align: center;
   padding-right: 40px;
-  /*flex: 0 0 100%;*/
+  flex: 0 0 100%;
 
 }
 
