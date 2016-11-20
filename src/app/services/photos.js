@@ -4,9 +4,19 @@ export const PhotosService = [
   '$http',
   class PhotosService{
 
-    constructor($http){
+    constructor($http, token){
       this.$http = $http;
-      this.token = localStorage.token;
+      this.token = location.hash.slice(15,(location.hash.length))
+
+      var newToken = localStorage.token;
+      var token =location.hash.slice(15,(location.hash.length));
+      localStorage.setItem('token',token);
+       // localStorage.token = token;
+      console.log("location.hash2 ",location.hash.slice(15,(location.hash.length)));
+      // console.log("WWW",JSON.parse(localStorage.getItem(token)))
+      // console.log("this.token",this.token)
+      console.log("localStorage.token",localStorage.token)
+      console.log("token",token)
     }
 
     getPhotos(id){
