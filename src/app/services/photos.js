@@ -4,13 +4,19 @@ export const PhotosService = [
   '$http',
   class PhotosService{
 
-    constructor($http){
+    constructor($http,token){
       this.$http = $http;
-      this.token = localStorage.token;
+      // this.token = localStorage.token;
+      this.token = location.hash.slice(15,(location.hash.length))
+      var newToken = localStorage.token;
+
+      var token =location.hash.slice(15,(location.hash.length));
+      localStorage.setItem('token',token);
+      console.log("this.token",this.token)
     }
 
     getPhotos(id){
-      // return this.$http.jsonp(`https://api.instagram.com/v1/users/${id}/media/recent/?&callback=JSON_CALLBACK&access_token=175690487.02eff85.fd0b74d4431044a9b82fc9a925d036ad`);
+
       return this.$http.jsonp(`https://api.instagram.com/v1/users/${id}/media/recent/?&callback=JSON_CALLBACK&access_token=${this.token}`);
 
     }
