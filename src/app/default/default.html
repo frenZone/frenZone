@@ -24,14 +24,14 @@
       </div>
 
 
-<!--       <div ng-show="layout == 'location'">
+      <div ng-show="layout == 'location'">
         <a class="back" ng-class="{active: layout == 'back'}" ng-click="layout = 'back'" ng-hide="layout == 'back'">Go to Friends</a>
         <div class="locationsContainer">
           <div class="places" ng-repeat="place in locations track by $index">
             <div class="specificLocation" ng-click="centerMap(place)">{{place}}</div>
           </div>
         </div>
-      </div> -->
+      </div>
       <div ng-hide="layout == 'location'">
         <a class="location" ng-class="{active: layout == 'location'}" ng-click="layout = 'location'" ng-hide="layout == 'location'">Go to Locations</a>
         <input type="text" id="searchUser" ng-model="searchUser" placeholder="search by name or username" />
