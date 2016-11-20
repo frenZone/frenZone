@@ -7,7 +7,7 @@ import { PhotosServiceName, PhotosService } from './services/photos';
 import { MapServiceName, MapService } from './services/map';
 import { MarkerServiceName, MarkerService } from './services/markers';
 import { FriendsCtrlState, FriendsCtrl, FriendsCtrlName } from './friends';
-// import { LoginCtrlState, LoginCtrl, LoginCtrlName} from './login';
+import { LoginCtrlState, LoginCtrl, LoginCtrlName} from './login';
 
 import '../style/app.css';
 
@@ -37,16 +37,18 @@ angular.module(MODULE_NAME, ['ui.router'])
       .state('grid', GridCtrlState)
       .state('location', LocationCtrlState)
       .state('friends', FriendsCtrlState)
-      // .state('login', LoginCtrlState)
+      .state('login', LoginCtrlState)
 
 
       ;
   })
   .run(($state) => {
-    if(localStorage.token === undefined || localStorage.token === null ){
+    if(localStorage.token === undefined || localStorage.token === ""  ){
       $state.go('login');
+      console.log('hit login page')
     }else{
       $state.go('default');
+      console.log('hit default page')
     }
 
 
@@ -60,7 +62,7 @@ angular.module(MODULE_NAME, ['ui.router'])
   .controller(DefaultCtrlName, DefaultCtrl)
   .controller(GridCtrlName, GridCtrl)
   .controller(FriendsCtrlName, FriendsCtrl)
-  // .controller(LoginCtrlName, LoginCtrl)
+  .controller(LoginCtrlName, LoginCtrl)
   .controller(LocationCtrlName, LocationCtrl);
 
 
