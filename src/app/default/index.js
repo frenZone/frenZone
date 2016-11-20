@@ -172,11 +172,12 @@ export const DefaultCtrl = [
       };
 
       $scope.logout = function (){
-        console.log(window.localStorage)
-      }
+        console.log(window.localStorage);
+      };
 
       PhotosService.getFriends()
       .success((friends) => {
+        console.log(friends);
         $scope.friends = friends.data;
       });
 

@@ -520,13 +520,17 @@ export const MapService = [
               let username = data.data[i].user.username;
               let fullName = data.data[i].user.full_name;
               let imageUrl = data.data[i].images.low_resolution.url;
-              let description = "picture taken at " + data.data[i].location.name;
+              let profilePicture = data.data[i].user.profile_picture;
+              let locationName = data.data[i].location.name;
+              let description = "picture taken at " + locationName;
               if(data.data[i].caption !== null){
                 description = data.data[i].caption.text;
               }
 
               marker.desc = '<div id="locationPicture">'+
+                `<img id='profile' src = "${profilePicture}">` +
                 '<h1>' + `${username}`+ `(${fullName})` + '</h1>' +
+                '<h3>' + '<img src = "./img/frenzone-icon.svg" width="20px" height="20px" >'+ ' ' +  locationName + '</h3>'+
                 `<img src="${imageUrl}"></img>`+
                 '<p>' + `${description}` + '</p>' +
                 '</div>';
