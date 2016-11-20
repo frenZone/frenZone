@@ -1,6 +1,8 @@
 <div class="bar">
     <div class="instafeed"><a class="home-icon" ng-class="{active: layout == 'default'}" ng-click="layout = 'default'" ui-sref="default"><img src='./img/frenzone-logo.svg'></img></a>
     </div>
+    <button ng-click="logout()" onclick="location.href='http://localhost:8080/login'">logout</button>
+    </script>
     <div class="search_photo_container">
       <input id="pac-input" onClick="this.select();" class="controls" type="text" placeholder="Search Location">
     </div>
@@ -22,14 +24,14 @@
       </div>
 
 
-      <div ng-show="layout == 'location'">
+<!--       <div ng-show="layout == 'location'">
         <a class="back" ng-class="{active: layout == 'back'}" ng-click="layout = 'back'" ng-hide="layout == 'back'">Go to Friends</a>
         <div class="friendsContainer">
           <div class="places" ng-repeat="place in locations track by $index">
             <div class="specificLocation" ng-click="centerMap(place)">{{place}}</div>
           </div>
         </div>
-      </div>
+      </div> -->
       <div ng-hide="layout == 'location'">
         <a class="location" ng-class="{active: layout == 'location'}" ng-click="layout = 'location'" ng-hide="layout == 'location'">Go to Locations</a>
         <input type="text" id="searchUser" ng-model="searchUser" placeholder="search by name or username" />

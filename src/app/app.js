@@ -43,10 +43,12 @@ angular.module(MODULE_NAME, ['ui.router'])
       ;
   })
   .run(($state) => {
-    if(localStorage.token === undefined || localStorage.token === null ){
+    if(localStorage.token === undefined || localStorage.token === ""  ){
       $state.go('login');
+      console.log('hit login page')
     }else{
       $state.go('default');
+      console.log('hit default page')
     }
 
 
