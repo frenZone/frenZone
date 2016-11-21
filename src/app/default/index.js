@@ -174,10 +174,12 @@ export const DefaultCtrl = [
         $scope.inputTimeDisplay = numberHours + " ago";
       };
 
+
       $scope.logout = function (){
 
         console.log(window.localStorage);
       };
+
 
       PhotosService.getFriends()
       .success((friends) => {

@@ -15,7 +15,7 @@
     </div>
 </div>
 
-<div class="mainBody">
+<div class="mainBody"
   <div id="map"></div>
   <div id="mySidenav" class="sidenav">
     <div class="friendsCol">
@@ -27,6 +27,7 @@
         <a class="friendsIcon2" ng-class="{active: layout == 'grid'}" ui-sref="grid"></a> -->
       </div>
 
+        <a ui-sref="data">data</a>
 
       <div ng-show="layout == 'location'">
         <a class="back" ng-class="{active: layout == 'back'}" ng-click="layout = 'back'" ng-hide="layout == 'back'">Go to Friends</a>
@@ -36,6 +37,7 @@
           </div>
         </div>
       </div>
+
       <div ng-hide="layout == 'location'">
         <a class="location" ng-class="{active: layout == 'location'}" ng-click="layout = 'location'" ng-hide="layout == 'location'">Go to Locations</a>
         <input type="text" id="searchUser" ng-model="searchUser" placeholder="search by name or username" />
@@ -52,7 +54,9 @@
           </div>
         </div>
       </div>
+
+
+
     </div>
   </div>
 </div>
-

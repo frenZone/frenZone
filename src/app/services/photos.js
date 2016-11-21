@@ -4,6 +4,7 @@ export const PhotosService = [
   '$http',
   class PhotosService{
 
+
     constructor($http,token){
       this.$http = $http;
       // this.token = localStorage.token;
