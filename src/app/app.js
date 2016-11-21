@@ -4,6 +4,7 @@ import { DefaultCtrlState, DefaultCtrl, DefaultCtrlName, instaData } from './def
 import { PhotosServiceName, PhotosService } from './services/photos';
 import { MapServiceName, MapService } from './services/map';
 import { MarkerServiceName, MarkerService } from './services/markers';
+import { DataCtrlState, DataCtrl, DataCtrlName } from './data';
 import { LoginCtrlState, LoginCtrl, LoginCtrlName} from './login';
 
 import '../style/app.css';
@@ -31,18 +32,18 @@ angular.module(MODULE_NAME, ['ui.router'])
     $urlRouterProvider.otherwise('default');
     $stateProvider
       .state('default', DefaultCtrlState)
+      .state('data', DataCtrlState)
       .state('login', LoginCtrlState)
-
-
       ;
   })
   .run(($state) => {
-    if(localStorage.token === undefined || localStorage.token === ""  ){
+    if(localStorage.token === undefined ||
+      localStorage.token === "" ||
+      localStorage.token === null){
       $state.go('login');
     }else{
       $state.go('default');
     }
-
   })
   .directive('app', app)
   .service(PhotosServiceName, PhotosService)
@@ -51,7 +52,8 @@ angular.module(MODULE_NAME, ['ui.router'])
   .constant('instaData', instaData)
   .controller('AppCtrl', AppCtrl)
   .controller(DefaultCtrlName, DefaultCtrl)
-  .controller(LoginCtrlName, LoginCtrl);
 
+  .controller(DataCtrlName, DataCtrl)
+  .controller(LoginCtrlName, LoginCtrl);
 
 export default MODULE_NAME;

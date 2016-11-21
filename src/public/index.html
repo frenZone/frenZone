@@ -21,14 +21,22 @@
 
   <script>
     function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
+      let sideNav = document.getElementById("mySidenav")
+        sideNav.style.width = "250px";
+        sideNav.classList.add('open-nav');
+        sideNav.classList.remove('close-nav');
+
     }
     function closeNav() {
-        document.getElementById("mySidenav").style.width = "0px";
+      let sideNav = document.getElementById("mySidenav")
+        sideNav.style.width = "0px";
+        sideNav.classList.add('close-nav');
+        sideNav.classList.remove('open-nav');
     }
 
+  </script>
 
-</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
 
 </body>
 </html>
