@@ -6,6 +6,7 @@
         </img>
       </a>
     </div>
+
     <div class="buttons">
       <div class="search_photo_container">
         <input id="pac-input" onClick="this.select();" class="controls" type="text" placeholder="Search Location">
@@ -13,15 +14,15 @@
       <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
       <div class="logoutButton" ng-class="{active: layout == 'login'}" ng-click="layout = 'login'" ui-sref="login">LOGOUT</div>
     </div>
+
 </div>
 
-<div class="mainBody"
+<div class="mainBody">
   <div id="map"></div>
   <div id="mySidenav" class="sidenav">
     <div class="friendsCol">
 
-
-       <div class="iconContainer">
+      <div class="iconContainer">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">close</a>
       </div>
 
@@ -39,10 +40,10 @@
       <div ng-hide="layout == 'location'">
         <a class="location" ng-class="{active: layout == 'location'}" ng-click="layout = 'location'" ng-hide="layout == 'location'">Go to Locations</a>
         <input type="text" id="searchUser" ng-model="searchUser" placeholder="search by name or username" />
-          <input id="inputTime" type="range" min="3600" max="994000" ng-model="inputTime" ng-change="onChange()"></input>
-          <div id="inputDisplay">{{inputTimeDisplay}}
+        <input id="inputTime" type="range" min="3600" max="994000" ng-model="inputTime" ng-change="onChange()"></input>
+        <div id="inputDisplay">{{inputTimeDisplay}}
             <div ng-show="inputTimeDisplay === undefined">Scroll for time period</div>
-          </div>
+        </div>
         <div class="friendsContainer" ng-repeat="friend in friends | filter:searchUser">
           <img ng-click="getUserPhotos(friend.username)" ng-src="{{ friend.profile_picture }}">
           </img>
