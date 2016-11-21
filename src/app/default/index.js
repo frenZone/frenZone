@@ -175,13 +175,13 @@ export const DefaultCtrl = [
       };
 
       $scope.logout = function (){
-        var url = 'http://api.alice.com/cors';
-var xhr = createCORSRequest('GET', url);
-xhr.send();
-      }
+
+        console.log(window.localStorage);
+      };
 
       PhotosService.getFriends()
       .success((friends) => {
+        console.log(friends);
         $scope.friends = friends.data;
       });
 
