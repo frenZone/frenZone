@@ -453,7 +453,7 @@ var greyScaleModeMap = new google.maps.StyledMapType(
             }
         ]
     }
-],  {name: 'Greyscale'});
+  ],  {name: 'Greyscale'});
 
 export const MapService = [
 '$http',
@@ -484,6 +484,9 @@ export const MapService = [
     getMap () {
       return this.map;
     }
+    getOms () {
+      return this.oms;
+    }
 
     setMapOnAll (map) {
       for (var i = 0; i < oms.a.length; i++) {
@@ -512,7 +515,6 @@ export const MapService = [
                 id: 'marker',
                 icon: {
                   url: image,
-                  scaledSize: new google.maps.Size(50, 50),
                   optimized:false
                 }
               });
@@ -563,6 +565,7 @@ export const MapService = [
         if(a>b) return 1;
         return 0;
       });
+      this.oms = oms;
       this.update();
     }
 
@@ -617,8 +620,7 @@ export const MapService = [
 
       var infoWindow = new google.maps.InfoWindow({map: map});
       var iw = new google.maps.InfoWindow();
-      oms= new OverlappingMarkerSpiderfier(map);
-
+      oms = new OverlappingMarkerSpiderfier(map);
       oms.addListener('click', function(marker, event) {
         iw.setContent(marker.desc);
         iw.open(map, marker);
@@ -627,6 +629,7 @@ export const MapService = [
       oms.addListener('spiderfy', function(markers) {
         iw.close();
       });
+      this.oms = oms;
       google.maps.event.trigger(map, 'resize');
       map.setCenter(honolulu);
 
