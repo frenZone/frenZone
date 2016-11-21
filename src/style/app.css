@@ -76,12 +76,14 @@ app > section{
   border-color: #4d90fe;
 }
 .instafeed{
+  flex:0 0 20%;
   display: inline-block;
   background-size: 70%;
   background-position:50% 30%;
   background-repeat: no-repeat;
 }
 .instafeed a{
+  flex: 0 0 30%;
   text-decoration: none;
   color:white;
 }
@@ -103,6 +105,7 @@ span {
   display: flex;
   flex-flow: row wrap;
   flex: 0 0 50%;
+  margin-right: 50px;
 }
 
 #search_user_input{
@@ -145,10 +148,20 @@ span {
 }
 .friendsCol {
   background-color: #171F25;
-  font-family: 'Poppins', sans-serif;  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
   flex: 0 0 100%;
   margin-top: 10px;
 }
+<<<<<<< HEAD
+=======
+
+.locationsContainer{
+  text-align:left;
+  color:grey;
+}
+
+>>>>>>> 1cd5de0a6c23049674f035ab5cbf82bc02e09a4b
 .className{
   color:white;
 }
@@ -162,7 +175,7 @@ span {
   height: 70px;
 }
 
-.freindsContainer hover{
+.friendsContainer:hover {
  color: #FA6900;
 }
 
@@ -282,6 +295,7 @@ width: 80%;
 
 
 .sidenav {
+  /*margin-top:70px;*/
   background-color: #171F25;
   border: 1px solid grey;
   display: flex;
@@ -290,12 +304,29 @@ width: 80%;
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 1;
+  z-index: 9998;
   top: 0;
   right: 0;
   overflow-x: hidden;
   transition: 0.5s;
 }
+<<<<<<< HEAD
+=======
+
+.sidenav.open-nav .friendsCol{
+  padding-top: 60px;
+  position: absolute;
+}
+
+.sidenav.open-nav .friendsCol .iconContainer {
+  width:231px;
+  position:fixed;
+  top:0;
+  right:0;
+  -webkit-transform: translateZ(0);
+}
+
+>>>>>>> 1cd5de0a6c23049674f035ab5cbf82bc02e09a4b
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -313,6 +344,7 @@ width: 80%;
   text-align: center;
   padding-right: 40px;
   flex: 0 0 100%;
+
 }
 
 
@@ -347,7 +379,28 @@ a.back{
   flex: 0 0 100%;
 }
 
+.logoutButton{
+  width: 100px;
+  height: 25px;
+  margin-top: 10px;
+  margin-left: 30px;
+  text-align: center;
+  font-size:15px;
+  border: 2px solid white;
+  border-radius: 30px;
+}
 
+.logoutButton:hover{
+  color: #FA6900;
+  border-color:#FA6900;
+}
+
+.buttons{
+  display: flex;
+  flex-flow:row wrap;
+  justify-content: flex-end;
+  flex: 0 0 80%;
+}
 
 /*animation*/
 .fallingIconPic{
