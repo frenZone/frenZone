@@ -13,122 +13,6 @@ export const DefaultCtrlState = {
   controllerAs: 'default'
 };
 
-
-
-
-function setMapOnAll(map) {
-  for (var i = 0; i < oms.a.length; i++) {
-    oms.a[i].setMap(map);
-  }
-}
-
-// function centerMap(center){
-//    let centerCoord ={};
-//     locationData.forEach((location) => {
-//     if (location.name === center) {
-//       centerCoord.lat = location.latitude;
-//       centerCoord.long = location.longitude;
-//     }
-//   });
-//   map.setCenter({lat:centerCoord.lat, lng:centerCoord.long});
-//   map.setZoom(18);
-// }
-
-// Removes the markers from the map, but keeps them in the array.
-function clearMarkers() {
-  setMapOnAll(null);
-}
-
-// Shows any markers currently in the array.
-function showMarkers() {
-  setMapOnAll(map);
-}
-
-// Deletes all markers in the array by removing references to them.
-function deleteMarkers() {
-  clearMarkers();
-  oms.a = [];
-}
-
-const showLocationMarkers = function(){
-
-  deleteMarkers();
-};
-
-// const showAllPhotos = function (){
-//   deleteMarkers();
-//    for (var i = 0; i < instaData.length; i++) {
-//     if(instaData[i].location !== null){
-//       var coords = instaData[i].location;
-//       var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
-//       var image = instaData[i].user.profile_picture;
-//       // var image = 'https://scontent.cdninstagram.com/t51.2885-19/150x150/14582392_1153156614795077_1774168565260222464_a.jpg';
-//       var marker = new google.maps.Marker({
-//         position: latLng,
-//         map: map,
-//         animation: google.maps.Animation.DROP,
-//         title: coords.name,
-//         id: 'marker',
-//         icon: {
-//           url: image,
-//           scaledSize: new google.maps.Size(40, 40),
-//           optimized:false
-//         }
-//       });
-//       var infowindow = new google.maps.InfoWindow();
-//       marker.desc = '<div id="locationPicture">'+
-//         `<img src="${instaData[i].images.thumbnail.url}"></img>`+
-//         '</div>';
-
-//       oms.addMarker(marker);
-//     }
-//     map.setCenter({lat: 21.308743338531, lng: -157.80870209358});
-//   }
-// };
-
-
-// const getUserPhotos = function (username){
-//   deleteMarkers();
-//     var inputTime = document.getElementById('inputTime');
-//     var inputDisplay = document.getElementById('inputDisplay');
-//     var displayOutPut = document.getElementById('displayOutPut');
-//     var numberHours =(Math.round((inputTime.value/3600)) + " hours");
-//     if(inputTime.value >= 86400){
-//       numberHours =(Math.round((inputTime.value/86400)) + " days");
-//     }
-//     inputDisplay.innerHTML = numberHours + " ago";
-//     for (var i = 0; i < instaData.length; i++) {
-//       if(instaData[i].location !== null && instaData[i].user.id === username){
-//         if(instaData[i].created_time >= (Math.round(new Date()/1000)-inputTime.value)){
-//           var coords = instaData[i].location;
-//           var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
-//           var image = instaData[i].user.profile_picture;
-//           // var image = 'https://scontent.cdninstagram.com/t51.2885-19/150x150/14582392_1153156614795077_1774168565260222464_a.jpg';
-//           var marker = new google.maps.Marker({
-//             position: latLng,
-//             map: map,
-//             animation: google.maps.Animation.DROP,
-//             title: coords.name,
-//             id: 'marker',
-//             icon: {
-//               url: image,
-//               scaledSize: new google.maps.Size(40, 40),
-//               optimized:false
-//             }
-//           });
-//           var infowindow = new google.maps.InfoWindow();
-//           marker.desc = '<div id="locationPicture">'+
-//             `<img src="${instaData[i].images.thumbnail.url}"></img>`+
-//             '</div>';
-
-//           oms.addMarker(marker);
-//         }
-//       map.setCenter({lat: 21.308743338531, lng: -157.80870209358});
-//     }
-//   }
-// };
-
-
 export const DefaultCtrl = [
   '$scope',
   PhotosServiceName,
@@ -141,6 +25,7 @@ export const DefaultCtrl = [
       $scope.instaData = MapService.getInstaData();
       $scope.locationData= MapService.getLocationData();
       $scope.locations = MapService.getLocations();
+      $scope.oms = MapService.getOms();
 
       MapService.initMap();
       //casey
@@ -159,12 +44,20 @@ export const DefaultCtrl = [
       MapService.getData('https://api.instagram.com/v1/users/196312792/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=196312792.0f4f10a.e1911280307a478fb82448f6d6282be8');
 
       $scope.map = MapService.getMap();
+      $scope.setMapOnAll = MarkerService.setMapOnAll.bind(MarkerService, $scope.map);
+      $scope.showMarkers = MarkerService.showMarkers.bind(MarkerService, $scope.map);
+      $scope.clearMarkers = MarkerService.clearMarkers.bind(MarkerService);
+      $scope.deleteMarkers = MarkerService.deleteMarkers.bind(MarkerService);
       $scope.centerMap = MarkerService.centerMap.bind(this, $scope.map, $scope.locationData);
+      $scope.getUserPhotos = MarkerService.getUserPhotos.bind(MarkerService, $scope.map, MapService.oms, $scope.instaData);
+      $scope.showAllPhotos = MarkerService.showAllPhotos.bind(MarkerService, $scope.map, MapService.oms, $scope.instaData);
 
       MapService.update = function () {
         $scope.instaData = this.instaData;
         $scope.locationData = this.locationData;
         $scope.locations = this.locations;
+        $scope.oms = this.oms;
+        //console.log($scope.oms);
       };
       $scope.onChange = function (){
         var numberHours =(Math.round(($scope.inputTime/3600)) + " hours");
@@ -176,14 +69,11 @@ export const DefaultCtrl = [
 
 
       $scope.logout = function (){
-
-        console.log(window.localStorage);
       };
 
 
       PhotosService.getFriends()
       .success((friends) => {
-        console.log(friends);
         $scope.friends = friends.data;
       });
 

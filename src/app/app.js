@@ -1,8 +1,6 @@
 import angular from 'angular';
 import * as uiRouter from 'angular-ui-router';
 import { DefaultCtrlState, DefaultCtrl, DefaultCtrlName, instaData } from './default';
-// import { GridCtrlState, GridCtrl, GridCtrlName } from './grid';
-// import { LocationCtrlState, LocationCtrl, LocationCtrlName } from './location';
 import { PhotosServiceName, PhotosService } from './services/photos';
 import { MapServiceName, MapService } from './services/map';
 import { MarkerServiceName, MarkerService } from './services/markers';
@@ -34,12 +32,8 @@ angular.module(MODULE_NAME, ['ui.router'])
     $urlRouterProvider.otherwise('default');
     $stateProvider
       .state('default', DefaultCtrlState)
-      // .state('grid', GridCtrlState)
-      // .state('location', LocationCtrlState)
       .state('data', DataCtrlState)
       .state('login', LoginCtrlState)
-
-
       ;
   })
   .run(($state) => {
@@ -47,10 +41,8 @@ angular.module(MODULE_NAME, ['ui.router'])
       localStorage.token === "" ||
       localStorage.token === null){
       $state.go('login');
-      console.log('hit login page')
     }else{
       $state.go('default');
-      console.log('hit default page')
     }
   })
   .directive('app', app)
@@ -60,10 +52,8 @@ angular.module(MODULE_NAME, ['ui.router'])
   .constant('instaData', instaData)
   .controller('AppCtrl', AppCtrl)
   .controller(DefaultCtrlName, DefaultCtrl)
-  // .controller(GridCtrlName, GridCtrl)
-  .controller(DataCtrlName, DataCtrl)
-  .controller(LoginCtrlName, LoginCtrl)
-  // .controller(LocationCtrlName, LocationCtrl);
 
+  .controller(DataCtrlName, DataCtrl)
+  .controller(LoginCtrlName, LoginCtrl);
 
 export default MODULE_NAME;
