@@ -6,6 +6,7 @@ html, body {
 }
 
 app{
+  background-color: black;
   display: block;
   height: 100%;
 }
@@ -15,6 +16,9 @@ app > section{
   height: 90%;
 }
 
+.hidden{
+  width: 400px;
+}
 
 /*
 .outsideTransparentContainer{
@@ -407,4 +411,9 @@ a.back{
     40% {top: 161px;}
     100% {top:161px;}
 
+}
+
+.log{
+color: transparent;
+margin-top: 39px;
 }
