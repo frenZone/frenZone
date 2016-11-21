@@ -1,10 +1,8 @@
-
 html, body {
  height: 100%;
  margin: 0;
  padding: 0;
 }
-
 app{
   display: block;
   height: 100%;
@@ -63,6 +61,7 @@ app > section{
   color: #FA6900;
 }
 
+
 #pac-input {
   background-color: #fff;
   font-family: Roboto;
@@ -73,12 +72,9 @@ app > section{
   text-overflow: ellipsis;
   width: 300px;
 }
-
 #pac-input:focus {
   border-color: #4d90fe;
 }
-
-
 .instafeed{
   flex:0 0 20%;
   display: inline-block;
@@ -86,7 +82,6 @@ app > section{
   background-position:50% 30%;
   background-repeat: no-repeat;
 }
-
 .instafeed a{
   flex: 0 0 30%;
   text-decoration: none;
@@ -95,15 +90,12 @@ app > section{
 .instafeed img{
   height: 30px;
 }
-
 .barIcon {
     width:30%;
 }
-
 span {
   color: #FA6900;
 }
-
 .holder {
   width: 20%;
 }
@@ -119,13 +111,11 @@ span {
 #search_user_input{
   width: 80%;
 }
-
 .bar .search_photo_container input {
   margin: auto;
   flex: 0 0 100%;
   height: 20px;
 }
-
 .bar {
   color: white;
   font-family: 'Poppins', sans-serif;
@@ -137,7 +127,6 @@ span {
   background-color: #171F25;
   padding: 10px 50px;
 }
-
 .mainBody {
   display: flex;
   flex-flow: row wrap;
@@ -145,22 +134,18 @@ span {
   height: 100%;
   width: 100%;
 }
-
 .navContainer{
   background-color: black;
 }
-
 #map {
   flex: 0 0 100%;
   height: 100%;
 }
-
 #map #marker{
   border: 3px solid #FFF;
   border-radius: 100px;
   box-shadow: 0 0 3px 0 rgba(0,0,0, 0.25);
 }
-
 .friendsCol {
   background-color: #171F25;
   font-family: 'Poppins', sans-serif;
@@ -168,6 +153,7 @@ span {
   flex: 0 0 100%;
   margin-top: 10px;
 }
+
 
 .locationsContainer{
   text-align:left;
@@ -181,7 +167,6 @@ span {
   color: grey;
   margin-bottom: 5px;
 }
-
 .friendsContainer img {
   border-radius: 50%;
   width:70px;
@@ -217,25 +202,19 @@ span {
   flex: 0 0 100%;
   max-height: 100%;
 }
-
 .locationContainer img {
   display: flex;
   flex-direction: row;
   width: 83px;
   height: auto;
 }
-
-
 body {
     font-family: "Lato", sans-serif;
 }
-
 /*top*/
-
 #outPut{
   color: white;
 }
-
 #inputTime{
   width: 80%;
   margin-left: 5%;
@@ -255,7 +234,6 @@ border-radius: 15%;
 border-radius: 15px;
 width: 80%;
 }
-
 #map div.gm-style div div div#markerLayer img{
   border-radius: 100px !important;
   border: 1px solid !important;
@@ -265,6 +243,7 @@ width: 80%;
   text-align: center;
 }
 
+
 #map #locationPicture img#profile{
   margin-top: 5px;
   margin-bottom: -10px;
@@ -272,6 +251,7 @@ width: 80%;
   border-radius: 30px;
   width: 50px;
 }
+
 
 .iconContainer{
   padding: 10px;
@@ -299,14 +279,16 @@ width: 80%;
   margin-right: 33px;
   width: 20px;
 }
-
 .friendsIcon2{
   background-image: url('https://s6.postimg.org/avup4vmkh/3guyswhite.png');
   background-size: 68px;
   background-repeat: no-repeat;
   height: 42px;
   width: 16px;
+
+
 }*/
+
 
 
 .sidenav {
@@ -325,6 +307,7 @@ width: 80%;
   overflow-x: hidden;
   transition: 0.5s;
 }
+
 
 .sidenav.open-nav .friendsCol{
   padding-top: 60px;
@@ -349,17 +332,17 @@ width: 80%;
     justify-content: center;
     transition: 0.3s
 }
-
 .sidenav a:hover, .offcanvas a:focus{
     color: #FA6900;
 }
-
 .sidenav .closebtn {
   text-align: center;
   padding-right: 40px;
   flex: 0 0 100%;
 
 }
+
+
 
 
 @media screen and (max-height: 450px) {
@@ -369,10 +352,10 @@ width: 80%;
     font-size: 36px;
     margin-left: 50px;
 }
-
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+
 }
 
 .specificLocation{
@@ -459,4 +442,13 @@ a.back{
     40% {top: 161px;}
     100% {top:161px;}
 
+}
+
+.chart div {
+  font: 10px sans-serif;
+  background-color: salmon;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
 }

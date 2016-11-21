@@ -1,12 +1,12 @@
 import angular from 'angular';
 import * as uiRouter from 'angular-ui-router';
 import { DefaultCtrlState, DefaultCtrl, DefaultCtrlName, instaData } from './default';
-import { GridCtrlState, GridCtrl, GridCtrlName } from './grid';
-import { LocationCtrlState, LocationCtrl, LocationCtrlName } from './location';
+// import { GridCtrlState, GridCtrl, GridCtrlName } from './grid';
+// import { LocationCtrlState, LocationCtrl, LocationCtrlName } from './location';
 import { PhotosServiceName, PhotosService } from './services/photos';
 import { MapServiceName, MapService } from './services/map';
 import { MarkerServiceName, MarkerService } from './services/markers';
-import { FriendsCtrlState, FriendsCtrl, FriendsCtrlName } from './friends';
+import { DataCtrlState, DataCtrl, DataCtrlName } from './data';
 import { LoginCtrlState, LoginCtrl, LoginCtrlName} from './login';
 
 import '../style/app.css';
@@ -34,9 +34,9 @@ angular.module(MODULE_NAME, ['ui.router'])
     $urlRouterProvider.otherwise('default');
     $stateProvider
       .state('default', DefaultCtrlState)
-      .state('grid', GridCtrlState)
-      .state('location', LocationCtrlState)
-      .state('friends', FriendsCtrlState)
+      // .state('grid', GridCtrlState)
+      // .state('location', LocationCtrlState)
+      .state('data', DataCtrlState)
       .state('login', LoginCtrlState)
 
 
@@ -58,10 +58,10 @@ angular.module(MODULE_NAME, ['ui.router'])
   .constant('instaData', instaData)
   .controller('AppCtrl', AppCtrl)
   .controller(DefaultCtrlName, DefaultCtrl)
-  .controller(GridCtrlName, GridCtrl)
-  .controller(FriendsCtrlName, FriendsCtrl)
+  // .controller(GridCtrlName, GridCtrl)
+  .controller(DataCtrlName, DataCtrl)
   .controller(LoginCtrlName, LoginCtrl)
-  .controller(LocationCtrlName, LocationCtrl);
+  // .controller(LocationCtrlName, LocationCtrl);
 
 
 export default MODULE_NAME;

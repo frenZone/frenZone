@@ -1,0 +1,36 @@
+<div class="bar">
+    <div class="instafeed"><a class="home-icon" ng-class="{active: layout == 'default'}" ng-click="layout = 'default'" ui-sref="default"><img src='./img/frenzone-logo.svg'></img></a>
+    </div>
+    <button ng-click="logout()" onclick="location.href='http://localhost:8080/login'">logout</button>
+    </script>
+    <div class="search_photo_container">
+      <input id="pac-input" onClick="this.select();" class="controls" type="text" placeholder="Search Location">
+    </div>
+    <div>
+      <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+    </div>
+</div>
+
+<div class="mainBody">
+
+<h1>DATA</h1>
+
+<div class="chart"></div>
+
+<div id="mySidenav" class="sidenav">
+
+  <div class="friendsCol">
+    <div class="iconContainer">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">close</a>
+    </div>
+
+    <a ui-sref="default">back</a>
+
+  </div>
+
+</div>
+
+</div>
+
+
+
