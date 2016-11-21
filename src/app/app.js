@@ -50,8 +50,6 @@ angular.module(MODULE_NAME, ['ui.router'])
       $state.go('default');
       console.log('hit default page')
     }
-
-
   })
   .directive('app', app)
   .service(PhotosServiceName, PhotosService)
