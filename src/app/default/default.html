@@ -10,7 +10,7 @@
         <input id="pac-input" onClick="this.select();" class="controls" type="text" placeholder="Search Location">
       </div>
       <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
-      <div class="logoutButton" ng-click="logout()" onclick="location.href='http://localhost:8080/login'">LOGOUT</div>
+      <div class="logoutButton" ng-class="{active: layout == 'login'}" ng-click="layout = 'login'" ui-sref="login">LOGOUT</div>
     </div>
 </div>
 
