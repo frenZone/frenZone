@@ -153,15 +153,13 @@ span {
   flex: 0 0 100%;
   margin-top: 10px;
 }
-<<<<<<< HEAD
-=======
+
 
 .locationsContainer{
   text-align:left;
   color:grey;
 }
 
->>>>>>> 1cd5de0a6c23049674f035ab5cbf82bc02e09a4b
 .className{
   color:white;
 }
@@ -287,9 +285,8 @@ width: 80%;
   background-repeat: no-repeat;
   height: 42px;
   width: 16px;
-<<<<<<< HEAD
-}
-=======
+
+
 }*/
 
 
@@ -310,8 +307,7 @@ width: 80%;
   overflow-x: hidden;
   transition: 0.5s;
 }
-<<<<<<< HEAD
-=======
+
 
 .sidenav.open-nav .friendsCol{
   padding-top: 60px;
@@ -326,7 +322,6 @@ width: 80%;
   -webkit-transform: translateZ(0);
 }
 
->>>>>>> 1cd5de0a6c23049674f035ab5cbf82bc02e09a4b
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
