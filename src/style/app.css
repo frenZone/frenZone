@@ -395,3 +395,12 @@ a.back{
     100% {top:161px;}
 
 }
+
+.chart div {
+  font: 10px sans-serif;
+  background-color: salmon;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
