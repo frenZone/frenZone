@@ -13,6 +13,9 @@ export const DefaultCtrlState = {
   controllerAs: 'default'
 };
 
+
+
+
 function setMapOnAll(map) {
   for (var i = 0; i < oms.a.length; i++) {
     oms.a[i].setMap(map);
@@ -172,6 +175,7 @@ export const DefaultCtrl = [
       };
 
       $scope.logout = function (){
+
         console.log(window.localStorage);
       };
 
