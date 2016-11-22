@@ -1,7 +1,8 @@
 <div class="bar">
 
     <div class="instafeed">
-      <a class="home-icon" ng-class="{active: layout == 'default'}" ng-click="layout = 'default'" ui-sref="default">
+    <!-- ng-click="layout = 'default'" -->
+      <a class="home-icon" ng-class="{active: layout == 'default'}" ng-click="showAllPhotos()" ui-sref="default">
         <img src='./img/frenzone-logo.svg'>
         </img>
       </a>
@@ -12,7 +13,7 @@
         <input id="pac-input" onClick="this.select();" class="controls" type="text" placeholder="Search Location">
       </div>
       <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
-      <div class="logoutButton" ng-class="{active: layout == 'login'}" ng-click="layout = 'login'" ui-sref="login">LOGOUT</div>
+      <div class="logoutButton" ng-class="{active: layout == 'login'}" ng-click="layout = 'login';this.logout()" ui-sref="login">LOGOUT</div>
     </div>
 
 </div>
