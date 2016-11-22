@@ -74,18 +74,17 @@ export class MarkerService {
 
   getUserPhotos (map, oms, data, username){
     this.deleteMarkers(oms);
-    var inputTime = document.getElementById('inputTime');
-    var inputDisplay = document.getElementById('inputDisplay');
-    var displayOutPut = document.getElementById('displayOutPut');
-    var numberHours =(Math.round((inputTime.value/3600)) + " hours");
+     var inputTime = document.getElementById('inputTime');
+     var inputDisplay = document.getElementById('inputDisplay');
+     var displayOutPut = document.getElementById('displayOutPut');
 
-    if(inputTime.value >= 86400){
-      numberHours =(Math.round((inputTime.value/86400)) + " days");
-    }
-    inputDisplay.innerHTML = numberHours + " ago";
     for (var i = 0; i < data.length; i++) {
       if(data[i].location !== null && data[i].user.username === username){
-
+        console.log("dataI.created time",data[i].created_time)
+        console.log("inputTIme",inputTime.value)
+        console.log("new Date()/1000",Math.round(new Date()/1000));
+        console.log("new Date()/1000  - input time",Math.round(new Date()/1000)-inputTime.value);
+        if(data[i].created_time >= Math.round(new Date()/1000) - inputTime.value){
         var coords = data[i].location;
         var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
         var image = `https://circle-image-as-a-service-juuyhmkiiy.now.sh/?url=${data[i].user.profile_picture}`;
@@ -125,6 +124,7 @@ export class MarkerService {
         oms.addMarker(marker);
       }
       map.setCenter({lat: 21.308743338531, lng: -157.80870209358});
+      }
     }
   }
 }
