@@ -93,12 +93,12 @@ export class MarkerService {
     var inputTime = document.getElementById('inputTime');
     var inputDisplay = document.getElementById('inputDisplay');
     var displayOutPut = document.getElementById('displayOutPut');
-    var numberHours =(Math.round((inputTime.value/3600)) + " hours");
+    // var numberHours =(Math.round((inputTime.value/3600)) + " hours");
 
-    if(inputTime.value >= 86400){
-      numberHours =(Math.round((inputTime.value/86400)) + " days");
-    }
-    inputDisplay.innerHTML = numberHours + " ago";
+    // if(inputTime.value >= 86400){
+    //   numberHours =(Math.round((inputTime.value/86400)) + " days");
+    // }
+    // inputDisplay.innerHTML = numberHours + " ago";
 
     for (var i = 0; i < instaData.length; i++) {
       if(instaData[i].location !== null && instaData[i].user.username === username){
