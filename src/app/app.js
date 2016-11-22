@@ -14,10 +14,8 @@ import '../style/app.css';
 let app = () => {
   return {
     template: require('./app.html'),
-
   }
 };
-
 
 class AppCtrl {
   constructor() {
@@ -38,7 +36,7 @@ angular.module(MODULE_NAME, ['ui.router'])
   })
   .run(($state) => {
     if(localStorage.token === undefined ||
-      // localStorage.token === "" ||
+      localStorage.token === "" ||
       localStorage.token === null){
       $state.go('login');
     }else{

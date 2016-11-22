@@ -42,13 +42,14 @@ export class MarkerService {
   }
 
   showAllPhotos (map, oms, instaData){
-    console.log('showall');
-    deleteMarkers();
+    this.deleteMarkers(oms);
      for (var i = 0; i < instaData.length; i++) {
       if(instaData[i].location !== null){
+
         var coords = instaData[i].location;
         var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
-        var image = instaData[i].user.profile_picture;
+        var image = `https://circle-image-as-a-service-juuyhmkiiy.now.sh/?url=${instaData[i].user.profile_picture}`;
+
         var marker = new google.maps.Marker({
           position: latLng,
           map: map,
@@ -57,13 +58,28 @@ export class MarkerService {
           id: 'marker',
           icon: {
             url: image,
-            scaledSize: new google.maps.Size(40, 40),
             optimized:false
           }
         });
+
         var infowindow = new google.maps.InfoWindow();
+        let username = instaData[i].user.username;
+        let fullName = instaData[i].user.full_name;
+        let imageUrl = instaData[i].images.low_resolution.url;
+        let profilePicture = instaData[i].user.profile_picture;
+        let locationName = instaData[i].location.name;
+        let description = "picture taken at " + locationName;
+
+        if(instaData[i].caption !== null){
+          description = instaData[i].caption.text;
+        }
+
         marker.desc = '<div id="locationPicture">'+
-          `<img src="${instaData[i].images.thumbnail.url}"></img>`+
+          `<img id='profile' src = "${profilePicture}">` +
+          '<h1>' + `${username}`+ `(${fullName})` + '</h1>' +
+          '<h3>' + '<img src = "./img/frenzone-icon.svg" width="20px" height="20px" >'+ ' ' +  locationName + '</h3>'+
+          `<img src="${imageUrl}"></img>`+
+          '<p>' + `${description}` + '</p>' +
           '</div>';
 
         oms.addMarker(marker);
@@ -72,23 +88,23 @@ export class MarkerService {
     }
   }
 
-  getUserPhotos (map, oms, data, username){
+  getUserPhotos (map, oms, locationData, locations, locationSet, instaData, username){
     this.deleteMarkers(oms);
     var inputTime = document.getElementById('inputTime');
     var inputDisplay = document.getElementById('inputDisplay');
     var displayOutPut = document.getElementById('displayOutPut');
     var numberHours =(Math.round((inputTime.value/3600)) + " hours");
 
-    // if(inputTime.value >= 86400){
-    //   numberHours =(Math.round((inputTime.value/86400)) + " days");
-    // }
-    // inputDisplay.innerHTML = numberHours + " ago";
-    for (var i = 0; i < data.length; i++) {
-      if(data[i].location !== null && data[i].user.username === username){
+    if(inputTime.value >= 86400){
+      numberHours =(Math.round((inputTime.value/86400)) + " days");
+    }
+    inputDisplay.innerHTML = numberHours + " ago";
 
-        var coords = data[i].location;
+    for (var i = 0; i < instaData.length; i++) {
+      if(instaData[i].location !== null && instaData[i].user.username === username){
+        var coords = instaData[i].location;
         var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
-        var image = `https://circle-image-as-a-service-juuyhmkiiy.now.sh/?url=${data[i].user.profile_picture}`;
+        var image = `https://circle-image-as-a-service-juuyhmkiiy.now.sh/?url=${instaData[i].user.profile_picture}`;
 
         var marker = new google.maps.Marker({
           position: latLng,
@@ -98,21 +114,20 @@ export class MarkerService {
           id: 'marker',
           icon: {
             url: image,
-            scaledSize: new google.maps.Size(50, 50),
             optimized:false
           }
         });
 
         var infowindow = new google.maps.InfoWindow();
-        let username = data[i].user.username;
-        let fullName = data[i].user.full_name;
-        let imageUrl = data[i].images.low_resolution.url;
-        let profilePicture = data[i].user.profile_picture;
-        let locationName = data[i].location.name;
+        let username = instaData[i].user.username;
+        let fullName = instaData[i].user.full_name;
+        let imageUrl = instaData[i].images.low_resolution.url;
+        let profilePicture = instaData[i].user.profile_picture;
+        let locationName = instaData[i].location.name;
         let description = "picture taken at " + locationName;
 
-        if(data[i].caption !== null){
-          description = data[i].caption.text;
+        if(instaData[i].caption !== null){
+          description = instaData[i].caption.text;
         }
 
         marker.desc = '<div id="locationPicture">'+
@@ -124,7 +139,22 @@ export class MarkerService {
           '</div>';
         oms.addMarker(marker);
       }
-      map.setCenter({lat: 21.308743338531, lng: -157.80870209358});
+      locationSet = new Set();
+      locations.length = 0;
+      locationData.map((lctn) => {
+        if(lctn.username === username){
+          locationSet.add(lctn.name);
+        }
+      });
+      [...locationSet].forEach((location) => {
+        locations.push(location);
+      });
+
+      locations.sort((a,b) => {
+        if(a<b) return -1;
+        if(a>b) return 1;
+        return 0;
+      });
     }
   }
 }

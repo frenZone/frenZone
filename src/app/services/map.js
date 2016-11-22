@@ -480,7 +480,9 @@ export const MapService = [
     getLocations () {
       return this.locations;
     }
-
+    getLocationSet () {
+      return this.locationSet;
+    }
     getMap () {
       return this.map;
     }
@@ -536,11 +538,13 @@ export const MapService = [
                 `<img src="${imageUrl}"></img>`+
                 '<p>' + `${description}` + '</p>' +
                 '</div>';
+              var location = data.data[i].location;
+              location.username = data.data[i].user.username;
               locationData.push(data.data[i].location);
               oms.addMarker(marker);
             }
           }
-          this.updateLocations();
+          this.updateLocations('all');
         });
 
 
