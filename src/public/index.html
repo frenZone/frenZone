@@ -22,17 +22,22 @@
   <script>
     function openNav() {
       let sideNav = document.getElementById("mySidenav")
+      if(sideNav.style.width === "0px"){
         sideNav.style.width = "250px";
-        sideNav.classList.add('open-nav');
-        sideNav.classList.remove('close-nav');
+      }else{
+        sideNav.style.width = "0px";
+      }
+        // sideNav.style.width = "250px";
+        // sideNav.classList.add('open-nav');
+        // sideNav.classList.remove('close-nav');
 
     }
-    function closeNav() {
-      let sideNav = document.getElementById("mySidenav")
-        sideNav.style.width = "0px";
-        sideNav.classList.add('close-nav');
-        sideNav.classList.remove('open-nav');
-    }
+    // function closeNav() {
+    //   let sideNav = document.getElementById("mySidenav")
+    //     sideNav.style.width = "0px";
+    //     sideNav.classList.add('close-nav');
+    //     sideNav.classList.remove('open-nav');
+    // }
 
   </script>
 
