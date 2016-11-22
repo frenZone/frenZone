@@ -8,11 +8,6 @@ export const PhotosService = [
     constructor($http,token){
       this.$http = $http;
       var token = localStorage.getItem("token");
-      // if(!token){
-      //   token =location.hash.slice(15,(location.hash.length));
-      //   console.log("token",token)
-      //   localStorage.setItem('token',token);
-      // }
       this.token = token;
     }
 
