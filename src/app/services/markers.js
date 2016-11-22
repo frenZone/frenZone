@@ -79,10 +79,10 @@ export class MarkerService {
     var displayOutPut = document.getElementById('displayOutPut');
     var numberHours =(Math.round((inputTime.value/3600)) + " hours");
 
-    if(inputTime.value >= 86400){
-      numberHours =(Math.round((inputTime.value/86400)) + " days");
-    }
-    inputDisplay.innerHTML = numberHours + " ago";
+    // if(inputTime.value >= 86400){
+    //   numberHours =(Math.round((inputTime.value/86400)) + " days");
+    // }
+    // inputDisplay.innerHTML = numberHours + " ago";
     for (var i = 0; i < data.length; i++) {
       if(data[i].location !== null && data[i].user.username === username){
 
