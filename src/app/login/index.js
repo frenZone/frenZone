@@ -9,16 +9,10 @@ export const LoginCtrlState = {
   controllerAs: 'login'
 };
 
- var token =location.hash.slice(15,(location.hash.length));
-      localStorage.setItem('token',token);
+export const LoginCtrl = [
+  class LoginCtrl{
+    constructor() {
 
-
-
-export class LoginCtrl {
-  constructor() {
-    var token = location.hash.slice(15,(location.hash.length))
-
-    localStorage.token =token;
-
+    }
   }
-}
+];
