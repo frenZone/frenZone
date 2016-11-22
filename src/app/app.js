@@ -35,6 +35,7 @@ angular.module(MODULE_NAME, ['ui.router'])
       ;
   })
   .run(($state) => {
+    alert(localStorage.token)
     if(
       localStorage.token === "" ||
       localStorage.token === null){
