@@ -7,12 +7,8 @@ export const PhotosService = [
 
     constructor($http,token){
       this.$http = $http;
-      // this.token = localStorage.token;
-      this.token = location.hash.slice(15,(location.hash.length));
-      var newToken = localStorage.token;
-
-      var token =location.hash.slice(15,(location.hash.length));
-      localStorage.setItem('token',token);
+      var token = localStorage.getItem("token");
+      this.token = token;
     }
 
     getPhotos(id){
