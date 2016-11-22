@@ -99,9 +99,9 @@ export class MarkerService {
       numberHours =(Math.round((inputTime.value/86400)) + " days");
     }
     inputDisplay.innerHTML = numberHours + " ago";
+
     for (var i = 0; i < instaData.length; i++) {
       if(instaData[i].location !== null && instaData[i].user.username === username){
-
         var coords = instaData[i].location;
         var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
         var image = `https://circle-image-as-a-service-juuyhmkiiy.now.sh/?url=${instaData[i].user.profile_picture}`;
