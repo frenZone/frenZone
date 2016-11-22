@@ -80,10 +80,7 @@ export class MarkerService {
 
     for (var i = 0; i < data.length; i++) {
       if(data[i].location !== null && data[i].user.username === username){
-        console.log("dataI.created time",data[i].created_time)
-        console.log("inputTIme",inputTime.value)
-        console.log("new Date()/1000",Math.round(new Date()/1000));
-        console.log("new Date()/1000  - input time",Math.round(new Date()/1000)-inputTime.value);
+
         if(data[i].created_time >= Math.round(new Date()/1000) - inputTime.value){
         var coords = data[i].location;
         var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);

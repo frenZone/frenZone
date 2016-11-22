@@ -1,11 +1,13 @@
 <div class="bar">
 
     <div class="instafeed">
-      <a class="home-icon" ng-class="{active: layout == 'default'}" ng-click="layout = 'default'" ui-sref="default">
+    <!-- ng-click="layout = 'default'" -->
+      <a class="home-icon" ng-class="{active: layout == 'default'}" ng-click="showAllPhotos()" ui-sref="default">
         <img src='./img/frenzone-logo.svg'>
         </img>
       </a>
     </div>
+
     <div class="buttons">
       <div class="search_photo_container">
         <input id="pac-input" onClick="this.select();" class="controls" type="text" placeholder="Search Location">
@@ -13,19 +15,17 @@
       <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
       <div class="logoutButton" ng-class="{active: layout == 'login'}" ng-click="layout = 'login'" ui-sref="login">LOGOUT</div>
     </div>
+
 </div>
 
-<div class="mainBody"
+<div class="mainBody">
   <div id="map"></div>
   <div id="mySidenav" class="sidenav">
     <div class="friendsCol">
 
-
-       <div class="iconContainer">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">close</a>
-      </div>
-
-        <a ui-sref="data">data</a>
+     <!--  <div class="iconContainer">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">close</a> -->
+      <!-- </div> -->
 
       <div ng-show="layout == 'location'">
         <a class="back" ng-class="{active: layout == 'back'}" ng-click="layout = 'back'" ng-hide="layout == 'back'">Go to Friends</a>
@@ -37,12 +37,20 @@
       </div>
 
       <div ng-hide="layout == 'location'">
-        <a class="location" ng-class="{active: layout == 'location'}" ng-click="layout = 'location'" ng-hide="layout == 'location'">Go to Locations</a>
-        <input type="text" id="searchUser" ng-model="searchUser" placeholder="search by name or username" />
+        <div class="menu">
+          <a class="trendingPlaces" ui-sref="data">Trending Places</a>
+          <a class="location" ng-class="{active: layout == 'location'}" ng-click="layout = 'location'" ng-hide="layout == 'location'">Go to Locations</a>
+        </div>
+
+        <div id="inputDisplay">{{inputTimeDisplay}}
           <input id="inputTime" type="range" min="3600" max="994000" ng-model="inputTime" ng-change="onChange()"></input>
-          <div id="inputDisplay">{{inputTimeDisplay}}
-            <div ng-show="inputTimeDisplay === undefined">Scroll for time period</div>
-          </div>
+          <div ng-show="inputTimeDisplay === undefined">Scroll for time period</div>
+        </div>
+
+        <div>
+          <input type="text" id="searchUser" ng-model="searchUser" placeholder="search by name or username" />
+        </div>
+
         <div class="friendsContainer" ng-repeat="friend in friends | filter:searchUser">
           <img ng-click="getUserPhotos(friend.username)" ng-src="{{ friend.profile_picture }}">
           </img>
@@ -52,8 +60,6 @@
           </div>
         </div>
       </div>
-
-
 
     </div>
   </div>

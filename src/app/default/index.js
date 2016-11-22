@@ -23,8 +23,9 @@ export const DefaultCtrl = [
     constructor($scope, PhotosService, MapService, MarkerService, $sce) {
       $scope.friends =[];
       $scope.instaData = MapService.getInstaData();
-      $scope.locationData= MapService.getLocationData();
+      $scope.locationData = MapService.getLocationData();
       $scope.locations = MapService.getLocations();
+      $scope.locationSet = MapService.getLocationSet();
       $scope.oms = MapService.getOms();
 
       MapService.initMap();
@@ -32,7 +33,7 @@ export const DefaultCtrl = [
       MapService.getData('https://api.instagram.com/v1/users/55870965/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=55870965.2c4aaae.e0dd1784350a44838eda4573296a5750');
 
       //aaron
-      MapService.getData('https://api.instagram.com/v1/users/175690487/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=175690487.02eff85.fd0b74d4431044a9b82fc9a925d036ad');
+      MapService.getData('https://api.instagram.com/v1/users/175690487/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=175690487.02eff85.ba29a57614cf43ddb14034f110153c76');
 
       //frenzone
       MapService.getData('https://api.instagram.com/v1/media/search?lat=21.2922381&lng=-157.8237538&distance=5000&callback=JSON_CALLBACK&access_token=4120053413.02eff85.2d5b2829f52046549e0f2a92ac0655c6');
@@ -48,16 +49,18 @@ export const DefaultCtrl = [
       $scope.showMarkers = MarkerService.showMarkers.bind(MarkerService, $scope.map);
       $scope.clearMarkers = MarkerService.clearMarkers.bind(MarkerService);
       $scope.deleteMarkers = MarkerService.deleteMarkers.bind(MarkerService);
+
       $scope.centerMap = MarkerService.centerMap.bind(this, $scope.map, $scope.locationData);
-      $scope.getUserPhotos = MarkerService.getUserPhotos.bind(MarkerService, $scope.map, MapService.oms, $scope.instaData);
+
+      $scope.getUserPhotos = MarkerService.getUserPhotos.bind(MarkerService, $scope.map, MapService.oms, $scope.locationData, MapService.locations, MapService.locationSet, $scope.instaData);
       $scope.showAllPhotos = MarkerService.showAllPhotos.bind(MarkerService, $scope.map, MapService.oms, $scope.instaData);
 
       MapService.update = function () {
         $scope.instaData = this.instaData;
         $scope.locationData = this.locationData;
         $scope.locations = this.locations;
+        $scope.locationSet = this.locationSet;
         $scope.oms = this.oms;
-        //console.log($scope.oms);
       };
       $scope.onChange = function (){
         var numberHours =(Math.round(($scope.inputTime/3600)) + " hours");
@@ -67,10 +70,8 @@ export const DefaultCtrl = [
         $scope.inputTimeDisplay = numberHours + " ago";
       };
 
-
       $scope.logout = function (){
       };
-
 
       PhotosService.getFriends()
       .success((friends) => {
