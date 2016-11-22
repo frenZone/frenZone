@@ -1,3 +1,5 @@
+import { MapServiceName } from '../services/map';
+
 const template = require ('./data.html');
 
 export const DataCtrlName = 'DataCtrl';
@@ -11,58 +13,41 @@ export const DataCtrlState = {
 
 export class DataCtrl {
   constructor() {
-    var dataset = [
-  {
-    name: 'Jan P.',
-    score: 5
-  },
-  {
-    name: 'Alan',
-    score: 3
-  },
-  {
-    name: 'A-Aron',
-    score: 3
-  },
-  {
-    name: 'Renee',
-    score: 3
-  },
-  {
-    name: 'Casey',
-    score: 7
-  },
-  {
-    name: 'Marta',
-    score: 3
-  },
-  {
-    name: 'B-Ryan',
-    score: 5
-  },
-  {
-    name: 'Gina',
-    score: 2
-  },
-  {
-    name: 'Ray',
-    score: 4
-  },
-];
 
-console.log('d3',d3)
+    var data = [1, 1, 2, 3, 5, 8, 13];
 
-var chart = d3.select('.chart');
+    var width = 960,
+        height = 500;
 
-var bars = chart.selectAll('div')
-  .data(dataset)
-  .enter().append('div')
-  .style('width', (data) => {
-  console.log('data',data)
-    return `${data.score * 50}px`;
-  })
-  .text((data) => {
-    return `${data.name} ${data.score}`;
-  })
+    var outerRadius = height / 2 - 30,
+        innerRadius = outerRadius / 3,
+        cornerRadius = 10;
+
+    var pie = d3.layout.pie();
+
+    var arc = d3.svg.arc()
+        .innerRadius(innerRadius)
+        .outerRadius(outerRadius);
+
+    var svg = d3.select('.chart').append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+    var path = svg.selectAll("path")
+        .data(data)
+      .enter().append("path");
+
+    var ease = d3.ease("cubic-in-out"),
+        duration = 7500;
+
+    d3.timer(function(elapsed) {
+      var t = ease(1 - Math.abs((elapsed % duration) / duration - .5) * 2);
+
+      path
+          .data(pie.padAngle(t * 2 * Math.PI / data.length)(data))
+          .attr("d", arc);
+    });
   }
 }

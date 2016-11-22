@@ -3,6 +3,7 @@ export const MapServiceName = 'map';
 var map;
 const locationData = [];
 const instaData = [];
+console.log(instaData);
 let locations = [];
 let locationSet = new Set();
 var oms;
