@@ -55,8 +55,12 @@
           <img ng-click="getUserPhotos(friend.username)" ng-src="{{ friend.profile_picture }}">
           </img>
           <div class="names">
-            {{friend.full_name}}
+          <div>
             {{friend.username}}
+          </div>
+          <div>
+            ({{friend.full_name}})
+          </div>
           </div>
         </div>
       </div>
