@@ -10,44 +10,81 @@ export const DataCtrlState = {
   controller: DataCtrlName,
   controllerAs: 'data'
 };
+export const DataCtrl =[
+  '$scope',
+  MapServiceName,
+   class DataCtrl {
+    constructor($scope, MapService) {
+      $scope.instaData = MapService.getInstaData();
+      $scope.locationData = MapService.getLocationData();
+      //console.log('locationData',$scope.locationData);
+      var data = [ 2, 3, 5, 8, 13];
 
-export class DataCtrl {
-  constructor() {
+      var width = 960,
+          height = 500;
 
-    var data = [1, 1, 2, 3, 5, 8, 13];
+      var outerRadius = height / 2 - 30,
+          innerRadius = outerRadius / 3,
+          cornerRadius = 10;
 
-    var width = 960,
-        height = 500;
+      var pie = d3.layout.pie();
 
-    var outerRadius = height / 2 - 30,
-        innerRadius = outerRadius / 3,
-        cornerRadius = 10;
+      var arc = d3.svg.arc()
+          .innerRadius(innerRadius)
+          .outerRadius(outerRadius);
 
-    var pie = d3.layout.pie();
+      var svg = d3.select('.chart').append("svg")
+          .attr("width", width)
+          .attr("height", height)
+          .append("g")
+          .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-    var arc = d3.svg.arc()
-        .innerRadius(innerRadius)
-        .outerRadius(outerRadius);
+      var path = svg.selectAll("path")
+          .data(data)
+        .enter().append("path");
 
-    var svg = d3.select('.chart').append("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .append("g")
-        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+      var ease = d3.ease("cubic-in-out"),
+          duration = 7500;
 
-    var path = svg.selectAll("path")
-        .data(data)
-      .enter().append("path");
+      d3.timer(function(elapsed) {
+        var t = ease(1 - Math.abs((elapsed % duration) / duration - .5) * 2);
 
-    var ease = d3.ease("cubic-in-out"),
-        duration = 7500;
+        path
+            .data(pie.padAngle(t * 2 * Math.PI / data.length)(data))
+            .attr("d", arc);
+      });
+      MapService.update = function () {
+          $scope.instaData = this.instaData;
+          $scope.locationData = this.locationData;
+          $scope.locations = this.locations;
+          $scope.oms = this.oms;
+          //console.log($scope.oms);
+      };
 
-    d3.timer(function(elapsed) {
-      var t = ease(1 - Math.abs((elapsed % duration) / duration - .5) * 2);
+      // function trendingSpots(locationData){
+      //   let trendingSpot = [];
+      //   for (var i = 0; i < $scope.locationData.length; i++){
+      //     if ($scope.locationData.name === )
+      //   }
+      // }
 
-      path
-          .data(pie.padAngle(t * 2 * Math.PI / data.length)(data))
-          .attr("d", arc);
-    });
+
+      // let newArray =[];
+      let valueArr = locationData.map(function(item){
+        console.log('hit')
+        return item.name;
+      });
+      let isDuplicate = valueArr.some(function(item, idx){
+        return valueArr.indexOf(item) != idx;
+      });
+      console.log('isDuplicate', isDuplicate);
+
+      function brandNewArray(){
+        return valueArr;
+      }
+
+    }
+
   }
-}
+
+];

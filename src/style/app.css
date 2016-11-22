@@ -4,6 +4,7 @@ html, body {
  padding: 0;
 }
 app{
+  background-color: black;
   display: block;
   height: 100%;
 }
@@ -12,15 +13,6 @@ app > section{
   display: block;
   height: 90%;
 }
-
-
-/*
-.outsideTransparentContainer{
-  text-align: center;
-  width: 68%;
-  height: 68%;
-  background-color: rgba(10, 10, 10, 0);
-}*/
 
 .loginBackground{
   display: flex;
@@ -154,7 +146,6 @@ span {
   margin-top: 10px;
 }
 
-
 .locationsContainer{
   text-align:left;
   color:grey;
@@ -176,11 +167,6 @@ span {
 .friendsContainer:hover {
  color: #FA6900;
 }
-
-/*.friendsContainer .places{
-  height: 50px;
-  border: 20px yellow;
-}*/
 
 .friends {
   display:flex;
@@ -221,19 +207,20 @@ body {
 }
 #inputDisplay{
   color: #818181;
-  padding-bottom: 10px;
+  padding-top: 25px;
   width: 100%;
 
 }
 
 #searchUser{
-margin-top: 20px;
+margin: 20px;
 flex: 0 0 90%;
 height:20px;
 border-radius: 15%;
 border-radius: 15px;
 width: 80%;
 }
+
 #map div.gm-style div div div#markerLayer img{
   border-radius: 100px !important;
   border: 1px solid !important;
@@ -243,7 +230,6 @@ width: 80%;
   text-align: center;
 }
 
-
 #map #locationPicture img#profile{
   margin-top: 5px;
   margin-bottom: -10px;
@@ -251,7 +237,6 @@ width: 80%;
   border-radius: 30px;
   width: 50px;
 }
-
 
 .iconContainer{
   padding: 10px;
@@ -290,15 +275,14 @@ width: 80%;
 }*/
 
 
-
 .sidenav {
-  /*margin-top:70px;*/
+  margin-top:70px;
   background-color: #171F25;
   border: 1px solid grey;
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
-  height: 100%;
+  height: 90%;
   width: 0;
   position: fixed;
   z-index: 9998;
@@ -308,8 +292,7 @@ width: 80%;
   transition: 0.5s;
 }
 
-
-.sidenav.open-nav .friendsCol{
+/*.sidenav.open-nav .friendsCol{
   padding-top: 60px;
   position: absolute;
 }
@@ -320,12 +303,12 @@ width: 80%;
   top:0;
   right:0;
   -webkit-transform: translateZ(0);
-}
+}*/
 
 .sidenav a {
-    padding: 8px 8px 8px 32px;
+    /*padding: 8px 8px 8px 32px;*/
     text-decoration: none;
-    font-size: 25px;
+    font-size: 15px;
     color: grey;
     display: flex;
     flex-flow: row wrap;
@@ -335,14 +318,12 @@ width: 80%;
 .sidenav a:hover, .offcanvas a:focus{
     color: #FA6900;
 }
-.sidenav .closebtn {
+/*.sidenav .closebtn {
   text-align: center;
   padding-right: 40px;
   flex: 0 0 100%;
 
-}
-
-
+}*/
 
 
 @media screen and (max-height: 450px) {
@@ -369,8 +350,10 @@ width: 80%;
 }
 
 a.back{
+  padding:5px;
+  border-radius: 10px;
+  border:2px solid #FA6900;
   text-align: center;
-  padding-right: 30px;
   flex: 0 0 100%;
 }
 
@@ -424,13 +407,6 @@ a.back{
     100% {top: 100px;}
 }
 
-/* Standard syntax */
-/*@keyframes mymove {
-    0%   {top: 0px;}
-    25%  {top: 161px;}
-    75%  {top: 50px}
-    100% {top: 100px;}
-}*/
 @keyframes mymove {
     5%   {top: 0px;}
     10%  {top: 161px;}
@@ -444,15 +420,41 @@ a.back{
 
 }
 
-.chart div {
+/*.chart div {
   font: 10px sans-serif;
   background-color: salmon;
   text-align: right;
   padding: 3px;
   margin: 1px;
   color: white;
-}
+}*/
 
 .chart {
+  background-color: white;
+}
+
+
+
+
+.menu{
+  display:flex;
+  flex-flow:row wrap;
+  justify-content: center;
+}
+
+.trendingPlaces{
+  padding:5px;
+  border-radius: 10px;
+  border:2px solid #FA6900;
+  margin:auto;
+  flex: 0 0 30%;
+}
+
+.location{
+  padding:5px;
+  border-radius: 10px;
+  border:2px solid #FA6900;
+  margin:auto;
+  flex: 0 0 30%;
 
 }

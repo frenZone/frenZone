@@ -38,7 +38,7 @@ angular.module(MODULE_NAME, ['ui.router'])
   })
   .run(($state) => {
     if(localStorage.token === undefined ||
-      localStorage.token === "" ||
+      // localStorage.token === "" ||
       localStorage.token === null){
       $state.go('login');
     }else{
@@ -52,7 +52,6 @@ angular.module(MODULE_NAME, ['ui.router'])
   .constant('instaData', instaData)
   .controller('AppCtrl', AppCtrl)
   .controller(DefaultCtrlName, DefaultCtrl)
-
   .controller(DataCtrlName, DataCtrl)
   .controller(LoginCtrlName, LoginCtrl);
 
