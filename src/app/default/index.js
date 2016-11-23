@@ -82,6 +82,15 @@ export const DefaultCtrl = [
         $scope.friends = friends.data;
       });
 
+      $scope.openNav = function(){
+        let sideNav = document.getElementById("mySidenav");
+        if(sideNav.style.width === "0px"){
+          sideNav.style.width = "250px";
+        }else{
+          sideNav.style.width = "0px";
+        }
+      };
+
     }
   }
 

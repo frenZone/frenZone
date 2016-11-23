@@ -7,6 +7,7 @@ import { MarkerServiceName, MarkerService } from './services/markers';
 import { DataServiceName, DataService } from './services/data';
 import { DataCtrlState, DataCtrl, DataCtrlName } from './data';
 import { LoginCtrlState, LoginCtrl, LoginCtrlName} from './login';
+import { AboutCtrlState, AboutCtrl, AboutCtrlName} from './about';
 
 import '../style/app.css';
 
@@ -33,6 +34,7 @@ angular.module(MODULE_NAME, ['ui.router'])
       .state('default', DefaultCtrlState)
       .state('data', DataCtrlState)
       .state('login', LoginCtrlState)
+      .state('about', AboutCtrlState)
       ;
   })
   .run(($state) => {
@@ -58,6 +60,7 @@ angular.module(MODULE_NAME, ['ui.router'])
   .controller('AppCtrl', AppCtrl)
   .controller(DefaultCtrlName, DefaultCtrl)
   .controller(DataCtrlName, DataCtrl)
-  .controller(LoginCtrlName, LoginCtrl);
+  .controller(LoginCtrlName, LoginCtrl)
+  .controller(AboutCtrlName, AboutCtrl);
 
 export default MODULE_NAME;
