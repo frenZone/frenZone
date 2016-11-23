@@ -4,6 +4,7 @@ import { DefaultCtrlState, DefaultCtrl, DefaultCtrlName, instaData } from './def
 import { PhotosServiceName, PhotosService } from './services/photos';
 import { MapServiceName, MapService } from './services/map';
 import { MarkerServiceName, MarkerService } from './services/markers';
+import { DataServiceName, DataService } from './services/data';
 import { DataCtrlState, DataCtrl, DataCtrlName } from './data';
 import { LoginCtrlState, LoginCtrl, LoginCtrlName} from './login';
 import { AboutCtrlState, AboutCtrl, AboutCtrlName} from './about';
@@ -54,6 +55,7 @@ angular.module(MODULE_NAME, ['ui.router'])
   .service(PhotosServiceName, PhotosService)
   .service(MapServiceName, MapService)
   .service(MarkerServiceName, MarkerService)
+  .service(DataServiceName, DataService)
   .constant('instaData', instaData)
   .controller('AppCtrl', AppCtrl)
   .controller(DefaultCtrlName, DefaultCtrl)
