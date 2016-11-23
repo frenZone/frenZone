@@ -63,6 +63,7 @@ export const DataCtrl = [
       countArr.push(value.count);
         locArr.push(value.location);
 
+        console.log('countArr',countArr);
       });
 
       var chart = c3.generate({
