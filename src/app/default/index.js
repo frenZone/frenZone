@@ -29,6 +29,8 @@ export const DefaultCtrl = [
       $scope.oms = MapService.getOms();
 
       MapService.initMap();
+      $scope.instaData.length = 0;
+      $scope.locationData.length = 0;
       //casey
       MapService.getData('https://api.instagram.com/v1/users/55870965/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=55870965.2c4aaae.e0dd1784350a44838eda4573296a5750');
 
@@ -53,7 +55,7 @@ export const DefaultCtrl = [
       $scope.centerMap = MarkerService.centerMap.bind(this, $scope.map, $scope.locationData);
 
       $scope.getUserPhotos = MarkerService.getUserPhotos.bind(MarkerService, $scope.map, MapService.oms, $scope.locationData, MapService.locations, MapService.locationSet, $scope.instaData);
-      $scope.showAllPhotos = MarkerService.showAllPhotos.bind(MarkerService, $scope.map, MapService.oms, $scope.instaData);
+      $scope.showAllPhotos = MarkerService.showAllPhotos.bind(MarkerService, $scope.map, MapService.oms, $scope.locationData, MapService.locations, MapService.locationSet, $scope.instaData);
 
       MapService.update = function () {
         $scope.instaData = this.instaData;
