@@ -29,7 +29,6 @@ export const DataCtrl = [
 
       PhotosService.getFriends()
       .success((friends) => {
-        console.log(friends);
         $scope.friends = friends.data;
       });
 

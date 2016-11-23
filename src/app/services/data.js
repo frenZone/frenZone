@@ -2,7 +2,6 @@ export const DataServiceName = 'data';
 
 export class DataService {
   count(trendingData, locationData, username) {
-    console.log(username);
     var sortedArr = [];
     trendingData.length = 0;
     locationData.forEach((loc)=> {
