@@ -420,22 +420,6 @@ a.back{
 
 }
 
-/*.chart div {
-  font: 10px sans-serif;
-  background-color: salmon;
-  text-align: right;
-  padding: 3px;
-  margin: 1px;
-  color: white;
-}*/
-
-.chart {
-  background-color: white;
-}
-
-
-
-
 .menu{
   display:flex;
   flex-flow:row wrap;
@@ -457,4 +441,44 @@ a.back{
   margin:auto;
   flex: 0 0 30%;
 
+}
+
+#chart {
+  background-color: black;
+}
+
+.c3-legend-item {
+  font-family: 'Poppins', sans-serif;
+  fill: #FA6900;
+  font-size: 18px;
+}
+
+.c3-axis-y text {
+  font-family: 'Poppins', sans-serif;
+   fill: #FA6900;
+   font-size:12px;
+}
+.c3-axis-x text {
+  font-family: 'Poppins', sans-serif;
+    font-size:16px;
+    fill:#FA6900;
+}
+
+h1 {
+  color: #FA6900;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  font-size:24px;
+}
+
+.c3 .c3-axis-x path, .c3 .c3-axis-x line {
+
+  fill: #FA6900;
+  stroke-width: 0.1;
+}
+
+.c3 .c3-axis-y path, .c3 .c3-axis-y line {
+
+  fill: #FA6900;
+  stroke-width: 0.1;
 }

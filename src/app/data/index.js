@@ -10,81 +10,83 @@ export const DataCtrlState = {
   controller: DataCtrlName,
   controllerAs: 'data'
 };
-export const DataCtrl =[
+
+export const DataCtrl = [
   '$scope',
   MapServiceName,
-   class DataCtrl {
+  class DataCtrl {
     constructor($scope, MapService) {
-      $scope.instaData = MapService.getInstaData();
       $scope.locationData = MapService.getLocationData();
-      //console.log('locationData',$scope.locationData);
-      var data = [ 2, 3, 5, 8, 13];
+      $scope.trendingData = [];
 
-      var width = 960,
-          height = 500;
+      function count() {
+        var sortedArr = [];
+        $scope.locationData.forEach((loc)=> {
+          sortedArr.push(loc.name);
+        });
 
-      var outerRadius = height / 2 - 30,
-          innerRadius = outerRadius / 3,
-          cornerRadius = 10;
+        sortedArr.sort();
 
-      var pie = d3.layout.pie();
+        var current = null;
+        var cnt = 0;
+        for (var i = 0; i < sortedArr.length; i++) {
+          if (sortedArr[i] != current) {
+            if (cnt > 0) {
+                var obj = {location: current, count: cnt};
+                $scope.trendingData.push(obj);
+            }
+            current = sortedArr[i];
+            cnt = 1;
+          } else {
+              cnt++;
+          }
+        }
+        $scope.trendingData.sort((a,b) => {
+          if(a.count < b.count){
+            return 1;
+          }
+          if(a.count > b.count){
+            return -1;
+          }
+          return 0;
+        });
 
-      var arc = d3.svg.arc()
-          .innerRadius(innerRadius)
-          .outerRadius(outerRadius);
-
-      var svg = d3.select('.chart').append("svg")
-          .attr("width", width)
-          .attr("height", height)
-          .append("g")
-          .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-
-      var path = svg.selectAll("path")
-          .data(data)
-        .enter().append("path");
-
-      var ease = d3.ease("cubic-in-out"),
-          duration = 7500;
-
-      d3.timer(function(elapsed) {
-        var t = ease(1 - Math.abs((elapsed % duration) / duration - .5) * 2);
-
-        path
-            .data(pie.padAngle(t * 2 * Math.PI / data.length)(data))
-            .attr("d", arc);
-      });
-      MapService.update = function () {
-          $scope.instaData = this.instaData;
-          $scope.locationData = this.locationData;
-          $scope.locations = this.locations;
-          $scope.oms = this.oms;
-          //console.log($scope.oms);
-      };
-
-      // function trendingSpots(locationData){
-      //   let trendingSpot = [];
-      //   for (var i = 0; i < $scope.locationData.length; i++){
-      //     if ($scope.locationData.name === )
-      //   }
-      // }
-
-
-      // let newArray =[];
-      let valueArr = locationData.map(function(item){
-        console.log('hit')
-        return item.name;
-      });
-      let isDuplicate = valueArr.some(function(item, idx){
-        return valueArr.indexOf(item) != idx;
-      });
-      console.log('isDuplicate', isDuplicate);
-
-      function brandNewArray(){
-        return valueArr;
+        $scope.trendingData.length = 5;
       }
+      count();
 
+
+      let countArr = [];
+      let locArr = [];
+      $scope.trendingData.forEach((value) => {
+
+      countArr.push(value.count);
+        locArr.push(value.location);
+
+      });
+
+      var chart = c3.generate({
+        data: {
+          x : 'x',
+          columns: [
+              ['x'].concat(locArr),
+              ['trending places'].concat(countArr),
+          ],
+          groups: [
+              ['download', 'loading']
+          ],
+          type: 'bar'
+        },
+        axis: {
+          x: {
+              type: 'categorized' // this is needed to load string x value
+          }
+        },
+
+      });
     }
-
   }
 
-];
+
+
+  ];
