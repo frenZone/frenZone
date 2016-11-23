@@ -1,3 +1,5 @@
+import { MapServiceName } from '../services/map';
+
 const template = require ('./data.html');
 
 export const DataCtrlName = 'DataCtrl';
@@ -9,60 +11,82 @@ export const DataCtrlState = {
   controllerAs: 'data'
 };
 
-export class DataCtrl {
-  constructor() {
-    var dataset = [
-  {
-    name: 'Jan P.',
-    score: 5
-  },
-  {
-    name: 'Alan',
-    score: 3
-  },
-  {
-    name: 'A-Aron',
-    score: 3
-  },
-  {
-    name: 'Renee',
-    score: 3
-  },
-  {
-    name: 'Casey',
-    score: 7
-  },
-  {
-    name: 'Marta',
-    score: 3
-  },
-  {
-    name: 'B-Ryan',
-    score: 5
-  },
-  {
-    name: 'Gina',
-    score: 2
-  },
-  {
-    name: 'Ray',
-    score: 4
-  },
-];
+export const DataCtrl = [
+  '$scope',
+  MapServiceName,
+  class DataCtrl {
+    constructor($scope, MapService) {
+      $scope.locationData = MapService.getLocationData();
+      $scope.trendingData = [];
 
-console.log('d3',d3)
+      function count() {
+        var sortedArr = [];
+        $scope.locationData.forEach((loc)=> {
+          sortedArr.push(loc.name);
+        });
 
-var chart = d3.select('.chart');
+        sortedArr.sort();
 
-var bars = chart.selectAll('div')
-  .data(dataset)
-  .enter().append('div')
-  .style('width', (data) => {
-  console.log('data',data)
-    return `${data.score * 50}px`;
-  })
-  .text((data) => {
-    return `${data.name} ${data.score}`;
-  })
+        var current = null;
+        var cnt = 0;
+        for (var i = 0; i < sortedArr.length; i++) {
+          if (sortedArr[i] != current) {
+            if (cnt > 0) {
+                var obj = {location: current, count: cnt};
+                $scope.trendingData.push(obj);
+            }
+            current = sortedArr[i];
+            cnt = 1;
+          } else {
+              cnt++;
+          }
+        }
+        $scope.trendingData.sort((a,b) => {
+          if(a.count < b.count){
+            return 1;
+          }
+          if(a.count > b.count){
+            return -1;
+          }
+          return 0;
+        });
+
+        $scope.trendingData.length = 5;
+      }
+      count();
+
+
+      let countArr = [];
+      let locArr = [];
+      $scope.trendingData.forEach((value) => {
+
+      countArr.push(value.count);
+        locArr.push(value.location);
+
+      });
+
+      var chart = c3.generate({
+        data: {
+          x : 'x',
+          columns: [
+              ['x'].concat(locArr),
+              ['trending places'].concat(countArr),
+          ],
+          groups: [
+              ['download', 'loading']
+          ],
+          type: 'bar'
+        },
+        axis: {
+          x: {
+              type: 'categorized' // this is needed to load string x value
+          }
+        },
+
+      });
+    }
   }
-}
+
+
+
+  ];
