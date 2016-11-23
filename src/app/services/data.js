@@ -1,52 +1,70 @@
-// export const DataServiceName = 'data';
+export const DataServiceName = 'data';
 
-// export const DataService = [
+export class DataService {
+  count(trendingData, locationData, username) {
+    console.log(username);
+    var sortedArr = [];
+    trendingData.length = 0;
+    locationData.forEach((loc)=> {
+      if(loc.username === username){
+        sortedArr.push(loc.name);
+      } else if (username === undefined || username === 'all'){
+        sortedArr.push(loc.name);
+      }
+    });
+    sortedArr.sort();
+    var current = null;
+    var cnt = 0;
+    for (var i = 0; i < sortedArr.length; i++) {
+      if (sortedArr[i] != current) {
+        if (cnt > 0) {
+            var obj = {location: current, count: cnt};
+            trendingData.push(obj);
+        }
+        current = sortedArr[i];
+        cnt = 1;
+      } else {
+          cnt++;
+      }
+    }
+    trendingData.sort((a,b) => {
+      if(a.count < b.count){
+        return 1;
+      }
+      if(a.count > b.count){
+        return -1;
+      }
+      return 0;
+    });
 
-//   class DataService {
-//     constructor(){
+    trendingData.length = 5;
+    let countArr = [];
+    let locArr = [];
+    trendingData.forEach((value) => {
+      countArr.push(value.count);
+      locArr.push(value.location);
+    });
 
-//     var data = [1, 1, 2, 3, 5, 8, 13];
+    var chart = c3.generate({
+      data: {
+        x : 'x',
+        columns: [
+            ['x'].concat(locArr),
+            ['trending places'].concat(countArr),
+        ],
+        groups: [
+            ['download', 'loading']
+        ],
+        type: 'bar'
+      },
+      axis: {
+        x: {
+            type: 'categorized' // this is needed to load string x value
+        }
+      },
 
-//     var width = 960,
-//         height = 500;
+    });
 
-//     var outerRadius = height / 2 - 30,
-//         innerRadius = outerRadius / 3,
-//         cornerRadius = 10;
+  }
 
-//     var pie = d3.layout.pie();
-
-//     var arc = d3.svg.arc()
-//         .innerRadius(innerRadius)
-//         .outerRadius(outerRadius);
-
-//     var svg = d3.select('.chart').append("svg")
-//         .attr("width", width)
-//         .attr("height", height)
-//         .append("g")
-//         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-
-//     var path = svg.selectAll("path")
-//         .data(data)
-//       .enter().append("path");
-
-//     var ease = d3.ease("cubic-in-out"),
-//         duration = 7500;
-
-//     d3.timer(function(elapsed) {
-//       var t = ease(1 - Math.abs((elapsed % duration) / duration - .5) * 2);
-
-//       path
-//           .data(pie.padAngle(t * 2 * Math.PI / data.length)(data))
-//           .attr("d", arc);
-//     });
-
-
-
-//     }
-
-//   }
-
-
-
-// ]
+}
