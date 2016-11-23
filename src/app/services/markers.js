@@ -79,6 +79,9 @@ export class MarkerService {
     var displayOutPut = document.getElementById('displayOutPut');
     // var numberHours =(Math.round((inputTime.value/3600)) + " hours");
 
+
+
+
     for (var i = 0; i < instaData.length; i++) {
       if(instaData[i].location !== null && instaData[i].user.username === username){
         if(instaData[i].created_time >= Math.round(new Date()/1000) - inputTime.value){
