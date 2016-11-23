@@ -8,6 +8,7 @@ export class MarkerService {
   // Removes the markers from the map, but keeps them in the array.
   clearMarkers(oms) {
     this.setMapOnAll(null, oms);
+    oms.a.length = 0;
   }
   // Shows any markers currently in the array.
   showMarkers(map) {
@@ -15,6 +16,7 @@ export class MarkerService {
   }
   // Deletes all markers in the array by removing references to them.
   deleteMarkers(oms) {
+    console.log('hit delete');
     this.clearMarkers(oms);
     oms.a = [];
   }
@@ -32,8 +34,10 @@ export class MarkerService {
     map.setCenter({lat:centerCoord.lat, lng:centerCoord.long});
     map.setZoom(18);
   }
-  showAllPhotos (map, oms, instaData){
+
+  showAllPhotos (map, oms, locationData, locations, locationSet, instaData){
     this.deleteMarkers(oms);
+    console.log(instaData.length);
      for (var i = 0; i < instaData.length; i++) {
       if(instaData[i].location !== null){
         var coords = instaData[i].location;
@@ -70,6 +74,19 @@ export class MarkerService {
         oms.addMarker(marker);
       }
       map.setCenter({lat: 21.308743338531, lng: -157.80870209358});
+      locationSet = new Set();
+      locations.length = 0;
+      locationData.map((lctn) => {
+        locationSet.add(lctn.name);
+      });
+      [...locationSet].forEach((location) => {
+        locations.push(location);
+      });
+      locations.sort((a,b) => {
+        if(a<b) return -1;
+        if(a>b) return 1;
+        return 0;
+      });
     }
   }
   getUserPhotos (map, oms, locationData, locations, locationSet, instaData, username){
@@ -78,6 +95,11 @@ export class MarkerService {
     var inputDisplay = document.getElementById('inputDisplay');
     var displayOutPut = document.getElementById('displayOutPut');
     // var numberHours =(Math.round((inputTime.value/3600)) + " hours");
+    // if(inputTime.value >= 86400){
+    //   numberHours =(Math.round((inputTime.value/86400)) + " days");
+    // }
+    // inputDisplay.innerHTML = numberHours + " ago";
+
 
 
 

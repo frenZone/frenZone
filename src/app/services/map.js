@@ -544,7 +544,7 @@ export const MapService = [
               oms.addMarker(marker);
             }
           }
-          this.updateLocations('all');
+          this.updateLocations();
         });
 
 
