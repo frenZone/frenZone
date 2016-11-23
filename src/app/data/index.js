@@ -18,9 +18,9 @@ export const DataCtrl = [
     constructor($scope, MapService) {
       $scope.locationData = MapService.getLocationData();
       $scope.trendingData = [];
-
       function count() {
         var sortedArr = [];
+        $scope.trendingData.length = 0;
         $scope.locationData.forEach((loc)=> {
           sortedArr.push(loc.name);
         });
@@ -53,8 +53,8 @@ export const DataCtrl = [
 
         $scope.trendingData.length = 5;
       }
-      count();
 
+      count();
 
       let countArr = [];
       let locArr = [];
