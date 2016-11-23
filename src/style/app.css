@@ -421,6 +421,11 @@ a.back{
 
 }
 
+#usernameList{
+  display: block;
+  margin: 0 auto;
+}
+
 #chart {
   background-color: black;
 }
