@@ -465,7 +465,32 @@ h1 {
   fill: #FA6900;
   stroke-width: 0.1;
 }
-div#about{
-  color: #FA6900;
+
+
+.aboutUs{
+  display:flex;
+  flex-flow:row wrap;
+  justify-content: center;
+  color:white;
+}
+
+.aboutUs > h1{
+  flex: 0 0 100%;
+}
+
+h2{
   text-align: center;
+  flex: 0 0 100%;
+}
+
+.aboutUs p{
+  text-align: left;
+  text-indent: 30px;
+}
+
+.aaron, .bryan, .casey, .jp{
+  height: 500px;
+  flex: 0 0 20%;
+  margin:auto;
+
 }
