@@ -421,6 +421,11 @@ a.back{
 
 }
 
+#usernameList{
+  display: block;
+  margin: 0 auto;
+}
+
 #chart {
   background-color: black;
 }
@@ -486,5 +491,3 @@ h2{
   height: 500px;
   flex: 0 0 20%;
   margin:auto;
-  text-align: center;
-}
