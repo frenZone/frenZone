@@ -16,7 +16,6 @@ export class MarkerService {
   }
   // Deletes all markers in the array by removing references to them.
   deleteMarkers(oms) {
-    console.log('hit delete');
     this.clearMarkers(oms);
     oms.a = [];
   }
@@ -37,7 +36,6 @@ export class MarkerService {
 
   showAllPhotos (map, oms, locationData, locations, locationSet, instaData){
     this.deleteMarkers(oms);
-    console.log(instaData.length);
      for (var i = 0; i < instaData.length; i++) {
       if(instaData[i].location !== null){
         var coords = instaData[i].location;

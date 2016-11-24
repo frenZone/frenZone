@@ -1,0 +1,22 @@
+<div class="bar">
+
+    <div class="instafeed">
+
+      <a class="home-icon" ng-class="{active: layout == 'default'}" ng-click="showAllPhotos()" ui-sref="default">
+        <img src='./img/frenzone-logo.svg'>
+        </img>
+      </a>
+    </div>
+
+    <div class="buttons">
+      <div class="logoutButton" ng-class="{active: layout == 'login'}" ng-click="layout = 'login';this.logout()" ui-sref="login">LOGOUT</div>
+    </div>
+
+</div>
+
+<div id='about'>
+<h1>About Frenzone</h1>
+
+<p>We are a group of developers based in Hawaii</p>
+<p>This project is our final project at <img src="http://www.devleague.com/img/devleague_dark.svg"></p>
+</div>

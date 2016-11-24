@@ -85,7 +85,7 @@ app > section{
 .barIcon {
     width:30%;
 }
-span {
+.span {
   color: #FA6900;
 }
 .holder {
@@ -148,14 +148,14 @@ span {
 
 .locationsContainer{
   text-align:left;
-  color:grey;
+  color:white;
 }
 
 .className{
   color:white;
 }
 .friendsContainer {
-  color: grey;
+  color: white;
   margin-bottom: 5px;
 }
 .friendsContainer img {
@@ -168,7 +168,7 @@ span {
  color: #FA6900;
 }
 
-.friends {
+/*.friends {
   display:flex;
   flex-direction: row;
   width: 100%;
@@ -176,7 +176,7 @@ span {
   background-color: white;
   margin-top: 5px;
   margin-bottom: 5px;
-}
+}*/
 
 .names:hover{
   color: #FA6900;
@@ -255,30 +255,10 @@ width: 80%;
 
 }
 
-/*.friendsIcon{
-  background-image: url('https://s6.postimg.org/i0cidwttt/friendcirclewhite.png');
-  background-repeat: no-repeat;
-  background-size: 67px;
-  background-repeat: no-repeat;
-  height: 44px;
-  margin-right: 33px;
-  width: 20px;
-}
-.friendsIcon2{
-  background-image: url('https://s6.postimg.org/avup4vmkh/3guyswhite.png');
-  background-size: 68px;
-  background-repeat: no-repeat;
-  height: 42px;
-  width: 16px;
-
-
-}*/
-
-
 .sidenav {
   margin-top:70px;
   background-color: #171F25;
-  border: 1px solid grey;
+  border: 1px solid white;
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
@@ -292,24 +272,11 @@ width: 80%;
   transition: 0.5s;
 }
 
-/*.sidenav.open-nav .friendsCol{
-  padding-top: 60px;
-  position: absolute;
-}
-
-.sidenav.open-nav .friendsCol .iconContainer {
-  width:231px;
-  position:fixed;
-  top:0;
-  right:0;
-  -webkit-transform: translateZ(0);
-}*/
-
 .sidenav a {
     /*padding: 8px 8px 8px 32px;*/
     text-decoration: none;
     font-size: 15px;
-    color: grey;
+    color: white;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -318,13 +285,6 @@ width: 80%;
 .sidenav a:hover, .offcanvas a:focus{
     color: #FA6900;
 }
-/*.sidenav .closebtn {
-  text-align: center;
-  padding-right: 40px;
-  flex: 0 0 100%;
-
-}*/
-
 
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 40px;}
@@ -341,7 +301,7 @@ width: 80%;
 
 .specificLocation{
   padding: 10px;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid white;
 }
 
 .specificLocation:hover{
@@ -355,6 +315,30 @@ a.back{
   border:2px solid #FA6900;
   text-align: center;
   flex: 0 0 100%;
+}
+
+.aboutButton{
+  width: 100px;
+  height: 25px;
+  margin-top: 10px;
+  margin-left: 30px;
+  text-align: center;
+  font-size:15px;
+  border: 2px solid white;
+  border-radius: 30px;
+}
+
+.aboutButton:hover{
+  color: #FA6900;
+  border-color:#FA6900;
+}
+
+
+.buttons{
+  display: flex;
+  flex-flow:row wrap;
+  justify-content: flex-end;
+  flex: 0 0 80%;
 }
 
 .logoutButton{
@@ -373,12 +357,6 @@ a.back{
   border-color:#FA6900;
 }
 
-.buttons{
-  display: flex;
-  flex-flow:row wrap;
-  justify-content: flex-end;
-  flex: 0 0 80%;
-}
 
 /*animation*/
 .fallingIconPic{
@@ -443,6 +421,11 @@ a.back{
 
 }
 
+#usernameList{
+  display: block;
+  margin: 0 auto;
+}
+
 #chart {
   background-color: black;
 }
@@ -481,4 +464,8 @@ h1 {
 
   fill: #FA6900;
   stroke-width: 0.1;
+}
+div#about{
+  color: #FA6900;
+  text-align: center;
 }
