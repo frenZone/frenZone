@@ -488,6 +488,7 @@ h2{
 }
 
 .aaron, .bryan, .casey, .jp{
+  text-align:center;
   height: 500px;
   flex: 0 0 20%;
   margin:auto;
