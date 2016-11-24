@@ -143,8 +143,9 @@ module.exports = function makeWebpackConfig () {
     // Render index.html
     config.plugins.push(
       new HtmlWebpackPlugin({
-        template: './src/public/index.html',
-        inject: 'body'
+        template: './index.tpl.html',
+        inject: 'body',
+        filename: 'index.html'
       }),
       // Reference: https://github.com/webpack/extract-text-webpack-plugin
       // Extract css files

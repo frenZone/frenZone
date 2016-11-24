@@ -465,3 +465,7 @@ h1 {
   fill: #FA6900;
   stroke-width: 0.1;
 }
+div#about{
+  color: #FA6900;
+  text-align: center;
+}
