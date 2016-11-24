@@ -13,6 +13,10 @@ export const DefaultCtrlState = {
   controllerAs: 'default'
 };
 
+console.log("caseyApi")
+console.log("teting now")
+// var caseyApi = config.caseyApi;
+
 export const DefaultCtrl = [
   '$scope',
   PhotosServiceName,
