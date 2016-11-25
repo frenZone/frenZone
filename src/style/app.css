@@ -466,6 +466,7 @@ h1 {
   stroke-width: 0.1;
 }
 
+
 .aboutUs{
   display:flex;
   flex-flow:row wrap;
@@ -492,4 +493,9 @@ h2{
   height: 500px;
   flex: 0 0 20%;
   margin:auto;
+
 }
+
+/*spinning animation */
+
+
