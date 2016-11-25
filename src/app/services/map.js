@@ -1,5 +1,8 @@
 export const MapServiceName = 'map';
 
+ export var currentLocation = {}
+console.log("currentLocation!1223",currentLocation);
+
 var map;
 const locationData = [];
 const instaData = [];
@@ -646,6 +649,8 @@ export const MapService = [
             lng: position.coords.longitude
           };
 
+          currentLocation.lat = pos.lat;
+          currentLocation.lng = pos.lng;
           infoWindow.setPosition(pos);
           infoWindow.setContent('Location found.');
           map.setCenter(pos);
@@ -667,3 +672,4 @@ export const MapService = [
     }
   }
 ];
+console.log("bottom",currentLocation)
