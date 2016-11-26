@@ -19,8 +19,6 @@ app > section{
   display: flex;
   justify-content: center;
   background-color: black;
- /* background-image: url('./img/IMG_2361.jpg');
-  background-size: cover;*/
   width: 100%;
   height: 100%;
 }
@@ -30,6 +28,7 @@ app > section{
   margin-top: 2%;
   text-align: center;
 }
+
 .loginLogo{
   color: white;
   font-size: 163px;
@@ -54,7 +53,6 @@ app > section{
   color: #FA6900;
 }
 
-
 #pac-input {
   background-color: #fff;
   font-family: Roboto;
@@ -65,9 +63,11 @@ app > section{
   text-overflow: ellipsis;
   width: 300px;
 }
+
 #pac-input:focus {
   border-color: #4d90fe;
 }
+
 .instafeed{
   flex:0 0 20%;
   display: inline-block;
@@ -75,20 +75,25 @@ app > section{
   background-position:50% 30%;
   background-repeat: no-repeat;
 }
+
 .instafeed a{
   flex: 0 0 30%;
   text-decoration: none;
   color:white;
 }
+
 .instafeed img{
   height: 30px;
 }
+
 .barIcon {
     width:30%;
 }
+
 .span {
   color: #FA6900;
 }
+
 .holder {
   width: 20%;
 }
@@ -104,11 +109,13 @@ app > section{
 #search_user_input{
   width: 80%;
 }
+
 .bar .search_photo_container input {
   margin: auto;
   flex: 0 0 100%;
   height: 20px;
 }
+
 .bar {
   color: white;
   font-family: 'Poppins', sans-serif;
@@ -120,6 +127,7 @@ app > section{
   background-color: #171F25;
   padding: 10px 50px;
 }
+
 .mainBody {
   display: flex;
   flex-flow: row wrap;
@@ -127,18 +135,22 @@ app > section{
   height: 100%;
   width: 100%;
 }
+
 .navContainer{
   background-color: black;
 }
+
 #map {
   flex: 0 0 100%;
   height: 100%;
 }
+
 #map #marker{
   border: 3px solid #FFF;
   border-radius: 100px;
   box-shadow: 0 0 3px 0 rgba(0,0,0, 0.25);
 }
+
 .friendsCol {
   background-color: #171F25;
   font-family: 'Poppins', sans-serif;
@@ -155,10 +167,12 @@ app > section{
 .className{
   color:white;
 }
+
 .friendsContainer {
   color: white;
   margin-bottom: 5px;
 }
+
 .friendsContainer img {
   border-radius: 50%;
   width:70px;
@@ -168,16 +182,6 @@ app > section{
 .friendsContainer:hover {
  color: #FA6900;
 }
-
-/*.friends {
-  display:flex;
-  flex-direction: row;
-  width: 100%;
-  height: 9%;
-  background-color: white;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}*/
 
 .names:hover{
   color: #FA6900;
@@ -189,12 +193,14 @@ app > section{
   flex: 0 0 100%;
   max-height: 100%;
 }
+
 .locationContainer img {
   display: flex;
   flex-direction: row;
   width: 83px;
   height: auto;
 }
+
 body {
     font-family: "Lato", sans-serif;
 }
@@ -202,15 +208,16 @@ body {
 #outPut{
   color: white;
 }
+
 #inputTime{
   width: 80%;
   margin-left: 5%;
 }
+
 #inputDisplay{
   color: #818181;
   padding-top: 25px;
   width: 100%;
-
 }
 
 #searchUser{
@@ -253,7 +260,6 @@ width: 80%;
   background-color: #023756;
   /*background-color: ##171F25;*/
 
-
 }
 
 .sidenav {
@@ -283,6 +289,7 @@ width: 80%;
     justify-content: center;
     transition: 0.3s
 }
+
 .sidenav a:hover, .offcanvas a:focus{
     color: #FA6900;
 }
@@ -294,6 +301,7 @@ width: 80%;
     font-size: 36px;
     margin-left: 50px;
 }
+
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
@@ -333,7 +341,6 @@ a.back{
   color: #FA6900;
   border-color:#FA6900;
 }
-
 
 .buttons{
   display: flex;
@@ -396,7 +403,6 @@ a.back{
     35%  {top: 150px}
     40% {top: 161px;}
     100% {top:161px;}
-
 }
 
 .menu{
@@ -419,7 +425,6 @@ a.back{
   border:2px solid #FA6900;
   margin:auto;
   flex: 0 0 30%;
-
 }
 
 #usernameList{
@@ -442,6 +447,7 @@ a.back{
    fill: #FA6900;
    font-size:12px;
 }
+
 .c3-axis-x text {
   font-family: 'Poppins', sans-serif;
     font-size:16px;
@@ -456,7 +462,6 @@ h1 {
 }
 
 .c3 .c3-axis-x path, .c3 .c3-axis-x line {
-
   fill: #FA6900;
   stroke-width: 0.1;
 }
@@ -466,7 +471,6 @@ h1 {
   fill: #FA6900;
   stroke-width: 0.1;
 }
-
 
 .aboutUs{
   display:flex;
@@ -526,7 +530,6 @@ h3{
     overflow-x: hidden;
     transition: 0.5s;
 }
-
 
 .overlay-content {
     position: relative;
