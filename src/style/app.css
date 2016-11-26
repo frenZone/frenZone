@@ -3,6 +3,7 @@ html, body {
  margin: 0;
  padding: 0;
 }
+
 app{
   background-color: black;
   display: block;
@@ -265,7 +266,7 @@ width: 80%;
   height: 90%;
   width: 0;
   position: fixed;
-  z-index: 9998;
+  z-index: 0;
   top: 0;
   right: 0;
   overflow-x: hidden;
@@ -483,19 +484,86 @@ h2{
   flex: 0 0 100%;
 }
 
-.aboutUs p{
+.overlay-content .aboutUs p{
+  font-size: 15px;
   text-align: left;
   text-indent: 30px;
 }
 
-.aaron, .bryan, .casey, .jp{
+.profiles .aaron, .bryan, .casey, .jp{
+  font-size: 15px;
   text-align: center;
-  height: 500px;
   flex: 0 0 20%;
   margin:auto;
+  margin-top: 0px;
 
 }
+.profiles .aaron h2, .bryan h2, .casey h2, .jp h2{
+  color:lightgreen;
+}
 
-/*spinning animation */
+h3{
+  color:lightblue;
+}
 
+.profiles {
+  min-height: 600px;
+  display: flex;
+  flex-flow:row nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+
+.overlay-content {
+    position: relative;
+    top: 10%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
+}
 
