@@ -2,8 +2,9 @@ export const DataServiceName = 'data';
 
 export class DataService {
   count(trendingData, locationData, username) {
-    var sortedArr = [];
+    let sortedArr = [];
     trendingData.length = 0;
+
     locationData.forEach((loc)=> {
       if(loc.username === username){
         sortedArr.push(loc.name);
@@ -12,12 +13,12 @@ export class DataService {
       }
     });
     sortedArr.sort();
-    var current = null;
+    let current = null;
     var cnt = 0;
-    for (var i = 0; i < sortedArr.length; i++) {
+    for (let  i = 0; i < sortedArr.length; i++) {
       if (sortedArr[i] != current) {
         if (cnt > 0) {
-            var obj = {location: current, count: cnt};
+            let obj = {location: current, count: cnt};
             trendingData.push(obj);
         }
         current = sortedArr[i];
@@ -44,7 +45,7 @@ export class DataService {
       locArr.push(value.location);
     });
 
-    var chart = c3.generate({
+    let chart = c3.generate({
       data: {
         x : 'x',
         columns: [
@@ -61,7 +62,9 @@ export class DataService {
             type: 'categorized' // this is needed to load string x value
         }
       },
-
+      legend:{
+        show: false
+      },
     });
 
   }

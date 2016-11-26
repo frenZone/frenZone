@@ -317,6 +317,7 @@ a.back{
   height: 25px;
   margin-top: 10px;
   margin-left: 30px;
+  margin-right: 30px;
   text-align: center;
   font-size:15px;
   border: 2px solid white;
@@ -339,7 +340,6 @@ a.back{
   width: 100px;
   height: 25px;
   margin-top: 10px;
-  margin-left: 30px;
   text-align: center;
   font-size:15px;
   border: 2px solid white;
@@ -675,6 +675,11 @@ h3{
   align-items: flex-start;
   }
 
+  .c3-axis-x text {
+  font-family: 'Poppins', sans-serif;
+    font-size:10px;
+    fill:#FA6900;
+  }
 
 }
 
