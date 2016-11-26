@@ -2,11 +2,11 @@
 
 
 > Thank you for taking the time out of your day to check out our app!
-This is an application to check out popular hot spots around your location; that were geo-tagged by where your friends have been at.
+Frenzone is an application to check out popular hot spots around your location, that were geo-tagged by where your friends have been at.
 
 ![home page 2](https://cloud.githubusercontent.com/assets/20671893/20635284/55445076-b2ff-11e6-8263-005cd3c47b8e.png)
 
-* [Application Info](https://github.com/frenZone/frenZone/wiki)
+* [Frenzone Wiki](https://github.com/frenZone/frenZone/wiki)
 
 ### Setup
 
