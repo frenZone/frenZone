@@ -13,8 +13,10 @@
         <input id="pac-input" onClick="this.select();" class="controls" type="text" placeholder="Search Location">
       </div>
       <a class="span" style="font-size:30px;cursor:pointer" ng-click="this.openNav()">&#9776; </a>
+      <div class="aboutAndLogoutContainer">
       <div class="aboutButton" ng-class="{active: layout == 'about'}" ng-click="layout = 'about'" ui-sref="about">ABOUT</div>
       <div class="logoutButton" ng-class="{active: layout == 'login'}" ng-click="layout = 'login';this.logout()" ui-sref="login">LOGOUT</div>
+      </div>
     </div>
 
 </div>
@@ -40,7 +42,7 @@
         </div>
 
         <div id="inputDisplay">{{inputTimeDisplay}}
-          <input id="inputTime" type="range" min="3600" max="994000" ng-model="inputTime" ng-change="onChange()"></input>
+          <input id="inputTime" type="range" min="3600" max="2994000" ng-model="inputTime" ng-change="onChange()"></input>
           <div ng-show="inputTimeDisplay === undefined">Scroll for time period</div>
         </div>
 

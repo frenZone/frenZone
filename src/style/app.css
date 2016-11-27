@@ -262,6 +262,7 @@ width: 80%;
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
+  width: 130px;
   height: 90%;
   width: 0;
   position: fixed;
@@ -495,7 +496,4 @@ h2{
   margin:auto;
 
 }
-
-/*spinning animation */
-
 
