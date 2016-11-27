@@ -13,6 +13,9 @@ module.exports = {
       url: {
         type: Sequelize.TEXT
       },
+      instaCreatedTime:{
+        type: Sequelize.TEXT
+      },
       LocationId:{
         references:{ model: 'Locations', key: 'id'},
         type: Sequelize.TEXT

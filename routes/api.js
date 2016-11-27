@@ -55,6 +55,7 @@ router.route('/write')
               id: body.data[i].id,
               description: description,
               url: body.data[i].images.low_resolution.url,
+              instaCreatedTime: body.data[i].created_time,
               LocationId: body.data[i].location.id,
               UserId: body.data[i].user.id,
             });
