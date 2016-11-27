@@ -263,7 +263,7 @@ width: 80%;
 }
 
 .sidenav {
-  margin-top:70px;
+  margin-top:68px;
   background-color: #171F25;
   border: 1px solid white;
   display: flex;
@@ -545,6 +545,99 @@ h3{
     font-size: 60px;
 }
 
+@media screen and (max-width: 965px) {
+  .sidenav {
+  margin-top:107px;
+  background-color: #171F25;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  width: 180px;
+  height: 90%;
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  }
+  .sidenav a {font-size: 11px;}
+
+}
+
+@media screen and (max-width: 736px) {
+  .sidenav {
+  margin-top:107px;
+  background-color: #171F25;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  width: 180px;
+  height: 90%;
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  }
+  .sidenav a {
+    font-size: 11px;
+  }
+
+  .buttons{
+  display: flex;
+  flex-flow:row wrap;
+  justify-content: flex-end;
+  flex: 0 3 74%;
+}
+}
+
+
+
+@media screen and (max-width: 663px) {
+  .sidenav {
+  margin-top:93px;
+  background-color: #171F25;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  width: 140px;
+  height: 90%;
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  }
+  .sidenav a {font-size: 11px;}
+
+}
+
+@media screen and (max-width: 618px) {
+  .sidenav {
+  margin-top:141px;
+  background-color: #171F25;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  width: 140px;
+  height: 90%;
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  }
+  .sidenav a {font-size: 11px;}
+
+}
 
 @media screen and (max-width: 450px) {
   .overlay a {font-size: 20px}
@@ -641,7 +734,7 @@ h3{
   }
 
   .sidenav {
-    margin-top:158px;
+    margin-top:156px;
     background-color: #171F25;
     border: 1px solid white;
     display: flex;
@@ -688,7 +781,7 @@ h3{
   text-align: center;
   flex: 0 0 100%;
   margin-top: -35px;
-}
+  }
 
 
 }

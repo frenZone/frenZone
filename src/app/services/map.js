@@ -496,61 +496,76 @@ export const MapService = [
       }
     }
 
-    getData (url){
-      this.$http.jsonp(url)
-        .success((data) => {
-          for (let i = 0; i < data.data.length; i++) {
-            if(data.data[i].location !== null){
-              instaData.push(data.data[i]);
-            }
-          }
-          for (let i = 0; i < data.data.length; i++) {
-            if(data.data[i].location !== null){
-              let coords = data.data[i].location;
-              let latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
-              let image = `https://circle-image-as-a-service-juuyhmkiiy.now.sh/?url=${data.data[i].user.profile_picture}`;
-              let marker = new google.maps.Marker({
-                position: latLng,
-                map: map,
-                animation: google.maps.Animation.DROP,
-                title: coords.name,
-                id: 'marker',
-                icon: {
-                  url: image,
-                  optimized:false
-                }
-              });
-              let infowindow = new google.maps.InfoWindow();
-              let username = data.data[i].user.username;
-              let fullName = data.data[i].user.full_name;
-              let imageUrl = data.data[i].images.low_resolution.url;
-              let profilePicture = data.data[i].user.profile_picture;
-              let locationName = data.data[i].location.name;
-              let description = "picture taken at " + locationName;
-              if(data.data[i].caption !== null){
-                description = data.data[i].caption.text;
-              }
+    getData (){
+      let data;
+      let oReq = new XMLHttpRequest();
+      oReq.onload = reqListener;
+      oReq.open("GET", "http://localhost:8080/api/photos", true);
+      oReq.send();
 
-              marker.desc = '<div id="locationPicture">'+
-                `<img id='profile' src = "${profilePicture}">` +
-                '<h1>' + `${username}`+ `(${fullName})` + '</h1>' +
-                '<h3>' + '<img src = "./img/frenzone-icon.svg" width="20px" height="20px" >'+ ' ' +  locationName + '</h3>'+
-                `<img src="${imageUrl}"></img>`+
-                '<p>' + `${description}` + '</p>' +
-                '</div>';
-              let location = data.data[i].location;
-              location.username = data.data[i].user.username;
-              locationData.push(data.data[i].location);
-              oms.addMarker(marker);
+      function reqListener(e){
+        data = JSON.parse(this.responseText).data;
+        for (let i = 0; i < data.length; i++) {
+          instaData.push(data[i]);
+        }
+        for (let i = 0; i < data.length; i++) {
+          if(data[i].Location !== null){
+            let coords = data[i].Location;
+            let latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
+            let image = `${data[i].User.profilePicture}`;
+            let marker = new google.maps.Marker({
+              position: latLng,
+              map: map,
+              animation: google.maps.Animation.DROP,
+              title: coords.name,
+              id: 'marker',
+              icon: {
+                url: image,
+                optimized:false
+              }
+            });
+            var infowindow = new google.maps.InfoWindow();
+            let username = data[i].User.username;
+            let fullName = data[i].User.fullname;
+            let imageUrl = data[i].url;
+            let profilePicture = data[i].User.profilePicture;
+            let locationName = data[i].Location.name;
+            let description = "picture taken at " + locationName;
+            if(data[i].caption !== null){
+              description = data[i].description;
             }
+
+            marker.desc = '<div id="locationPicture">'+
+              `<img id='profile' src = "${profilePicture}">` +
+              '<h1>' + `${username}`+ `(${fullName})` + '</h1>' +
+              '<h3>' + '<img src = "./img/frenzone-icon.svg" width="20px" height="20px" >'+ ' ' +  locationName + '</h3>'+
+              `<img src="${imageUrl}"></img>`+
+              '<p>' + `${description}` + '</p>' +
+              '</div>';
+            let location = data[i].Location;
+            location.username = data[i].User.username;
+            locationData.push(data[i].Location);
+            oms.addMarker(marker);
           }
-          this.updateLocations();
+        }
+        // this.updateLocations();
+        locations.length = 0;
+        locationData.map((lctn) => {
+          locationSet.add(lctn.name);
+        });
+        [...locationSet].forEach((location) => {
+          locations.push(location);
         });
 
-
-      function JSON_CALLBACK(response) {
-        map.data.addGeoJson(response);
+        locations.sort((a,b) => {
+          if(a<b) return -1;
+          if(a>b) return 1;
+          return 0;
+        });
+        this.oms = oms;
+        // this.update();
       }
+
     }
 
     update(){}
