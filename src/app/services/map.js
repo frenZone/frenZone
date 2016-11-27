@@ -519,6 +519,7 @@ export const MapService = [
               id: 'marker',
               icon: {
                 url: image,
+                scaledSize: new google.maps.Size(50, 50),
                 optimized:false
               }
             });
