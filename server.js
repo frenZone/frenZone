@@ -25,7 +25,7 @@ app.use('/api', api);
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 8080 : process.env.PORT;
 
-<<<<<<< HEAD
+
 app.get('/get', (req, res) => {
   var val = req.query.search;
   console.log(this.token);
