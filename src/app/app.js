@@ -7,10 +7,9 @@ import { MarkerServiceName, MarkerService } from './services/markers';
 import { DataServiceName, DataService } from './services/data';
 import { DataCtrlState, DataCtrl, DataCtrlName } from './data';
 import { LoginCtrlState, LoginCtrl, LoginCtrlName} from './login';
-import { AboutCtrlState, AboutCtrl, AboutCtrlName} from './about';
+
 
 import '../style/app.css';
-
 
 
 let app = () => {
@@ -33,9 +32,7 @@ angular.module(MODULE_NAME, ['ui.router'])
     $stateProvider
       .state('default', DefaultCtrlState)
       .state('data', DataCtrlState)
-      .state('login', LoginCtrlState)
-      .state('about', AboutCtrlState)
-      ;
+      .state('login', LoginCtrlState);
   })
   .run(($state) => {
     var token = localStorage.getItem("token");
@@ -60,7 +57,6 @@ angular.module(MODULE_NAME, ['ui.router'])
   .controller('AppCtrl', AppCtrl)
   .controller(DefaultCtrlName, DefaultCtrl)
   .controller(DataCtrlName, DataCtrl)
-  .controller(LoginCtrlName, LoginCtrl)
-  .controller(AboutCtrlName, AboutCtrl);
+  .controller(LoginCtrlName, LoginCtrl);
 
 export default MODULE_NAME;

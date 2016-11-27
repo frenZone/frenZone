@@ -1,23 +1,70 @@
+
 <div class="bar">
+  <div class="instafeed">
+    <a class="home-icon" ng-class="{active: layout == 'default'}" ng-click="showAllPhotos()" ui-sref="default">
+      <img src='./img/frenzone-logo.svg'>
+      </img>
+    </a>
+  </div>
 
-    <div class="instafeed">
-
-      <a class="home-icon" ng-class="{active: layout == 'default'}" ng-click="showAllPhotos()" ui-sref="default">
-        <img src='./img/frenzone-logo.svg'>
-        </img>
-      </a>
+  <div class="buttons">
+    <div class="search_photo_container">
+      <input id="pac-input" onClick="this.select();" class="controls" type="text" placeholder="Search Location">
     </div>
+    <a class="span" style="font-size:30px;cursor:pointer" ng-click="this.openNav()">&#9776; </a>
+    <div class="aboutButton" onclick="openNav()">ABOUT</div>
+    <div class="logoutButton" ng-class="{active: layout == 'login'}" ng-click="layout = 'login';this.logout()" ui-sref="login">LOGOUT</div>
+  </div>
 
-    <div class="buttons">
-      <div class="search_photo_container">
-        <input id="pac-input" onClick="this.select();" class="controls" type="text" placeholder="Search Location">
+
+  <div id="myNav" class="overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+    <div class="overlay-content">
+      <div class="aboutUs">
+        <h1>Who We Are</h1>
+        <div class="profiles">
+          <div class="aaron">
+            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTSQiLH0HtT0QdRSDQjE1wLa2SM_2uYiQU2TQppQsb5zJHpFGXB" alt="">
+            <h2>Aaron Arakawa </h2>
+            <h3>Instagram OAuth Master</h3>
+            <p>
+              Born and raised in Aiea Hawai'i, Aaron always had a passion for technology. In his early twentys, he decided to make the move to California, residing in many parts of Southern California. While in Southern California, he nurtured lasting relationships with people he can now call family and made life long memories. Wanting a change in his career, Aaron decided to take the next step and pursue programming full time. With deep roots in Hawai'i, he decided to move back home and join Devleague to become a full stack developer. Aaron loves traveling, whiskey, golf, hanging out with his friends, longs walks on the beach, and watching the sunset.
+            </p>
+          </div>
+
+          <div class="bryan">
+            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTSQiLH0HtT0QdRSDQjE1wLa2SM_2uYiQU2TQppQsb5zJHpFGXB" alt="">
+            <h2>Bryan Choe</h2>
+            <h3>DevOps and Front End Master</h3>
+            <p>Bryan is 2nd Generation Korean American Raised in Honolulu, Hawaii and proud graduate of University of Hawai’i, Manoa with a Bachelors of Art in Political Science. Prior to joining Hawai’i’s only programing bootcamp, Devleague, Bryan has worked for the late Congressman K. Mark Takai and Hawai’i State Department of Land and Natural Resources; currently he is a reservist in the Hawaii Army National Guard. Bryan enjoys hiking, working out at the gym, flying airplanes, and singing Karaoke with friends.</p>
+          </div>
+
+          <div class="casey">
+            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTSQiLH0HtT0QdRSDQjE1wLa2SM_2uYiQU2TQppQsb5zJHpFGXB" alt="">
+            <h2>Casey Oeda</h2>
+            <h3>Map and Database Master</h3>
+            <p>Casey is an avid gamer and loves all things Dragon Ball. He is also a car enthusiast, recently purchasing a beautiful Subaru STI. While he's not playing games, watching Dragon Ball, or tinkering with his cars, Casey is enjoying all things ramen. Casey loves long walks on the beach, watching beautiful sunsets, and candle lit dinners.   </p>
+          </div>
+
+          <div class="jp">
+            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTSQiLH0HtT0QdRSDQjE1wLa2SM_2uYiQU2TQppQsb5zJHpFGXB" alt="">
+            <h2>JP Carreon</h2>
+            <h3>Swiss Army Knife</h3>
+            <p>JP began his coding journey not too long ago. Before pursing his developer dreams, he was a banker. Not satisfied with the banker life, he decided to puruse his career aspiration of becoming a Full-Stack Web Developer. JP is also a graduate of Devleague's cohort 13. For frenZone, JP assisted in all aspects of the project being dubbed "The Swiss Army Knife", helping his teammates with whatever problem they came across. </p>
+          </div>
+        </div>
       </div>
+<<<<<<< HEAD
       <a class="span" style="font-size:30px;cursor:pointer" ng-click="this.openNav()">&#9776; </a>
       <div class="aboutAndLogoutContainer">
       <div class="aboutButton" ng-class="{active: layout == 'about'}" ng-click="layout = 'about'" ui-sref="about">ABOUT</div>
       <div class="logoutButton" ng-class="{active: layout == 'login'}" ng-click="layout = 'login';this.logout()" ui-sref="login">LOGOUT</div>
       </div>
+=======
+>>>>>>> 243257775bde0c9c69c25472bb9087ec75d3ebcf
     </div>
+  </div>
 
 </div>
 
@@ -25,7 +72,6 @@
   <div id="map"></div>
   <div id="mySidenav" class="sidenav">
     <div class="friendsCol">
-
       <div ng-show="layout == 'location'">
         <a class="back" ng-class="{active: layout == 'back'}" ng-click="layout = 'back'" ng-hide="layout == 'back'">Go to Friends</a>
         <div class="locationsContainer">
@@ -54,14 +100,11 @@
           <img ng-click="getUserPhotos(friend.username)" ng-src="{{ friend.profile_picture }}">
           </img>
           <div class="names">
-          <div>
-            {{friend.username}}
-          </div>
-          <div>
-            ({{friend.full_name}})
-          </div>
+          <div>{{friend.username}}</div>
+          <div>{{friend.full_name}}</div>
           </div>
         </div>
+
       </div>
 
     </div>
