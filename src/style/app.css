@@ -263,14 +263,14 @@ width: 80%;
 }
 
 .sidenav {
-  margin-top:70px;
+  margin-top:68px;
   background-color: #171F25;
   border: 1px solid white;
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
+  width: 255px;
   height: 90%;
-  width: 0;
   position: fixed;
   z-index: 0;
   top: 0;
@@ -480,7 +480,6 @@ h2{
   text-indent: 30px;
 }
 
-
 .profiles .aaron, .bryan, .casey, .jp{
   font-size: 15px;
   text-align: center;
@@ -500,7 +499,7 @@ h3{
 .profiles {
   min-height: 600px;
   display: flex;
-  flex-flow:row wrap;
+  flex-flow:row nowrap;
   justify-content: space-between;
   align-items: flex-start;
 }
@@ -546,6 +545,100 @@ h3{
     font-size: 60px;
 }
 
+@media screen and (max-width: 965px) {
+  .sidenav {
+  margin-top:107px;
+  background-color: #171F25;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  width: 180px;
+  height: 90%;
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  }
+  .sidenav a {font-size: 11px;}
+
+}
+
+@media screen and (max-width: 736px) {
+  .sidenav {
+  margin-top:107px;
+  background-color: #171F25;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  width: 180px;
+  height: 90%;
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  }
+  .sidenav a {
+    font-size: 11px;
+  }
+
+  .buttons{
+  display: flex;
+  flex-flow:row wrap;
+  justify-content: flex-end;
+  flex: 0 3 74%;
+}
+}
+
+
+
+@media screen and (max-width: 663px) {
+  .sidenav {
+  margin-top:93px;
+  background-color: #171F25;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  width: 140px;
+  height: 90%;
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  }
+  .sidenav a {font-size: 11px;}
+
+}
+
+@media screen and (max-width: 618px) {
+  .sidenav {
+  margin-top:141px;
+  background-color: #171F25;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  width: 140px;
+  height: 90%;
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  }
+  .sidenav a {font-size: 11px;}
+
+}
+
 @media screen and (max-width: 450px) {
   .overlay a {font-size: 20px}
   .overlay .closebtn {
@@ -559,7 +652,7 @@ h3{
     font-size: 36px;
     margin-left: 50px;
   .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  .sidenav a {font-size: 11px;}
 
   .loginBackground {
     display:flex;
@@ -641,14 +734,14 @@ h3{
   }
 
   .sidenav {
-    margin-top:158px;
+    margin-top:156px;
     background-color: #171F25;
     border: 1px solid white;
     display: flex;
     justify-content: center;
     flex-flow: row wrap;
     height: 80%;
-    width: 0;
+    width: 130px;
     position: fixed;
     z-index: 0;
     top: 0;
@@ -671,7 +764,7 @@ h3{
   .profiles {
   min-height: 600px;
   display: flex;
-  flex-flow:row nowrap;
+  flex-flow:row wrap;
   justify-content: space-between;
   align-items: flex-start;
   }
@@ -682,22 +775,16 @@ h3{
     fill:#FA6900;
   }
 
-}
-
-.profile-pic{
-  height: 255px;
-  width:255px;
-}
-
-.group-container{
-  flex: 0 0 100%;
-}
-
-.profiles .group-container p{
+  .friendsCol {
+  background-color: #171F25;
+  font-family: 'Poppins', sans-serif;
   text-align: center;
+  flex: 0 0 100%;
+  margin-top: -35px;
+  }
+
+
 }
 
-.group-photo{
-  height:500px;
-  width: 800px;
-}
+
+
