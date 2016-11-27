@@ -60,6 +60,7 @@ export class MarkerService {
           id: 'marker',
           icon: {
             url: image,
+            scaledSize: new google.maps.Size(50, 50),
             optimized:false
           }
         });
@@ -69,6 +70,9 @@ export class MarkerService {
         let fullName = instaData[i].User.fullname;
         let imageUrl = instaData[i].url;
         let profilePicture = instaData[i].User.profilePicture;
+        let convertedTime = moment.unix(instaData[i].instaCreatedTime);
+        let displayTime = convertedTime.format("ddd MMM Do, YYYY, hA");
+        let timeFromNow = moment(convertedTime).fromNow();
         let locationName = instaData[i].Location.name;
 
         let description = "picture taken at " + locationName;
@@ -81,8 +85,8 @@ export class MarkerService {
           '<h3>' + '<img src = "./img/frenzone-icon.svg" width="20px" height="20px" >'+ ' ' +  locationName + '</h3>'+
           `<img src="${imageUrl}"></img>`+
           '<p>' + `${description}` + '</p>' +
-          // '<p>' + `${displayTime}` + '</p>' +
-          // '<p>' + `${timeFromNow}` + '</p>' +
+          '<p>' + `${displayTime}` + '</p>' +
+          '<p>' + `${timeFromNow}` + '</p>' +
 
           '</div>';
         oms.addMarker(marker);
@@ -126,6 +130,7 @@ export class MarkerService {
           id: 'marker',
           icon: {
             url: image,
+            scaledSize: new google.maps.Size(50, 50),
             optimized:false
           }
         });
@@ -135,6 +140,10 @@ export class MarkerService {
         let imageUrl = instaData[i].url;
         let profilePicture = instaData[i].User.profilePicture;
         let locationName = instaData[i].Location.name;
+        let pictureTime = instaData[i].created_time;
+        let convertedTime = moment.unix(instaData[i].instaCreatedTime);
+        let displayTime = convertedTime.format("ddd MMM Do, YYYY, hA");
+        let timeFromNow = moment(convertedTime).fromNow();
         let description = "picture taken at " + locationName;
         if(instaData[i].description !== null){
           description = instaData[i].description;
@@ -145,8 +154,8 @@ export class MarkerService {
           '<h3>' + '<img src = "./img/frenzone-icon.svg" width="20px" height="20px" >'+ ' ' +  locationName + '</h3>'+
           `<img src="${imageUrl}"></img>`+
           '<p>' + `${description}` + '</p>' +
-          // '<p>' + `${displayTime}` + '</p>' +
-          // '<p>' + `${timeFromNow}` + '</p>' +
+          '<p>' + `${displayTime}` + '</p>' +
+          '<p>' + `${timeFromNow}` + '</p>' +
 
           '</div>';
         oms.addMarker(marker);
