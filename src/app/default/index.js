@@ -13,6 +13,7 @@ export const DefaultCtrlState = {
   controllerAs: 'default'
 };
 
+
 export const DefaultCtrl = [
   '$scope',
   PhotosServiceName,
@@ -39,9 +40,7 @@ export const DefaultCtrl = [
       $scope.showMarkers = MarkerService.showMarkers.bind(MarkerService, $scope.map);
       $scope.clearMarkers = MarkerService.clearMarkers.bind(MarkerService);
       $scope.deleteMarkers = MarkerService.deleteMarkers.bind(MarkerService);
-
       $scope.centerMap = MarkerService.centerMap.bind(this, $scope.map, $scope.locationData);
-
       $scope.getUserPhotos = MarkerService.getUserPhotos.bind(MarkerService, $scope.map, MapService.oms, $scope.locationData, MapService.locations, MapService.locationSet, $scope.instaData);
       $scope.showAllPhotos = MarkerService.showAllPhotos.bind(MarkerService, $scope.map, MapService.oms, $scope.locationData, MapService.locations, MapService.locationSet, $scope.instaData);
 
@@ -52,8 +51,9 @@ export const DefaultCtrl = [
         $scope.locationSet = this.locationSet;
         $scope.oms = this.oms;
       };
+
       $scope.onChange = function (){
-        var numberHours =(Math.round(($scope.inputTime/3600)) + " hours");
+        let numberHours =(Math.round(($scope.inputTime/3600)) + " hours");
         if($scope.inputTime >= 86400){
           numberHours =(Math.round(($scope.inputTime/86400)) + " days");
         }
@@ -65,9 +65,9 @@ export const DefaultCtrl = [
       };
 
       PhotosService.getFriends()
-      .success((friends) => {
-        $scope.friends = friends.data;
-      });
+        .success((friends) => {
+          $scope.friends = friends.data;
+        });
 
       $scope.openNav = function(){
         let sideNav = document.getElementById("mySidenav");
@@ -77,8 +77,6 @@ export const DefaultCtrl = [
           sideNav.style.width = "0px";
         }
       };
-
     }
   }
-
 ];

@@ -39,7 +39,7 @@ module.exports = function makeWebpackConfig () {
     path: __dirname + '/dist',
     // Output path from the view of the page
     // Uses webpack-dev-server in development
-    publicPath: isProd ? '/' : 'http://localhost:8080/',
+    publicPath: isProd ? '/' : '/',
     // Filename for entry points
     // Only adds hash in build mode
     filename: isProd ? '[name].[hash].js' : '[name].bundle.js',

@@ -1,27 +1,33 @@
+let moment = require('moment');
 export const MarkerServiceName = 'marker';
 export class MarkerService {
   setMapOnAll(map, oms) {
-    for (var i = 0; i < oms.a.length; i++) {
+    for (let i = 0; i < oms.a.length; i++) {
       oms.a[i].setMap(map);
     }
   }
+
   // Removes the markers from the map, but keeps them in the array.
   clearMarkers(oms) {
     this.setMapOnAll(null, oms);
     oms.a.length = 0;
   }
+
   // Shows any markers currently in the array.
   showMarkers(map) {
     this.setMapOnAll(map);
   }
+
   // Deletes all markers in the array by removing references to them.
   deleteMarkers(oms) {
     this.clearMarkers(oms);
     oms.a = [];
   }
+
   showLocationMarkers (){
     deleteMarkers();
   }
+
   centerMap (map, locationData, center){
     let centerCoord ={};
     locationData.forEach((location) => {
@@ -37,12 +43,12 @@ export class MarkerService {
 
   showAllPhotos (map, oms, locationData, locations, locationSet, instaData){
     this.deleteMarkers(oms);
-     for (var i = 0; i < instaData.length; i++) {
+     for (let i = 0; i < instaData.length; i++) {
       if(instaData[i].location !== null){
-        var coords = instaData[i].Location;
-        var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
-        var image = `${instaData[i].User.profilePicture}`;
-        var marker = new google.maps.Marker({
+        let coords = instaData[i].Location;
+        let latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
+        let image = `${instaData[i].User.profilePicture}`;
+        let marker = new google.maps.Marker({
           position: latLng,
           map: map,
           animation: google.maps.Animation.DROP,
@@ -53,12 +59,14 @@ export class MarkerService {
             optimized:false
           }
         });
-        var infowindow = new google.maps.InfoWindow();
+
+        let infowindow = new google.maps.InfoWindow();
         let username = instaData[i].User.username;
         let fullName = instaData[i].User.fullname;
         let imageUrl = instaData[i].url;
         let profilePicture = instaData[i].User.profilePicture;
         let locationName = instaData[i].Location.name;
+
         let description = "picture taken at " + locationName;
         if(instaData[i].description !== null){
           description = instaData[i].description;
@@ -69,6 +77,9 @@ export class MarkerService {
           '<h3>' + '<img src = "./img/frenzone-icon.svg" width="20px" height="20px" >'+ ' ' +  locationName + '</h3>'+
           `<img src="${imageUrl}"></img>`+
           '<p>' + `${description}` + '</p>' +
+          // '<p>' + `${displayTime}` + '</p>' +
+          // '<p>' + `${timeFromNow}` + '</p>' +
+
           '</div>';
         oms.addMarker(marker);
       }
@@ -91,22 +102,17 @@ export class MarkerService {
 
   getUserPhotos (map, oms, locationData, locations, locationSet, instaData, username){
     this.deleteMarkers(oms);
-    var inputTime = document.getElementById('inputTime');
-    var inputDisplay = document.getElementById('inputDisplay');
-    var displayOutPut = document.getElementById('displayOutPut');
-    // var numberHours =(Math.round((inputTime.value/3600)) + " hours");
-    // if(inputTime.value >= 86400){
-    //   numberHours =(Math.round((inputTime.value/86400)) + " days");
-    // }
-    // inputDisplay.innerHTML = numberHours + " ago";
-
+    let inputTime = document.getElementById('inputTime');
+    let inputDisplay = document.getElementById('inputDisplay');
+    let displayOutPut = document.getElementById('displayOutPut');
 
     for (var i = 0; i < instaData.length; i++) {
       if(instaData[i].Location !== null && instaData[i].User.username === username){
-        var coords = instaData[i].Location;
-        var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
-        var image = `${instaData[i].User.profilePicture}`;
-        var marker = new google.maps.Marker({
+        let coords = instaData[i].Location;
+        let latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
+        let image = `${instaData[i].User.profilePicture}`;
+        let marker = new google.maps.Marker({
+
           position: latLng,
           map: map,
           animation: google.maps.Animation.DROP,
@@ -117,7 +123,7 @@ export class MarkerService {
             optimized:false
           }
         });
-        var infowindow = new google.maps.InfoWindow();
+        let infowindow = new google.maps.InfoWindow();
         let username = instaData[i].User.username;
         let fullName = instaData[i].User.fullname;
         let imageUrl = instaData[i].url;
@@ -133,6 +139,9 @@ export class MarkerService {
           '<h3>' + '<img src = "./img/frenzone-icon.svg" width="20px" height="20px" >'+ ' ' +  locationName + '</h3>'+
           `<img src="${imageUrl}"></img>`+
           '<p>' + `${description}` + '</p>' +
+          // '<p>' + `${displayTime}` + '</p>' +
+          // '<p>' + `${timeFromNow}` + '</p>' +
+
           '</div>';
         oms.addMarker(marker);
 

@@ -1,26 +1,27 @@
-<div class="bar">
 
-  <div class="instafeed">
-    <a class="home-icon" ng-class="{active: layout == 'default'}" ng-click="showAllPhotos()" ui-sref="default">
-      <img src='./img/frenzone-logo.svg'>
-      </img>
-    </a>
+  <div class="bar">
+    <div class="instafeed">
+      <a class="home-icon" ng-class="{active: layout == 'default'}" ng-click="showAllPhotos()" ui-sref="default">
+        <img src='./img/frenzone-logo.svg'>
+        </img>
+      </a>
+    </div>
+
+    <div class="buttons">
+      <div class="logoutButton" ng-class="{active: layout == 'login'}" ng-click="layout = 'login'" ui-sref="login">LOGOUT</div>
+    </div>
   </div>
 
-  <div class="buttons">
-    <div class="logoutButton" ng-class="{active: layout == 'login'}" ng-click="layout = 'login'" ui-sref="login">LOGOUT</div>
+  <div class="graphHead" ng-controller="DataCtrl">
+    <h1 >Top 5 Trending Spots</h1>
+    <select id='usernameList' ng-model="selectedFriends" ng-change="count(selectedFriends)">
+      <option value='all'>All Friends</option>
+      <option ng-repeat="friend in friends" value="{{friend.username}}">{{friend.full_name}}</option>
+    </select>
   </div>
 
-</div>
-<div class="graphHead" ng-controller="DataCtrl">
-  <h1 >Top 5 Trending Spots</h1>
-  <select id='usernameList' ng-model="selectedFriends" ng-change="count(selectedFriends)">
-    <option value='all'>All Friends</option>
-    <option ng-repeat="friend in friends" value="{{friend.username}}">{{friend.full_name}}</option>
-  </select>
-</div>
+  <div id="chart"></div>
 
-<div id="chart"></div>
 
 
 
