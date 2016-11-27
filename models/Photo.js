@@ -9,6 +9,9 @@ module.exports = function(sequelize, DataTypes) {
         isUrl: true
       }
     },
+    instaCreatedTime: {
+      type: DataTypes.TEXT
+    },
     LocationId:{
       type: DataTypes.TEXT
     },
