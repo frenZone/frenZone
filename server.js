@@ -25,6 +25,7 @@ app.use('/api', api);
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 8080 : process.env.PORT;
 
+
 if (isDeveloping) {
   app.set('host', 'http://localhost');
   const compiler = webpack(config);
