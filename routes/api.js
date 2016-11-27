@@ -55,6 +55,7 @@ router.route('/write')
               id: body.data[i].id,
               description: description,
               url: body.data[i].images.low_resolution.url,
+              instaCreatedTime: body.data[i].created_time,
               LocationId: body.data[i].location.id,
               UserId: body.data[i].user.id,
             });
@@ -63,26 +64,6 @@ router.route('/write')
       });
     });
     res.redirect('/default');
-  });
-
-router.route('/users')
-  .get((req, res) =>{
-    User.findAll({
-      order: [['username', 'ASC']]
-    })
-    .then((data)=>{
-      res.jsonp({data});
-    });
-  });
-
-router.route('/locations')
-  .get((req, res) => {
-    Location.findAll({
-      order: [['name', 'ASC']]
-    })
-    .then((data) => {
-      res.jsonp({data});
-    });
   });
 
 router.route('/photos')
