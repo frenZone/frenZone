@@ -499,7 +499,7 @@ h3{
 .profiles {
   min-height: 600px;
   display: flex;
-  flex-flow:row nowrap;
+  flex-flow:row wrap;
   justify-content: space-between;
   align-items: flex-start;
 }
@@ -670,7 +670,7 @@ h3{
   .profiles {
   min-height: 600px;
   display: flex;
-  flex-flow:row wrap;
+  flex-flow:row nowrap;
   justify-content: space-between;
   align-items: flex-start;
   }
@@ -683,4 +683,20 @@ h3{
 
 }
 
+.profile-pic{
+  height: 255px;
+  width:255px;
+}
 
+.group-container{
+  flex: 0 0 100%;
+}
+
+.profiles .group-container p{
+  text-align: center;
+}
+
+.group-photo{
+  height:500px;
+  width: 800px;
+}
