@@ -12,7 +12,6 @@ const config = require('./webpack.config.js');
 app.use(express.static('./src/public'));
 app.use(bp.urlencoded({extended : true}));
 
-
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 8080 : process.env.PORT;
 
