@@ -25,6 +25,7 @@ export class MarkerService {
   centerMap (map, locationData, center){
     let centerCoord ={};
     locationData.forEach((location) => {
+      console.log(location);
       if (location.name === center) {
         centerCoord.lat = location.latitude;
         centerCoord.long = location.longitude;
@@ -38,9 +39,9 @@ export class MarkerService {
     this.deleteMarkers(oms);
      for (var i = 0; i < instaData.length; i++) {
       if(instaData[i].location !== null){
-        var coords = instaData[i].location;
+        var coords = instaData[i].Location;
         var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
-        var image = `https://circle-image-as-a-service-juuyhmkiiy.now.sh/?url=${instaData[i].user.profile_picture}`;
+        var image = `${instaData[i].User.profilePicture}`;
         var marker = new google.maps.Marker({
           position: latLng,
           map: map,
@@ -53,14 +54,14 @@ export class MarkerService {
           }
         });
         var infowindow = new google.maps.InfoWindow();
-        let username = instaData[i].user.username;
-        let fullName = instaData[i].user.full_name;
-        let imageUrl = instaData[i].images.low_resolution.url;
-        let profilePicture = instaData[i].user.profile_picture;
-        let locationName = instaData[i].location.name;
+        let username = instaData[i].User.username;
+        let fullName = instaData[i].User.fullname;
+        let imageUrl = instaData[i].url;
+        let profilePicture = instaData[i].User.profilePicture;
+        let locationName = instaData[i].Location.name;
         let description = "picture taken at " + locationName;
-        if(instaData[i].caption !== null){
-          description = instaData[i].caption.text;
+        if(instaData[i].description !== null){
+          description = instaData[i].description;
         }
         marker.desc = '<div id="locationPicture">'+
           `<img id='profile' src = "${profilePicture}">` +
@@ -87,6 +88,7 @@ export class MarkerService {
       });
     }
   }
+
   getUserPhotos (map, oms, locationData, locations, locationSet, instaData, username){
     this.deleteMarkers(oms);
     var inputTime = document.getElementById('inputTime');
@@ -100,11 +102,10 @@ export class MarkerService {
 
 
     for (var i = 0; i < instaData.length; i++) {
-      if(instaData[i].location !== null && instaData[i].user.username === username){
-        if(instaData[i].created_time >= Math.round(new Date()/1000) - inputTime.value){
-        var coords = instaData[i].location;
+      if(instaData[i].Location !== null && instaData[i].User.username === username){
+        var coords = instaData[i].Location;
         var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
-        var image = `https://circle-image-as-a-service-juuyhmkiiy.now.sh/?url=${instaData[i].user.profile_picture}`;
+        var image = `${instaData[i].User.profilePicture}`;
         var marker = new google.maps.Marker({
           position: latLng,
           map: map,
@@ -117,14 +118,14 @@ export class MarkerService {
           }
         });
         var infowindow = new google.maps.InfoWindow();
-        let username = instaData[i].user.username;
-        let fullName = instaData[i].user.full_name;
-        let imageUrl = instaData[i].images.low_resolution.url;
-        let profilePicture = instaData[i].user.profile_picture;
-        let locationName = instaData[i].location.name;
+        let username = instaData[i].User.username;
+        let fullName = instaData[i].User.fullname;
+        let imageUrl = instaData[i].url;
+        let profilePicture = instaData[i].User.profilePicture;
+        let locationName = instaData[i].Location.name;
         let description = "picture taken at " + locationName;
-        if(instaData[i].caption !== null){
-          description = instaData[i].caption.text;
+        if(instaData[i].description !== null){
+          description = instaData[i].description;
         }
         marker.desc = '<div id="locationPicture">'+
           `<img id='profile' src = "${profilePicture}">` +
@@ -134,7 +135,7 @@ export class MarkerService {
           '<p>' + `${description}` + '</p>' +
           '</div>';
         oms.addMarker(marker);
-      }
+
       locationSet = new Set();
       locations.length = 0;
       locationData.map((lctn) => {
