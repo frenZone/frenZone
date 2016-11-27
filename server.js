@@ -10,6 +10,7 @@ const webpack = require('webpack');
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const config = require('./webpack.config.js');
+const api = require('./routes/api');
 const db = require('./models');
 const User = db.User;
 const Photo = db.Photo;
@@ -18,11 +19,13 @@ const Location = db.Location;
 
 app.use(express.static('./src/public'));
 app.use(bp.urlencoded({extended : true}));
+app.use('/api', api);
 
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 8080 : process.env.PORT;
 
+<<<<<<< HEAD
 app.get('/get', (req, res) => {
   var val = req.query.search;
   console.log(this.token);
