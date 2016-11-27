@@ -68,9 +68,9 @@ app.get('/get', (req, res) => {
         }
       }
     })
-      res.redirect('/default');
 
   });
+      res.redirect('/default');
 });
 app.get('/api/locations', (req, res) =>{
   Location.findAll({
