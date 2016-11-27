@@ -604,40 +604,40 @@ h3{
   }
 
   .bar {
-  color: white;
-  font-family: 'Poppins', sans-serif;
-  font-size: 30px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  margin: 0px;
-  background-color: #171F25;
-  padding: 10px 10px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin: 0px;
+    background-color: #171F25;
+    padding: 10px 10px;
   }
 
   .buttons{
-  display: flex;
-  flex-flow:row wrap;
-  justify-content: center;
-  flex: 0 0 100%;
+    display: flex;
+    flex-flow:row wrap;
+    justify-content: center;
+    flex: 0 0 100%;
   }
 
   .bar .search_photo_container {
-  display: flex;
-  flex-flow: row wrap;
-  flex: 0 0 70%;
-  margin-right: 50px;
+    display: flex;
+    flex-flow: row wrap;
+    flex: 0 0 70%;
+    margin-right: 50px;
   }
 
   .aboutButton{
-  width: 100px;
-  height: 25px;
-  margin-top: 10px;
-  margin-left: 0px;
-  text-align: center;
-  font-size:15px;
-  border: 2px solid white;
-  border-radius: 30px;
+    width: 100px;
+    height: 25px;
+    margin-top: 10px;
+    margin-left: 0px;
+    text-align: center;
+    font-size:15px;
+    border: 2px solid white;
+    border-radius: 30px;
   }
 
   .sidenav {
@@ -658,28 +658,53 @@ h3{
   }
 
   #pac-input {
-  background-color: #fff;
-  font-family: Roboto;
-  font-size: 15px;
-  font-weight: 300;
-  margin-left: 12px;
-  padding: 0 11px 0 13px;
-  text-overflow: ellipsis;
-  width: 100px;
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 100px;
   }
 
   .profiles {
-  min-height: 600px;
-  display: flex;
-  flex-flow:row nowrap;
-  justify-content: space-between;
-  align-items: flex-start;
+    flex: 0 0 100%;
+    min-height: 600px;
+    display: flex;
+    flex-flow:row wrap;
+    justify-content: space-between;
+    align-items: flex-start;
   }
 
   .c3-axis-x text {
-  font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size:10px;
     fill:#FA6900;
+  }
+
+  .profiles .aaron, .bryan, .casey, .jp{
+    font-size: 15px;
+    text-align: center;
+    flex: 0 0 100%;
+    margin:auto;
+    margin-top: 0px;
+  }
+
+  .group-container{
+  flex: 0 0 100%;
+  }
+
+  .group-photo{
+    max-height:255px;
+    max-width:345px;
+  }
+
+  .overlay-content .aboutUs p{
+    padding: 20px;
+    font-size: 15px;
+    text-align: left;
+    text-indent: 30px;
   }
 
 }
