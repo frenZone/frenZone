@@ -413,9 +413,11 @@ h2{
   margin-top: 0px;
 }
 .profiles .aaron h2, .bryan h2, .casey h2, .jp h2{
+  margin-bottom: 0px;
   color:lightgreen;
 }
 h3{
+  margin-top: 0px;
   color:lightblue;
 }
 .profiles {
@@ -447,7 +449,7 @@ h3{
 .overlay a {
     padding: 8px;
     text-decoration: none;
-    font-size: 36px;
+    font-size: 20px;
     color: #818181;
     display: block;
     transition: 0.3s;
@@ -593,7 +595,10 @@ h3{
   }
 
   .group-container{
-  flex: 0 0 100%;
+   /* display: flex;
+    flex-flow: row wrap;
+    justify-content: center;*/
+    flex: 0 0 100%;
   }
 
   .group-photo{
@@ -612,11 +617,16 @@ h3{
   height: 255px;
   width:255px;
 }
+
 .group-container{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
   flex: 0 0 100%;
 }
 .profiles .group-container p{
-  text-align: center;
+  flex: 0 0 80%;
+  text-align: left;
 }
 .group-photo{
   height:500px;
@@ -681,7 +691,6 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-
 .slider.round {
   border-radius: 20px;
 }
@@ -689,3 +698,40 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+
+a, a:hover {
+  text-decoration: none;
+}
+
+.socialbtns, .socialbtns ul, .socialbtns li {
+  margin: 0;
+  padding: 5px;
+}
+
+.socialbtns li {
+  list-style: none outside none;
+  display: inline-block;
+}
+
+.socialbtns .fa {
+  width: 21px;
+  /*height: 28px;*/
+  color: #000;
+  background-color: #FFF;
+  border: 1px solid #000;
+  padding-top: 12px;
+  border-radius: 30px;
+  -moz-border-radius: 22px;
+  -webkit-border-radius: 22px;
+  -o-border-radius: 22px;
+}
+
+.socialbtns .fa:hover {
+  transition:all 0.5s;
+  color: #FFF;
+  background-color: #000;
+  border: 1px solid #000;
+}
+
