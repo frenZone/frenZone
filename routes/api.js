@@ -66,26 +66,6 @@ router.route('/write')
     res.redirect('/default');
   });
 
-router.route('/users')
-  .get((req, res) =>{
-    User.findAll({
-      order: [['username', 'ASC']]
-    })
-    .then((data)=>{
-      res.jsonp({data});
-    });
-  });
-
-router.route('/locations')
-  .get((req, res) => {
-    Location.findAll({
-      order: [['name', 'ASC']]
-    })
-    .then((data) => {
-      res.jsonp({data});
-    });
-  });
-
 router.route('/photos')
   .get((req, res) =>{
     Photo.findAll({
