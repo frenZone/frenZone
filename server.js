@@ -21,7 +21,6 @@ app.use(express.static('./src/public'));
 app.use(bp.urlencoded({extended : true}));
 app.use('/api', api);
 
-
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 8080 : process.env.PORT;
 
