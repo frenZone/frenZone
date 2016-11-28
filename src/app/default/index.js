@@ -3,7 +3,7 @@ import { MapServiceName } from '../services/map';
 import { MarkerServiceName } from '../services/markers';
 
 const template = require('./default.html');
-
+export const clickedShowAll = {};
 export const DefaultCtrlName = 'DefaultCtrl';
 
 export const DefaultCtrlState = {
@@ -80,6 +80,20 @@ export const DefaultCtrl = [
         localStorage.clear();
       };
 
+
+      $scope.showAll = function (){
+         if(toggleButton.checked === true){
+            toggleButton.value = "on"
+              console.log("click on",toggleButton.checked,toggleButton.value)
+           $scope.toggleDisplay ="on";
+           }
+           if(toggleButton.checked === false){
+            toggleButton.value = "off";
+             $scope.toggleDisplay = "off";
+             console.log("click off",toggleButton.checked,toggleButton.value)
+           }
+      };
+
       PhotosService.getFriends()
       .success((friends) => {
         $scope.friends = friends.data;
@@ -98,3 +112,4 @@ export const DefaultCtrl = [
   }
 
 ];
+

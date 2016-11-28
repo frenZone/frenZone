@@ -619,13 +619,22 @@ h3{
   width: 800px;
 }
 
+
+/*toggle switch on slider*/
+/* The switch - the box around the slider */
+.switchContainer{
+  padding-top: 4%;
+}
+.toggleDisplay{
+  color: white;
+}
+
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 48px;
+  height: 19px;
 }
-
 
 .switch input {display:none;}
 
@@ -645,8 +654,8 @@ h3{
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
+  height: 13px;
+  width: 13px;
   left: 4px;
   bottom: 4px;
   background-color: white;
@@ -655,11 +664,11 @@ h3{
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #FA6900;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #FA6900;
 }
 
 input:checked + .slider:before {
@@ -668,8 +677,9 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
+
 .slider.round {
-  border-radius: 34px;
+  border-radius: 20px;
 }
 
 .slider.round:before {
