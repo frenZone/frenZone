@@ -59,14 +59,7 @@
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-      <a class="span" style="font-size:30px;cursor:pointer" ng-click="this.openNav()">&#9776; </a>
-      <div class="aboutAndLogoutContainer">
-      <div class="aboutButton" ng-class="{active: layout == 'about'}" ng-click="layout = 'about'" ui-sref="about">ABOUT</div>
-      <div class="logoutButton" ng-class="{active: layout == 'login'}" ng-click="layout = 'login';this.logout()" ui-sref="login">LOGOUT</div>
-      </div>
-=======
->>>>>>> 243257775bde0c9c69c25472bb9087ec75d3ebcf
+
     </div>
   </div>
 
@@ -91,14 +84,22 @@
           <a class="location" ng-class="{active: layout == 'location'}" ng-click="layout = 'location'" ng-hide="layout == 'location'">Go to Locations</a>
         </div>
 
-        <div id="inputDisplay">{{inputTimeDisplay}}
+        <div class="switchContainer">
+          <label class="switch">
+            <input id="toggleButton" ng-model="toggleButton" type="checkbox" ng-change="showAll()">
+            <div class="slider round"></div>
+          </label>
+          <div class="toggleDisplay">
+          {{toggleDisplay}}</div>
+          <div class ="toggleDisplay" ng-show="toggleDisplay === undefined"> filter by time</div>
+        </div>
+
+        <div id="inputDisplay" ng-show ="toggleDisplay === 'on'">{{inputTimeDisplay}}
           <input id="inputTime" type="range" min="3600" max="2994000" ng-model="inputTime" ng-change="onChange()"></input>
           <div ng-show="inputTimeDisplay === undefined">Scroll for time period</div>
         </div>
-        <label class="switch">
-          <input type="checkbox">
-          <div class="slider round"></div>
-        </label>
+
+
         <div>
           <input type="text" id="searchUser" ng-model="searchUser" placeholder="search by name or username" />
         </div>

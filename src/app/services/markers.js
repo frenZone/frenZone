@@ -1,6 +1,5 @@
 
 import {currentLocation} from '../services/map';
-
 let moment = require('moment');
 
 export const MarkerServiceName = 'marker';
@@ -109,18 +108,32 @@ export class MarkerService {
     }
   }
 
+
   getUserPhotos (map, oms, locationData, locations, locationSet, instaData, username){
     this.deleteMarkers(oms);
+
 
     let inputTime = document.getElementById('inputTime');
     let inputDisplay = document.getElementById('inputDisplay');
     let displayOutPut = document.getElementById('displayOutPut');
 
-    let clickedShowAll = instaData[i].instaCreatedTime >= Math.round(new Date()/1000) - inputTime.value;
+    // var toggleButton = document.getElementById('toggleButton');
 
-    for (var i = 0; i < instaData.length; i++) {
+    for (let i = 0; i < instaData.length; i++) {
       if(instaData[i].Location !== null && instaData[i].User.username === username){
-           if(instaData[i].instaCreatedTime >= Math.round(new Date()/1000) - inputTime.value){
+          let clickedShowAll;
+          if(toggleButton.value === "on"){
+            clickedShowAll = instaData[i].instaCreatedTime >= Math.round(new Date()/1000) - inputTime.value;
+          console.log("filter by time")
+          }
+          if(toggleButton.value ==="off"){
+            clickedShowAll = true;
+            console.log("show everything")
+          }
+
+
+
+           if(clickedShowAll){
           let coords = instaData[i].Location;
           let latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
           let image = `${instaData[i].User.profilePicture}`;
