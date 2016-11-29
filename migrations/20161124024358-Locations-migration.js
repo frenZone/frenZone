@@ -5,7 +5,7 @@ module.exports = {
       id: {
         allowNull: false,
         primaryKey: true,
-        type: Sequelize.TEXT
+        type: Sequelize.DOUBLE
       },
       name: {
         allowNull: false,

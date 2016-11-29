@@ -13,10 +13,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT
     },
     LocationId:{
-      type: DataTypes.TEXT
+      type: DataTypes.DOUBLE
     },
     UserId:{
-      type: DataTypes.TEXT
+      type: DataTypes.DOUBLE
     }
 
   }, {

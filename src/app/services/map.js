@@ -549,7 +549,6 @@ export const MapService = [
             oms.addMarker(marker);
           }
         }
-        // this.updateLocations();
         locations.length = 0;
         locationData.map((lctn) => {
           locationSet.add(lctn.name);
@@ -564,7 +563,6 @@ export const MapService = [
           return 0;
         });
         this.oms = oms;
-        // this.update();
       }
 
     }

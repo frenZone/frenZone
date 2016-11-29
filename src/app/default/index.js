@@ -1,6 +1,7 @@
 import { PhotosServiceName } from '../services/photos';
 import { MapServiceName } from '../services/map';
 import { MarkerServiceName } from '../services/markers';
+import { DataServiceName } from '../services/data';
 
 const template = require('./default.html');
 export const clickedShowAll = {};
@@ -18,9 +19,10 @@ export const DefaultCtrl = [
   PhotosServiceName,
   MapServiceName,
   MarkerServiceName,
+  DataServiceName,
   '$sce',
   class DefaultCtrl {
-    constructor($scope, PhotosService, MapService, MarkerService, $sce) {
+    constructor($scope, PhotosService, MapService, MarkerService, DataService, $sce) {
       $scope.friends =[];
       $scope.instaData = MapService.getInstaData();
       $scope.locationData = MapService.getLocationData();
@@ -32,8 +34,6 @@ export const DefaultCtrl = [
       $scope.instaData.length = 0;
       $scope.locationData.length = 0;
 
-      MapService.getData();
-
       $scope.map = MapService.getMap();
       $scope.setMapOnAll = MarkerService.setMapOnAll.bind(MarkerService, $scope.map);
       $scope.showMarkers = MarkerService.showMarkers.bind(MarkerService, $scope.map);
@@ -44,6 +44,32 @@ export const DefaultCtrl = [
 
       $scope.getUserPhotos = MarkerService.getUserPhotos.bind(MarkerService, $scope.map, MapService.oms, $scope.locationData, MapService.locations, MapService.locationSet, $scope.instaData);
       $scope.showAllPhotos = MarkerService.showAllPhotos.bind(MarkerService, $scope.map, MapService.oms, $scope.locationData, MapService.locations, MapService.locationSet, $scope.instaData);
+      $scope.newMarkers = MarkerService.newMarkers.bind(MarkerService, $scope.map, MapService.oms, $scope.locationData, MapService.locations, MapService.locationSet, MapService.instaData);
+
+
+      MapService.getData();
+
+      let getApiData = ()=>{
+        function checkQueue(cb) {
+           var oReq = new XMLHttpRequest();
+            oReq.addEventListener("loadend", cb);
+            oReq.open('GET', 'http://localhost:8080/api/write', true);
+            oReq.send();
+         }
+
+        var promise = Promise.resolve(true);
+
+         setInterval(function () {
+           promise = promise.then(function () {
+             return new Promise(function (resolve) {
+              checkQueue(resolve);
+              $scope.newMarkers();
+             });
+           });
+         }, 30000);
+      };
+
+      getApiData();
 
       MapService.update = function () {
         $scope.instaData = this.instaData;
