@@ -29,7 +29,6 @@ router.route('/write')
 
     apiArr.forEach((url)=>{
       request(url, (err, resp, body) => {
-        console.log('type of body' + typeof body);
         if(typeof body === 'string'){
           body = JSON.parse(body);
           var data = [];
