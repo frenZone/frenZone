@@ -53,7 +53,7 @@ export class MarkerService {
 
     function reqListener(e){
       data = JSON.parse(this.responseText).data;
-      if(data.length > instaData.length){
+      if(data.length > instaData.length || instaData === undefined){
         for(let i = data.length - 1; i > instaData.length - 1; i--){
           instaData.push(data[i]);
 
@@ -91,28 +91,26 @@ export class MarkerService {
             '<p>' + `${description}` + '</p>' +
             '</div>';
 
-          console.log('marker created');
           let location = data[i].Location;
           location.username = data[i].User.username;
           locationData.push(data[i].Location);
-          console.log(data[i].Location);
           oms.addMarker(marker);
 
         }
-      // locations.length = 0;
-      // locationData.map((lctn) => {
-      //   locationSet.add(lctn.name);
-      // });
-      // [...locationSet].forEach((location) => {
-      //   locations.push(location);
-      // });
-
-      // locations.sort((a,b) => {
-      //   if(a<b) return -1;
-      //   if(a>b) return 1;
-      //   return 0;
-      // });
-      // this.oms = oms;
+      locationSet = new Set();
+      locations.length = 0;
+      locationData.map((lctn) => {
+        locationSet.add(lctn.name);
+      });
+      [...locationSet].forEach((location) => {
+        locations.push(location);
+      });
+      locations.sort((a,b) => {
+        if(a<b) return -1;
+        if(a>b) return 1;
+        return 0;
+      });
+      this.oms = oms;
       }
     }
   }

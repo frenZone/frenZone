@@ -14,10 +14,6 @@ export const DefaultCtrlState = {
   controllerAs: 'default'
 };
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 3714e9a69bc6f83aa73f731b403ea5c90f14b01d
 export const DefaultCtrl = [
   '$scope',
   PhotosServiceName,

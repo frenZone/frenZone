@@ -18,11 +18,11 @@ module.exports = {
       },
       LocationId:{
         references:{ model: 'Locations', key: 'id'},
-        type: Sequelize.TEXT
+        type: Sequelize.DOUBLE
       },
       UserId:{
         references:{ model: 'Users', key: 'id'},
-        type: Sequelize.TEXT
+        type: Sequelize.DOUBLE
       },
       createdAt: {
         allowNull: false,
