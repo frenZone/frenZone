@@ -97,20 +97,19 @@ export class MarkerService {
           oms.addMarker(marker);
 
         }
-      locationSet = new Set();
-      locations.length = 0;
-      locationData.map((lctn) => {
-        locationSet.add(lctn.name);
-      });
-      [...locationSet].forEach((location) => {
-        locations.push(location);
-      });
-      locations.sort((a,b) => {
-        if(a<b) return -1;
-        if(a>b) return 1;
-        return 0;
-      });
-      this.oms = oms;
+        locationSet = new Set();
+        locations.length = 0;
+        locationData.map((lctn) => {
+          locationSet.add(lctn.name);
+        });
+        [...locationSet].forEach((location) => {
+          locations.push(location);
+        });
+        locations.sort((a,b) => {
+          if(a<b) return -1;
+          if(a>b) return 1;
+          return 0;
+        });
       }
     }
   }

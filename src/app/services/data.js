@@ -2,25 +2,6 @@ export const DataServiceName = 'data';
 
 export class DataService {
 
-  getApiData(){
-    function checkQueue(cb) {
-       var oReq = new XMLHttpRequest();
-        oReq.addEventListener("loadend", cb);
-        oReq.open('GET', 'http://localhost:8080/api/write', true);
-        oReq.send();
-     }
-
-    var promise = Promise.resolve(true);
-
-     setInterval(function () {
-       promise = promise.then(function () {
-         return new Promise(function (resolve) {
-          checkQueue(resolve);
-         });
-       });
-     }, 30000);
-  }
-
   count(trendingData, locationData, username) {
     let sortedArr = [];
     trendingData.length = 0;

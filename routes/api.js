@@ -29,38 +29,42 @@ router.route('/write')
 
     apiArr.forEach((url)=>{
       request(url, (err, resp, body) => {
-        body = JSON.parse(body);
-        var data = [];
-        for(let i = 0; i < body.data.length; i++){
-          if(body.data[i].location !== null){
-            let description;
-            if(body.data[i].caption === null){
-              description = "Photo taken at " + body.data[i].location.name;
-            } else {
-              description = body.data[i].caption.text;
+        console.log('type of body' + typeof body);
+        if(typeof body === 'string'){
+          body = JSON.parse(body);
+          var data = [];
+          for(let i = 0; i < body.data.length; i++){
+            if(body.data[i].location !== null){
+              let description;
+              if(body.data[i].caption === null){
+                description = "Photo taken at " + body.data[i].location.name;
+              } else {
+                description = body.data[i].caption.text;
+              }
+              User.upsert({
+                id: body.data[i].user.id,
+                username: body.data[i].user.username,
+                fullname: body.data[i].user.full_name,
+                profilePicture: body.data[i].user.profile_picture
+              });
+              Location.upsert({
+                id: body.data[i].location.id,
+                name: body.data[i].location.name,
+                latitude: body.data[i].location.latitude,
+                longitude: body.data[i].location.longitude
+              });
+              Photo.upsert({
+                id: body.data[i].id,
+                description: description,
+                url: body.data[i].images.low_resolution.url,
+                instaCreatedTime: body.data[i].created_time,
+                LocationId: body.data[i].location.id,
+                UserId: body.data[i].user.id,
+              });
             }
-            User.upsert({
-              id: body.data[i].user.id,
-              username: body.data[i].user.username,
-              fullname: body.data[i].user.full_name,
-              profilePicture: body.data[i].user.profile_picture
-            });
-            Location.upsert({
-              id: body.data[i].location.id,
-              name: body.data[i].location.name,
-              latitude: body.data[i].location.latitude,
-              longitude: body.data[i].location.longitude
-            });
-            Photo.upsert({
-              id: body.data[i].id,
-              description: description,
-              url: body.data[i].images.low_resolution.url,
-              instaCreatedTime: body.data[i].created_time,
-              LocationId: body.data[i].location.id,
-              UserId: body.data[i].user.id,
-            });
           }
         }
+
       });
     });
     res.redirect('/default');

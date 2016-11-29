@@ -48,15 +48,28 @@ export const DefaultCtrl = [
 
 
       MapService.getData();
-      DataService.getApiData();
 
-      let update;
-      let updateFunc = () =>{
-        update = setInterval($scope.newMarkers, 35000);
+      let getApiData = ()=>{
+        function checkQueue(cb) {
+           var oReq = new XMLHttpRequest();
+            oReq.addEventListener("loadend", cb);
+            oReq.open('GET', 'http://localhost:8080/api/write', true);
+            oReq.send();
+         }
+
+        var promise = Promise.resolve(true);
+
+         setInterval(function () {
+           promise = promise.then(function () {
+             return new Promise(function (resolve) {
+              checkQueue(resolve);
+              $scope.newMarkers();
+             });
+           });
+         }, 30000);
       };
-      updateFunc();
 
-
+      getApiData();
 
       MapService.update = function () {
         $scope.instaData = this.instaData;
