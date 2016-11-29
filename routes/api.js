@@ -69,9 +69,9 @@ router.route('/write')
 router.route('/photos')
   .get((req, res) =>{
     Photo.findAll({
-      include: [User, Location]
+      include: [User, Location],
+      order: ['instaCreatedTime']
     })
-
     .then((data)=>{
       res.jsonp({data});
     });

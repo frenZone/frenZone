@@ -45,6 +45,79 @@ export class MarkerService {
     map.setZoom(18);
   }
 
+  newMarkers (map, oms, locationData, locations, locationSet, instaData){
+    let data;
+    let oReq = new XMLHttpRequest();
+    oReq.onload = reqListener;
+    oReq.open("GET", "http://localhost:8080/api/photos", true);
+    oReq.send();
+
+    function reqListener(e){
+      data = JSON.parse(this.responseText).data;
+      if(data.length > instaData.length){
+        for(let i = data.length - 1; i > instaData.length - 1; i--){
+          instaData.push(data[i]);
+
+          let coords = data[i].Location;
+          let latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
+          let image = `${data[i].User.profilePicture}`;
+          let marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            animation: google.maps.Animation.DROP,
+            title: coords.name,
+            id: 'marker',
+            icon: {
+              url: image,
+              scaledSize: new google.maps.Size(50, 50),
+              optimized:false
+            }
+          });
+          var infowindow = new google.maps.InfoWindow();
+          let username = data[i].User.username;
+          let fullName = data[i].User.fullname;
+          let imageUrl = data[i].url;
+          let profilePicture = data[i].User.profilePicture;
+          let locationName = data[i].Location.name;
+          let description = "picture taken at " + locationName;
+          if(data[i].caption !== null){
+            description = data[i].description;
+          }
+
+          marker.desc = '<div id="locationPicture">'+
+            `<img id='profile' src = "${profilePicture}">` +
+            '<h1>' + `${username}`+ `(${fullName})` + '</h1>' +
+            '<h3>' + '<img src = "./img/frenzone-icon.svg" width="20px" height="20px" >'+ ' ' +  locationName + '</h3>'+
+            `<img src="${imageUrl}"></img>`+
+            '<p>' + `${description}` + '</p>' +
+            '</div>';
+
+          console.log('marker created');
+          let location = data[i].Location;
+          location.username = data[i].User.username;
+          locationData.push(data[i].Location);
+          console.log(data[i].Location);
+          oms.addMarker(marker);
+
+        }
+      // locations.length = 0;
+      // locationData.map((lctn) => {
+      //   locationSet.add(lctn.name);
+      // });
+      // [...locationSet].forEach((location) => {
+      //   locations.push(location);
+      // });
+
+      // locations.sort((a,b) => {
+      //   if(a<b) return -1;
+      //   if(a>b) return 1;
+      //   return 0;
+      // });
+      // this.oms = oms;
+      }
+    }
+  }
+
   showAllPhotos (map, oms, locationData, locations, locationSet, instaData){
     this.deleteMarkers(oms);
      for (let i = 0; i < instaData.length; i++) {
