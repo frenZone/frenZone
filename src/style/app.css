@@ -413,9 +413,11 @@ h2{
   margin-top: 0px;
 }
 .profiles .aaron h2, .bryan h2, .casey h2, .jp h2{
+  margin-bottom: 0px;
   color:lightgreen;
 }
 h3{
+  margin-top: 0px;
   color:lightblue;
 }
 .profiles {
@@ -447,7 +449,7 @@ h3{
 .overlay a {
     padding: 8px;
     text-decoration: none;
-    font-size: 36px;
+    font-size: 20px;
     color: #818181;
     display: block;
     transition: 0.3s;
@@ -583,6 +585,7 @@ h3{
     font-size:10px;
     fill:#FA6900;
   }
+
   .profiles .aaron, .bryan, .casey, .jp{
     font-size: 15px;
     text-align: center;
@@ -590,13 +593,19 @@ h3{
     margin:auto;
     margin-top: 0px;
   }
+
   .group-container{
-  flex: 0 0 100%;
+   /* display: flex;
+    flex-flow: row wrap;
+    justify-content: center;*/
+    flex: 0 0 100%;
   }
+
   .group-photo{
     max-height:255px;
     max-width:345px;
   }
+
   .overlay-content .aboutUs p{
     padding: 20px;
     font-size: 15px;
@@ -608,24 +617,38 @@ h3{
   height: 255px;
   width:255px;
 }
+
 .group-container{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
   flex: 0 0 100%;
 }
 .profiles .group-container p{
-  text-align: center;
+  flex: 0 0 80%;
+  text-align: left;
 }
 .group-photo{
   height:500px;
   width: 800px;
 }
 
+
+/*toggle switch on slider*/
+/* The switch - the box around the slider */
+.switchContainer{
+  padding-top: 4%;
+}
+.toggleDisplay{
+  color: white;
+}
+
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 48px;
+  height: 19px;
 }
-
 
 .switch input {display:none;}
 
@@ -645,8 +668,8 @@ h3{
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
+  height: 13px;
+  width: 13px;
   left: 4px;
   bottom: 4px;
   background-color: white;
@@ -655,11 +678,11 @@ h3{
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #FA6900;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #FA6900;
 }
 
 input:checked + .slider:before {
@@ -669,9 +692,46 @@ input:checked + .slider:before {
 }
 
 .slider.round {
-  border-radius: 34px;
+  border-radius: 20px;
 }
 
 .slider.round:before {
   border-radius: 50%;
 }
+
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+
+a, a:hover {
+  text-decoration: none;
+}
+
+.socialbtns, .socialbtns ul, .socialbtns li {
+  margin: 0;
+  padding: 5px;
+}
+
+.socialbtns li {
+  list-style: none outside none;
+  display: inline-block;
+}
+
+.socialbtns .fa {
+  width: 21px;
+  /*height: 28px;*/
+  color: #000;
+  background-color: #FFF;
+  border: 1px solid #000;
+  padding-top: 12px;
+  border-radius: 30px;
+  -moz-border-radius: 22px;
+  -webkit-border-radius: 22px;
+  -o-border-radius: 22px;
+}
+
+.socialbtns .fa:hover {
+  transition:all 0.5s;
+  color: #FFF;
+  background-color: #000;
+  border: 1px solid #000;
+}
+

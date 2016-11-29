@@ -30,7 +30,14 @@
         </div>
           <div class="aaron">
             <img class="profile-pic" src="./img/aaron.jpg" alt="">
-            <h2>Aaron Arakawa </h2>
+            <h2>Aaron Arakawa</h2>
+            <div align="center" class="socialbtns">
+              <ul>
+                <li><a href="https://github.com/arakawarx7" class="fa fa-lg fa-github" onclick="window.open(this.href); return false"></a></li>
+                <li><a href="https://www.linkedin.com/in/aaron-arakawa-603a77108" class="fa fa-lg fa-linkedin" onclick="window.open(this.href); return false"></a></li>
+                <li><a href="https://www.instagram.com/aa_ron_57" class="fa fa-lg fa-instagram" onclick="window.open(this.href); return false"></a></li>
+              </ul>
+            </div>
             <h3>Instagram OAuth Master</h3>
             <p>
               Born and raised in Aiea Hawai'i, Aaron always had a passion for technology. In his early twentys, he decided to make the move to California, residing in many parts of Southern California. While in Southern California, he nurtured lasting relationships with people he can now call family and made life long memories. Wanting a change in his career, Aaron decided to take the next step and pursue programming full time. With deep roots in Hawai'i, he decided to move back home and join Devleague to become a full stack developer. Aaron loves traveling, whiskey, golf, hanging out with his friends, longs walks on the beach, and watching the sunset.
@@ -40,6 +47,13 @@
           <div class="bryan">
             <img class="profile-pic" src="./img/bryan.jpg" alt="">
             <h2>Bryan Choe</h2>
+             <div align="center" class="socialbtns">
+              <ul>
+                <li><a href="https://github.com/bchoe" class="fa fa-lg fa-github" onclick="window.open(this.href); return false"></a></li>
+                <li><a href="https://www.linkedin.com/in/bryan-choe-074137a7" class="fa fa-lg fa-linkedin" onclick="window.open(this.href); return false"></a></li>
+                <li><a href="https://www.instagram.com/bbchoe/" class="fa fa-lg fa-instagram" onclick="window.open(this.href); return false"></a></li>
+              </ul>
+            </div>
             <h3>DevOps and Front End Master</h3>
             <p>Bryan is 2nd Generation Korean American Raised in Honolulu, Hawaii and proud graduate of University of Hawai’i, Manoa with a Bachelors of Art in Political Science. Prior to joining Hawai’i’s only programing bootcamp, Devleague, Bryan has worked for the late Congressman K. Mark Takai and Hawai’i State Department of Land and Natural Resources; currently he is a reservist in the Hawaii Army National Guard. Bryan enjoys hiking, working out at the gym, flying airplanes, and singing Karaoke with friends.</p>
           </div>
@@ -47,6 +61,13 @@
           <div class="casey">
             <img class="profile-pic" src="./img/casey.jpg" alt="">
             <h2>Casey Oeda</h2>
+             <div align="center" class="socialbtns">
+              <ul>
+                <li><a href="https://github.com/coeda" class="fa fa-lg fa-github" onclick="window.open(this.href); return false"></a></li>
+                <li><a href="https://www.linkedin.com/in/casey-oeda-a64052127" class="fa fa-lg fa-linkedin" onclick="window.open(this.href); return false"></a></li>
+                <li><a href="https://www.instagram.com/masaokun7/" class="fa fa-lg fa-instagram" onclick="window.open(this.href); return false"></a></li>
+              </ul>
+            </div>
             <h3>Map and Database Master</h3>
             <p>Casey is an avid gamer and loves all things Dragon Ball. He is also a car enthusiast, recently purchasing a beautiful Subaru STI. While he's not playing games, watching Dragon Ball, or tinkering with his cars, Casey is enjoying all things ramen. Casey loves long walks on the beach, watching beautiful sunsets, and candle lit dinners.   </p>
           </div>
@@ -54,11 +75,19 @@
           <div class="jp">
             <img class="profile-pic" src="./img/jp.jpg" alt="">
             <h2>JP Carreon</h2>
+             <div align="center" class="socialbtns">
+              <ul>
+                <li><a href="https://github.com/jcarreon808" class="fa fa-lg fa-github" onclick="window.open(this.href); return false"></a></li>
+                <li><a href="https://www.linkedin.com/in/jan-phillip-carreon-1a8752132" class="fa fa-lg fa-linkedin" onclick="window.open(this.href); return false"></a></li>
+                <li><a href="https://www.instagram.com/jaypeecarreon/" class="fa fa-lg fa-instagram" onclick="window.open(this.href); return false"></a></li>
+              </ul>
+            </div>
             <h3>Swiss Army Knife</h3>
-            <p>JP began his coding journey not too long ago. Before pursing his developer dreams, he was a banker. Not satisfied with the banker life, he decided to puruse his career aspiration of becoming a Full-Stack Web Developer. JP is also a graduate of Devleague's cohort 13. For frenZone, JP assisted in all aspects of the project being dubbed "The Swiss Army Knife", helping his teammates with whatever problem they came across. </p>
+            <p>JP began his coding journey not too long ago. Before pursing his developer dreams, he was a banker. Not satisfied with the banker life, he decided to puruse his career aspiration of becoming a Full-Stack Web Developer. For frenZone, JP assisted in all aspects of the project being dubbed "The Swiss Army Knife", helping his teammates with whatever problem they came across. </p>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 
@@ -83,14 +112,22 @@
           <a class="location" ng-class="{active: layout == 'location'}" ng-click="layout = 'location'" ng-hide="layout == 'location'">Go to Locations</a>
         </div>
 
-        <div id="inputDisplay">{{inputTimeDisplay}}
+        <div class="switchContainer">
+          <label class="switch">
+            <input id="toggleButton" ng-model="toggleButton" type="checkbox" ng-change="showAll()">
+            <div class="slider round"></div>
+          </label>
+          <div class="toggleDisplay">
+          {{toggleDisplay}}</div>
+          <div class ="toggleDisplay" ng-show="toggleDisplay === undefined"> filter by time</div>
+        </div>
+
+        <div id="inputDisplay" ng-show ="toggleDisplay === 'on'">{{inputTimeDisplay}}
           <input id="inputTime" type="range" min="3600" max="2994000" ng-model="inputTime" ng-change="onChange()"></input>
           <div ng-show="inputTimeDisplay === undefined">Scroll for time period</div>
         </div>
-        <label class="switch">
-          <input type="checkbox">
-          <div class="slider round"></div>
-        </label>
+
+
         <div>
           <input type="text" id="searchUser" ng-model="searchUser" placeholder="search by name or username" />
         </div>

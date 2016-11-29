@@ -7,14 +7,7 @@ Frenzone is an application to check out popular hot spots around your location, 
 ![home page 2](https://cloud.githubusercontent.com/assets/20671893/20635284/55445076-b2ff-11e6-8263-005cd3c47b8e.png)
 
 * [Frenzone Wiki](https://github.com/frenZone/frenZone/wiki)
-
-### Setup
-
-- `STAR OUR REPO!`
-- `Git Clone` `git@github.com:frenZone/frenZone.git`
-- Install all dependencies and devDependencies `npm install`
-- Start server `npm start`
-- Navigate to `localhost:8080`
+* [Set-up](https://github.com/frenZone/frenZone/wiki/Installation)
 
 License
 ----
