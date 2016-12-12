@@ -48,7 +48,7 @@ export class MarkerService {
     let data;
     let oReq = new XMLHttpRequest();
     oReq.onload = reqListener;
-    oReq.open("GET", "http://localhost:8080/api/photos", true);
+    oReq.open("GET", "http://www.frenzone.us/api/photos", true);
     oReq.send();
 
     function reqListener(e){

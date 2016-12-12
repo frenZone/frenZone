@@ -1,7 +1,7 @@
  var config = {
    mapApi : "AIzaSyAOXRNnjoPo_6goiZIxCN0-rR7l1be4pYg",
    clientId : "02eff85d322041779264a398af46ed01",
-   redirect : " http://localhost:8080/login",
+   redirect : " http://www.frenzone.us/login",
 
    caseyApi : "https://api.instagram.com/v1/users/55870965/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=55870965.2c4aaae.e0dd1784350a44838eda4573296a5750",
    aaronApi : "https://api.instagram.com/v1/users/175690487/media/recent/?count=99&&callback=JSON_CALLBACK&access_token=175690487.02eff85.ba29a57614cf43ddb14034f110153c76",

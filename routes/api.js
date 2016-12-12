@@ -15,6 +15,12 @@ const User = db.User;
 const Photo = db.Photo;
 const Location = db.Location;
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 router.route('/write')
   .get((req, res) =>{
     var val = req.query.search;
@@ -70,7 +76,7 @@ router.route('/write')
   });
 
 router.route('/photos')
-  .get((req, res) =>{
+  .get((req, res, next) =>{
     Photo.findAll({
       include: [User, Location],
       order: ['instaCreatedTime']

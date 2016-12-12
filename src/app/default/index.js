@@ -53,7 +53,7 @@ export const DefaultCtrl = [
         function checkQueue(cb) {
            var oReq = new XMLHttpRequest();
             oReq.addEventListener("loadend", cb);
-            oReq.open('GET', 'http://localhost:8080/api/write', true);
+            oReq.open('GET', 'https://www.frenzone.us/api/write', true);
             oReq.send();
          }
 
