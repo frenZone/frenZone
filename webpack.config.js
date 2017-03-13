@@ -119,7 +119,7 @@ module.exports = function makeWebpackConfig () {
         /\.spec\.js$/
       ],
       loader: 'isparta-loader'
-    })
+    });
   }
   /**
    * PostCSS
@@ -151,7 +151,7 @@ module.exports = function makeWebpackConfig () {
       // Extract css files
       // Disabled when in test mode or not in build mode
       new ExtractTextPlugin('[name].[hash].css', {disable: !isProd})
-    )
+    );
   }
   // Add build specific plugins
   if (isProd) {
@@ -170,7 +170,7 @@ module.exports = function makeWebpackConfig () {
       new CopyWebpackPlugin([{
         from: __dirname + '/src/public'
       }])
-    )
+    );
   }
   /**
    * Dev server configuration
