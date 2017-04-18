@@ -1,4 +1,3 @@
-
 <div class="bar">
   <div class="instafeed">
     <a class="home-icon" ng-class="{active: layout == 'default'}" ng-click="showAllPhotos()" ui-sref="default">
@@ -6,7 +5,6 @@
       </img>
     </a>
   </div>
-
   <div class="buttons">
     <div class="search_photo_container">
       <input id="pac-input" onClick="this.select();" class="controls" type="text" placeholder="Search Location">
@@ -15,11 +13,8 @@
     <div class="aboutButton" onclick="openNav()">ABOUT</div>
     <div class="logoutButton" ng-class="{active: layout == 'login'}" ng-click="layout = 'login';this.logout()" ui-sref="login">LOGOUT</div>
   </div>
-
-
   <div id="myNav" class="overlay">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
     <div class="overlay-content">
       <div class="aboutUs">
         <h1>Who We Are</h1>
@@ -43,7 +38,6 @@
               Born and raised in Aiea Hawai'i, Aaron always had a passion for technology. In his early twentys, he decided to make the move to California, residing in many parts of Southern California. While in Southern California, he nurtured lasting relationships with people he can now call family and made life long memories. Wanting a change in his career, Aaron decided to take the next step and pursue programming full time. With deep roots in Hawai'i, he decided to move back home and join Devleague to become a full stack developer. Aaron loves traveling, whiskey, golf, hanging out with his friends, longs walks on the beach, and watching the sunset.
             </p>
           </div>
-
           <div class="bryan">
             <img class="profile-pic" src="./img/bryan.jpg" alt="">
             <h2>Bryan Choe</h2>
@@ -57,7 +51,6 @@
             <h3>DevOps Master</h3>
             <p>Bryan is 2nd Generation Korean American Raised in Honolulu, Hawaii and proud graduate of University of Hawai’i, Manoa with a Bachelors of Art in Political Science. Prior to joining Hawai’i’s only programing bootcamp, Devleague, Bryan has worked for the late Congressman K. Mark Takai and Hawai’i State Department of Land and Natural Resources; currently he is a reservist in the Hawaii Army National Guard. Bryan enjoys hiking, working out at the gym, flying airplanes, and singing Karaoke with friends.</p>
           </div>
-
           <div class="casey">
             <img class="profile-pic" src="./img/casey.jpg" alt="">
             <h2>Casey Oeda</h2>
@@ -71,7 +64,6 @@
             <h3>Map and Database Master</h3>
             <p>Casey was born and raised in Honolulu, Hawaii.  He is a technology enthusiast and loves all aspects of tech.  From an early age he was always consumed by computers or games, but was still able to participate in organized sports.  Following his love for tech, he pursued a degree in Information Technology and acquired a job as a Network Support Technician.  Working with computers all day, he decided that he wanted to create applications compared to consuming them.  Casey loves gaming, working on cars, hiking, and coding.</p>
           </div>
-
           <div class="jp">
             <img class="profile-pic" src="./img/jp.jpg" alt="">
             <h2>JP Carreon</h2>
@@ -87,10 +79,8 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
-
 </div>
 
 <div class="mainBody">
@@ -126,7 +116,6 @@
           <input id="inputTime" type="range" min="3600" max="2994000" ng-model="inputTime" ng-change="onChange()"></input>
           <div ng-show="inputTimeDisplay === undefined">Scroll for time period</div>
         </div>
-
 
         <div>
           <input type="text" id="searchUser" ng-model="searchUser" placeholder="search by name or username" />

@@ -7,10 +7,7 @@ import { MarkerServiceName, MarkerService } from './services/markers';
 import { DataServiceName, DataService } from './services/data';
 import { DataCtrlState, DataCtrl, DataCtrlName } from './data';
 import { LoginCtrlState, LoginCtrl, LoginCtrlName} from './login';
-
-
 import '../style/app.css';
-
 
 let app = () => {
   return {

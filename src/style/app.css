@@ -3,15 +3,18 @@ html, body {
  margin: 0;
  padding: 0;
 }
-app{
+
+app {
   background-color: black;
   display: block;
   height: 100%;
 }
+
 app > section{
   display: block;
   height: 90%;
 }
+
 .loginBackground{
   display: flex;
   justify-content: center;
@@ -19,11 +22,13 @@ app > section{
   width: 100%;
   height: 100%;
 }
+
 .loginContainer{
   height: 83%;
   margin-top: 2%;
   text-align: center;
 }
+
 .loginLogo{
   color: white;
   font-size: 163px;
@@ -31,19 +36,23 @@ app > section{
   width: 760px;
   margin-top: 17%;
 }
+
 .loginLogo:active{
   text-decoration: none;
 }
+
 .loginButtonContainer{
   width: 100%;
   height: 50px;
 }
+
 .loginButton{
   width: 200px;
   height: 50px;
   border-radius: 25px;
   color: #FA6900;
 }
+
 #pac-input {
   background-color: #fff;
   font-family: Roboto;
@@ -54,9 +63,11 @@ app > section{
   text-overflow: ellipsis;
   width: 300px;
 }
+
 #pac-input:focus {
   border-color: #4d90fe;
 }
+
 .instafeed{
   flex:0 0 20%;
   display: inline-block;
@@ -64,23 +75,29 @@ app > section{
   background-position:50% 30%;
   background-repeat: no-repeat;
 }
+
 .instafeed a{
   flex: 0 0 30%;
   text-decoration: none;
   color:white;
 }
+
 .instafeed img{
   height: 30px;
 }
+
 .barIcon {
     width:30%;
 }
+
 .span {
   color: #FA6900;
 }
+
 .holder {
   width: 20%;
 }
+
 /*main top bar*/
 .bar .search_photo_container {
   display: flex;
@@ -88,14 +105,17 @@ app > section{
   flex: 0 0 50%;
   margin-right: 50px;
 }
+
 #search_user_input{
   width: 80%;
 }
+
 .bar .search_photo_container input {
   margin: auto;
   flex: 0 0 100%;
   height: 20px;
 }
+
 .bar {
   color: white;
   font-family: 'Poppins', sans-serif;
@@ -107,6 +127,7 @@ app > section{
   background-color: #171F25;
   padding: 10px 50px;
 }
+
 .mainBody {
   display: flex;
   flex-flow: row wrap;
@@ -114,18 +135,22 @@ app > section{
   height: 100%;
   width: 100%;
 }
+
 .navContainer{
   background-color: black;
 }
+
 #map {
   flex: 0 0 100%;
   height: 100%;
 }
+
 #map #marker{
   border: 3px solid #FFF;
   border-radius: 100px;
   box-shadow: 0 0 3px 0 rgba(0,0,0, 0.25);
 }
+
 .friendsCol {
   background-color: #171F25;
   font-family: 'Poppins', sans-serif;
@@ -133,56 +158,69 @@ app > section{
   flex: 0 0 100%;
   margin-top: 10px;
 }
+
 .locationsContainer{
   text-align:left;
   color:white;
 }
+
 .className{
   color:white;
 }
+
 .friendsContainer {
   color: white;
   margin-bottom: 5px;
 }
+
 .friendsContainer img {
   border-radius: 50%;
   width:70px;
   height: 70px;
 }
+
 .friendsContainer:hover {
  color: #FA6900;
 }
-.names:hover{
+
+.names:hover {
   color: #FA6900;
 }
+
 .imgCont {
   display: flex;
   flex-wrap: wrap;
   flex: 0 0 100%;
   max-height: 100%;
 }
+
 .locationContainer img {
   display: flex;
   flex-direction: row;
   width: 83px;
   height: auto;
 }
+
 body {
     font-family: "Lato", sans-serif;
 }
+
 /*top*/
 #outPut{
   color: white;
 }
+
 #inputTime{
   width: 80%;
   margin-left: 5%;
 }
+
 #inputDisplay{
   color: #818181;
   padding-top: 25px;
   width: 100%;
 }
+
 #searchUser{
 margin: 20px;
 flex: 0 0 90%;
@@ -191,13 +229,16 @@ border-radius: 15%;
 border-radius: 15px;
 width: 80%;
 }
+
 #map div.gm-style div div div#markerLayer img{
   border-radius: 100px !important;
   border: 1px solid !important;
 }
+
 #map #locationPicture{
   text-align: center;
 }
+
 #map #locationPicture img#profile{
   margin-top: 5px;
   margin-bottom: -10px;
@@ -205,6 +246,7 @@ width: 80%;
   border-radius: 30px;
   width: 50px;
 }
+
 .iconContainer{
   padding: 10px;
   height: 50px;
@@ -219,6 +261,7 @@ width: 80%;
   background-color: #023756;
   /*background-color: ##171F25;*/
 }
+
 .sidenav {
   margin-top:70px;
   background-color: #171F25;
@@ -235,6 +278,7 @@ width: 80%;
   overflow-x: hidden;
   transition: 0.5s;
 }
+
 .sidenav a {
     /*padding: 8px 8px 8px 32px;*/
     text-decoration: none;
@@ -245,17 +289,21 @@ width: 80%;
     justify-content: center;
     transition: 0.3s
 }
+
 .sidenav a:hover, .offcanvas a:focus{
     color: #FA6900;
 }
+
 .specificLocation{
   padding: 10px;
   border-bottom: 1px solid white;
 }
+
 .specificLocation:hover{
   color: #FA6900;
   background-color: black;
 }
+
 a.back{
   padding:5px;
   border-radius: 10px;
@@ -263,6 +311,7 @@ a.back{
   text-align: center;
   flex: 0 0 100%;
 }
+
 .aboutButton{
   width: 100px;
   height: 25px;
@@ -274,16 +323,19 @@ a.back{
   border: 2px solid white;
   border-radius: 30px;
 }
+
 .aboutButton:hover{
   color: #FA6900;
   border-color:#FA6900;
 }
+
 .buttons{
   display: flex;
   flex-flow:row wrap;
   justify-content: flex-end;
   flex: 0 0 80%;
 }
+
 .logoutButton{
   width: 100px;
   height: 25px;
@@ -293,14 +345,17 @@ a.back{
   border: 2px solid white;
   border-radius: 30px;
 }
+
 .logoutButton:hover{
   color: #FA6900;
   border-color:#FA6900;
 }
+
 /*animation*/
 .fallingIconPic{
   width: 93px;
 }
+
 .fallingIcon{
     width: 100px;
     height: 100px;
@@ -310,6 +365,7 @@ a.back{
     -webkit-animation: mymove 4s 1; /* Safari 4.0 - 8.0 */
     animation: mymove 4s 1;
 }
+
 @-webkit-keyframes mymove {
     0%    {top: 0px;}
     10%  {top: 0px;}
@@ -321,6 +377,7 @@ a.back{
     80%  {top: 80px}
     100% {top: 100px;}
 }
+
 @keyframes mymove {
     5%   {top: 0px;}
     10%  {top: 161px;}
@@ -332,11 +389,13 @@ a.back{
     40% {top: 161px;}
     100% {top:161px;}
 }
+
 .menu{
   display:flex;
   flex-flow:row wrap;
   justify-content: center;
 }
+
 .trendingPlaces{
   padding:5px;
   border-radius: 10px;
@@ -344,6 +403,7 @@ a.back{
   margin:auto;
   flex: 0 0 30%;
 }
+
 .location{
   padding:5px;
   border-radius: 10px;
@@ -351,60 +411,73 @@ a.back{
   margin:auto;
   flex: 0 0 30%;
 }
+
 #usernameList{
   display: block;
   margin: 0 auto;
 }
+
 #chart {
   background-color: black;
 }
+
 .c3-legend-item {
   font-family: 'Poppins', sans-serif;
   fill: #FA6900;
   font-size: 18px;
 }
+
 .c3-axis-y text {
   font-family: 'Poppins', sans-serif;
    fill: #FA6900;
    font-size:12px;
 }
+
 .c3-axis-x text {
   font-family: 'Poppins', sans-serif;
     font-size:16px;
     fill:#FA6900;
 }
+
 h1 {
   color: #FA6900;
   font-family: 'Poppins', sans-serif;
   text-align: center;
   font-size:24px;
 }
+
 .c3 .c3-axis-x path, .c3 .c3-axis-x line {
   fill: #FA6900;
   stroke-width: 0.1;
 }
+
 .c3 .c3-axis-y path, .c3 .c3-axis-y line {
   fill: #FA6900;
   stroke-width: 0.1;
 }
+
 .aboutUs{
   display:flex;
   flex-flow:row wrap;
   justify-content: center;
   color:white;
 }
+
 .aboutUs > h1{
   flex: 0 0 100%;
 }
+
 h2{
   text-align: center;
   flex: 0 0 100%;
 }
+
 .overlay-content .aboutUs p{
   font-size: 15px;
   text-align: left;
   text-indent: 30px;
 }
+
 .profiles .aaron, .bryan, .casey, .jp{
   font-size: 15px;
   text-align: center;
@@ -412,14 +485,17 @@ h2{
   margin:auto;
   margin-top: 0px;
 }
+
 .profiles .aaron h2, .bryan h2, .casey h2, .jp h2{
   margin-bottom: 0px;
   color:lightgreen;
 }
+
 h3{
   margin-top: 0px;
   color:lightblue;
 }
+
 .profiles {
   min-height: 600px;
   display: flex;
@@ -427,6 +503,7 @@ h3{
   justify-content: space-between;
   align-items: flex-start;
 }
+
 .overlay {
     height: 100%;
     width: 0;
@@ -439,6 +516,7 @@ h3{
     overflow-x: hidden;
     transition: 0.5s;
 }
+
 .overlay-content {
     position: relative;
     top: 10%;
@@ -446,6 +524,7 @@ h3{
     text-align: center;
     margin-top: 30px;
 }
+
 .overlay a {
     padding: 8px;
     text-decoration: none;
@@ -454,15 +533,18 @@ h3{
     display: block;
     transition: 0.3s;
 }
+
 .overlay a:hover, .overlay a:focus {
     color: #f1f1f1;
 }
+
 .overlay .closebtn {
     position: absolute;
     top: 20px;
     right: 45px;
     font-size: 60px;
 }
+
 @media screen and (max-width: 450px) {
   .overlay a {font-size: 20px}
   .overlay .closebtn {
@@ -470,6 +552,7 @@ h3{
       top: 15px;
       right: 35px;
   }
+
   .sidenav {padding-top: 40px;}
     top: 0;
     right: 25px;
@@ -482,6 +565,7 @@ h3{
     flex-flow: row wrap;
     justify-content: center;
   }
+
   .loginContainer {
     margin-top:20%;
     height: 300px;
@@ -490,6 +574,7 @@ h3{
     justify-content: center;
     flex: 0 0 100%;
   }
+
   .loginLogo {
     height:100px;
     margin: 27px;
@@ -497,9 +582,11 @@ h3{
     font-size: 90px;
     flex: 0 0 100%;
   }
+
   .fallingIconPic{
     width: 50px;
   }
+
   .fallingIcon{
     padding-left: 12.5%;
     position :relative;
@@ -507,12 +594,14 @@ h3{
     -webkit-animation: mymove 4s 1; /* Safari 4.0 - 8.0 */
     animation: mymove 4s 1;
   }
+
   html, body{
     overflow:hidden;
     height: 100%;
     margin: 0;
     padding: 0;
   }
+
   .bar {
     color: white;
     font-family: 'Poppins', sans-serif;
@@ -524,18 +613,21 @@ h3{
     background-color: #171F25;
     padding: 10px 10px;
   }
+
   .buttons{
     display: flex;
     flex-flow:row wrap;
     justify-content: center;
     flex: 0 0 100%;
   }
+
   .bar .search_photo_container {
     display: flex;
     flex-flow: row wrap;
     flex: 0 0 70%;
     margin-right: 50px;
   }
+
   .aboutButton{
     width: 100px;
     height: 25px;
@@ -546,6 +638,7 @@ h3{
     border: 2px solid white;
     border-radius: 30px;
   }
+
   .sidenav {
     margin-top:158px;
     background-color: #171F25;
@@ -562,6 +655,7 @@ h3{
     overflow-x: hidden;
     transition: 0.5s;
   }
+
   #pac-input {
     background-color: #fff;
     font-family: Roboto;
@@ -572,6 +666,7 @@ h3{
     text-overflow: ellipsis;
     width: 100px;
   }
+
   .profiles {
     flex: 0 0 100%;
     min-height: 600px;
@@ -580,6 +675,7 @@ h3{
     justify-content: space-between;
     align-items: flex-start;
   }
+
   .c3-axis-x text {
     font-family: 'Poppins', sans-serif;
     font-size:10px;
@@ -613,6 +709,7 @@ h3{
     text-indent: 30px;
   }
 }
+
 .profile-pic{
   height: 255px;
   width:255px;
@@ -624,15 +721,16 @@ h3{
   justify-content: center;
   flex: 0 0 100%;
 }
+
 .profiles .group-container p{
   flex: 0 0 80%;
   text-align: left;
 }
+
 .group-photo{
   height:500px;
   width: 800px;
 }
-
 
 /*toggle switch on slider*/
 /* The switch - the box around the slider */

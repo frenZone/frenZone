@@ -17,7 +17,6 @@ const User = db.User;
 const Photo = db.Photo;
 const Location = db.Location;
 
-
 app.use(express.static('./src/public'));
 app.use(bp.urlencoded({extended : true}));
 app.use('/api', api);
@@ -57,8 +56,6 @@ if (isDeveloping) {
   });
 }
 
-
-
 app.get('/write', (req, res) => {
   User.Create({
     id: data.data[i].user.username,
@@ -81,8 +78,6 @@ app.get('/write', (req, res) => {
     UserID: data.data[i].user.id
   });
 });
-
-
 
 const onStart = (err) => {
   if (err) {
