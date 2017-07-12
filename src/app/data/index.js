@@ -26,8 +26,6 @@ export const DataCtrl = [
       $scope.trendingData = [];
       $scope.count = DataService.count.bind(this, $scope.trendingData, $scope.locationData);
       $scope.count();
-
-
       PhotosService.getFriends()
       .success((friends) => {
         $scope.friends = friends.data;
